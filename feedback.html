@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#fbfaf7">
+<meta name="description" content="Report a problem, send feedback or ask a question about ZyraX, an academic biomedical research prototype.">
+<title>Feedback and problem report | ZyraX</title>
+<style>
+:root{
+  --ink:#0b2239; --muted:#5b6b78; --teal:#0f8b8d; --teal-dark:#0b6f72;
+  --mint:#e8f4f4; --paper:#fbfaf7; --line:#e5e2da; --navy:#0b2239;
+  --warn:#9a3d0a; --warn-bg:#fbeee3; --field:#cdd3d6; --radius:16px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+:focus-visible{outline:3px solid #59b8a9;outline-offset:3px}
+.wrap{width:min(1080px,calc(100% - 40px));margin:auto}
+header{position:sticky;top:0;z-index:10;background:rgba(247,250,249,.94);backdrop-filter:blur(14px);border-bottom:1px solid rgba(223,233,230,.9)}
+.nav{height:72px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.brand{display:flex;align-items:center;gap:11px;font-size:21px;font-weight:750;letter-spacing:-.7px;text-decoration:none}
+.logo{width:39px;height:39px;border-radius:12px;background:var(--navy);display:grid;place-items:center;color:#8fd6d6;font-size:23px}
+.navlinks{display:flex;align-items:center;gap:24px;font-size:14px;color:#53676c}
+.navlinks a{text-decoration:none;padding:6px 0;border-bottom:2px solid transparent}
+.navlinks a:hover{color:var(--teal)}
+.navlinks a[aria-current=page]{color:var(--ink);font-weight:650;border-bottom-color:var(--teal)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:0 24px;border:1px solid transparent;border-radius:12px;font:inherit;font-size:15px;font-weight:650;cursor:pointer;text-decoration:none;transition:background .18s,border-color .18s}
+.btn-primary{background:var(--teal);color:#fff}
+.btn-primary:hover{background:var(--teal-dark)}
+.btn-outline{border-color:var(--field);background:#fff;color:var(--ink)}
+.btn-outline:hover{border-color:var(--teal);color:var(--teal-dark)}
+
+.intro{padding:52px 0 30px;max-width:720px}
+.intro h1{font-size:clamp(30px,4.6vw,42px);line-height:1.12;letter-spacing:-1.1px;margin:0 0 12px}
+.intro p{font-size:17px;color:var(--muted);margin:0}
+
+.layout{display:grid;grid-template-columns:minmax(0,1.65fr) minmax(0,1fr);gap:28px;align-items:start;padding-bottom:64px}
+.card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:32px}
+.card + .card{margin-top:20px}
+.sec{margin:0 0 6px;font-size:13px;font-weight:700;letter-spacing:.02em;color:var(--teal-dark)}
+.sec + .rule{height:1px;background:var(--line);margin:0 0 20px}
+
+fieldset{border:0;margin:0 0 24px;padding:0}
+legend,.lbl{display:block;font-weight:650;font-size:14px;margin-bottom:8px;padding:0}
+.opt{font-weight:500;color:var(--muted)}
+.hint{font-size:13px;color:var(--muted);margin:7px 0 0}
+.field{margin-bottom:24px}
+
+.seg{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--field);border-radius:12px;padding:4px;background:#f3f5f5;gap:4px}
+.seg input{position:absolute;opacity:0;pointer-events:none}
+.seg label{text-align:center;padding:10px 8px;border-radius:9px;font-size:14px;font-weight:600;cursor:pointer;color:#47585f}
+.seg label:hover{color:var(--ink)}
+.seg input:checked + label{background:#fff;color:var(--ink);box-shadow:0 1px 3px rgba(11,34,57,.18)}
+.seg input:focus-visible + label{outline:3px solid #59b8a9;outline-offset:1px}
+
+select,input[type=text],input[type=email],textarea{width:100%;font:inherit;font-size:15px;color:var(--ink);background:#fff;border:1px solid var(--field);border-radius:11px;padding:12px 14px;transition:border-color .15s,box-shadow .15s}
+select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%235b6b78' stroke-width='1.8' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;padding-right:38px}
+select:hover,input:hover,textarea:hover{border-color:#9fb0b4}
+select:focus,input[type=text]:focus,input[type=email]:focus,textarea:focus{outline:none;border-color:var(--teal);box-shadow:0 0 0 3px rgba(15,139,141,.18)}
+textarea{min-height:160px;resize:vertical;line-height:1.55}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+
+.drop{display:block;border:1.5px dashed #aab8bc;border-radius:12px;background:#fafbfa;padding:22px 18px;text-align:center;cursor:pointer;transition:background .15s,border-color .15s}
+.drop:hover,.drop.over{background:var(--mint);border-color:var(--teal)}
+.drop:focus-within{outline:3px solid #59b8a9;outline-offset:2px}
+.drop input{position:absolute;width:1px;height:1px;opacity:0;overflow:hidden}
+.drop .t{font-weight:650;font-size:15px}
+.drop .t span{color:var(--teal-dark);text-decoration:underline;text-underline-offset:3px}
+.drop .s{font-size:13px;color:var(--muted);margin-top:2px}
+.thumbs{list-style:none;margin:14px 0 0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px}
+.thumbs li{border:1px solid var(--line);border-radius:12px;padding:8px;background:#fff;display:flex;flex-direction:column;gap:8px}
+.thumbs img{width:100%;height:92px;object-fit:cover;border-radius:8px;background:#eee}
+.thumbs .nm{font-size:12px;color:var(--muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.thumbs .tb{display:flex;gap:6px;flex-wrap:wrap}
+.mini{font:inherit;font-size:12px;font-weight:650;padding:5px 10px;border-radius:8px;border:1px solid var(--field);background:#fff;color:var(--ink);cursor:pointer}
+.mini:hover{border-color:var(--teal);color:var(--teal-dark)}
+
+.check{display:flex;gap:11px;align-items:flex-start;font-size:14px;color:#33464f}
+.check input{margin-top:4px;width:17px;height:17px;accent-color:var(--teal);flex:none}
+.privacy{font-size:13px;color:var(--warn);background:var(--warn-bg);border-left:3px solid var(--warn);border-radius:8px;padding:11px 14px;margin:0 0 24px}
+.actions{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.status{font-size:14px;color:var(--teal-dark);min-height:22px;margin:14px 0 0}
+.status.err{color:var(--warn)}
+.fine{font-size:12.5px;color:var(--muted);margin:14px 0 0}
+
+aside .card{padding:24px}
+aside h2{font-size:17px;margin:0 0 6px;letter-spacing:-.2px}
+.mailbox{display:block;font-weight:700;font-size:15px;color:var(--teal-dark);word-break:break-all;text-decoration:underline;text-underline-offset:3px;margin:8px 0 14px}
+.facts{list-style:none;margin:0;padding:0;font-size:14px;color:#33464f}
+.facts li{display:flex;gap:10px;padding:9px 0;border-top:1px solid var(--line)}
+.facts li:first-child{border-top:0}
+.facts b{min-width:78px;font-weight:650;color:var(--ink)}
+details{border-top:1px solid var(--line);padding:11px 0}
+details:first-of-type{border-top:0}
+summary{cursor:pointer;font-weight:650;font-size:14.5px}
+details p{margin:8px 0 2px;color:var(--muted);font-size:14px}
+.disclaimer{font-size:12px;line-height:1.7;color:#6d8080;margin:0 0 40px}
+footer{border-top:1px solid var(--line);padding:23px 0}
+.footer-inner{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.footer-brand{font-weight:750;font-size:14px}
+.footer-small{font-size:12px;color:#73828e}
+
+@media(max-width:900px){.layout{grid-template-columns:1fr}aside{order:2}}
+@media(max-width:620px){.row{grid-template-columns:1fr;gap:0}.card{padding:22px 18px}.navlinks{gap:16px}.intro{padding-top:36px}.seg label{font-size:13px;padding:10px 4px}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="/" aria-label="ZyraX home"><span class="logo" aria-hidden="true">⌘</span><span>ZyraX</span></a>
+    <nav class="navlinks" aria-label="Main navigation">
+      <a href="/">Home</a>
+      <a href="/analysis">Analysis</a>
+      <a href="/feedback" aria-current="page">Feedback</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <div class="intro">
+      <h1>Feedback and problem report</h1>
+      <p>Found something that does not work, or have an idea to improve ZyraX? Send it here and it goes straight to the developer.</p>
+    </div>
+
+    <div class="layout">
+      <form class="card" id="fbForm" novalidate>
+        <p class="sec">Your message</p><div class="rule"></div>
+
+        <fieldset>
+          <legend>Type</legend>
+          <div class="seg">
+            <input type="radio" name="kind" id="k1" value="Problem report" checked><label for="k1">Problem</label>
+            <input type="radio" name="kind" id="k2" value="Feedback"><label for="k2">Feedback</label>
+            <input type="radio" name="kind" id="k3" value="Question"><label for="k3">Question</label>
+          </div>
+        </fieldset>
+
+        <div class="field">
+          <label class="lbl" for="part">Which part of ZyraX?</label>
+          <select id="part">
+            <option>Home page</option>
+            <option selected>Analysis form (entering values)</option>
+            <option>Uploading a lab report</option>
+            <option>Reference ranges and flags</option>
+            <option>Patterns matched</option>
+            <option>Genes and targets (Open Targets)</option>
+            <option>Gene biology (UniProt, STRING)</option>
+            <option>Network view</option>
+            <option>PDF or copy summary</option>
+            <option>Phone or small screen layout</option>
+            <option>Something else</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label class="lbl" for="msg" id="msgLbl">What happened, and what did you expect?</label>
+          <textarea id="msg" required aria-describedby="msgHint"></textarea>
+          <p class="hint" id="msgHint">For a problem, list the steps you took, for example: "Chose High sugar, clicked Analyze, the gene table stayed empty."</p>
+        </div>
+
+        <div class="field">
+          <span class="lbl" id="shotLbl">Screenshots <span class="opt">(optional)</span></span>
+          <label class="drop" id="drop">
+            <input type="file" id="shots" accept="image/*" multiple aria-labelledby="shotLbl">
+            <div class="t">Drop images here or <span>browse</span></div>
+            <div class="s">Up to 3 images, 5 MB each</div>
+          </label>
+          <ul class="thumbs" id="thumbs" aria-live="polite"></ul>
+          <p class="hint">Screenshots stay on your device until you attach them to your email. Hide any names or lab values you do not want to share.</p>
+        </div>
+
+        <p class="sec">About you</p><div class="rule"></div>
+
+        <div class="row">
+          <div class="field">
+            <label class="lbl" for="name">Name <span class="opt">(optional)</span></label>
+            <input type="text" id="name" autocomplete="name">
+          </div>
+          <div class="field">
+            <label class="lbl" for="mail">Email for a reply <span class="opt">(optional)</span></label>
+            <input type="email" id="mail" autocomplete="email">
+          </div>
+        </div>
+
+        <div class="field check">
+          <input type="checkbox" id="tech" checked>
+          <label for="tech">Include browser and screen width to help find the problem. No lab values are added.</label>
+        </div>
+
+        <p class="privacy">Please do not write real lab values, patient names or other personal medical details in this message.</p>
+
+        <div class="actions">
+          <button type="submit" class="btn btn-primary">Send by email</button>
+          <button type="button" class="btn btn-outline" id="copyBtn">Copy message text</button>
+        </div>
+        <p class="status" id="status" role="status" aria-live="polite"></p>
+        <p class="fine">"Send by email" opens your email app with the message addressed to arzaidiwork@gmail.com. Nothing is stored on this website. On a phone, the share menu attaches your screenshots. On a computer, attach them yourself or paste them with Copy image.</p>
+      </form>
+
+      <aside>
+        <div class="card">
+          <h2>Contact</h2>
+          <a class="mailbox" href="mailto:arzaidiwork@gmail.com">arzaidiwork@gmail.com</a>
+          <ul class="facts">
+            <li><b>Developer</b><span>Ahmed Raza Zaidi</span></li>
+            <li><b>Project</b><span>M.Sc. Bioinformatics minor project, Jamia Millia Islamia</span></li>
+            <li><b>Use</b><span>Academic research prototype, not for medical decisions</span></li>
+          </ul>
+        </div>
+        <div class="card">
+          <h2>Before you report</h2>
+          <details>
+            <summary>The gene table or Gene biology panel is empty</summary>
+            <p>These parts use live public databases (Open Targets, UniProt and STRING). They need an internet connection and can be slow or unavailable for a while. Wait a minute and run the analysis again.</p>
+          </details>
+          <details>
+            <summary>My lab report filled the wrong value</summary>
+            <p>The report reader depends on the layout of the report and can miss or misread a value. Always check the filled values before pressing Analyze. Photographs need a sharp, straight, well-lit image.</p>
+          </details>
+          <details>
+            <summary>Is ZyraX a medical tool?</summary>
+            <p>No. It cannot diagnose a condition or advise treatment. Please speak to a doctor about any health concern.</p>
+          </details>
+        </div>
+      </aside>
+    </div>
+
+    <p class="disclaimer">ZyraX is an academic research prototype, not a medical device or diagnostic service. Do not use its outputs for medical decisions.</p>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap footer-inner">
+    <div class="footer-brand">ZyraX <span style="font-weight:400;color:#73828e">· Biomedical Research Prototype</span></div>
+    <div class="footer-small">Queries: <a href="mailto:arzaidiwork@gmail.com">arzaidiwork@gmail.com</a></div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  "use strict";
+  var TO = "arzaidiwork@gmail.com";
+  var form = document.getElementById("fbForm");
+  var statusEl = document.getElementById("status");
+  var msg = document.getElementById("msg");
+
+  var MAX_FILES = 3, MAX_BYTES = 5 * 1024 * 1024;
+  var shots = [];
+  var thumbs = document.getElementById("thumbs");
+  var fileInput = document.getElementById("shots");
+
+  function setStatus(t, err) { statusEl.className = "status" + (err ? " err" : ""); statusEl.textContent = t; }
+
+  function toPngBlob(file) {
+    if (file.type === "image/png") return Promise.resolve(file);
+    return createImageBitmap(file).then(function (bm) {
+      var c = document.createElement("canvas"); c.width = bm.width; c.height = bm.height;
+      c.getContext("2d").drawImage(bm, 0, 0);
+      return new Promise(function (res, rej) { c.toBlob(function (b) { b ? res(b) : rej(new Error("png")); }, "image/png"); });
+    });
+  }
+
+  function renderThumbs() {
+    thumbs.innerHTML = "";
+    shots.forEach(function (it, i) {
+      var li = document.createElement("li");
+      var img = document.createElement("img"); img.src = it.url; img.alt = "Screenshot " + (i + 1) + " preview";
+      var nm = document.createElement("div"); nm.className = "nm"; nm.textContent = it.file.name;
+      var tb = document.createElement("div"); tb.className = "tb";
+      function mini(label, fn) { var b = document.createElement("button"); b.type = "button"; b.className = "mini"; b.textContent = label; b.addEventListener("click", fn); tb.appendChild(b); }
+      if (window.ClipboardItem && navigator.clipboard && navigator.clipboard.write) {
+        mini("Copy image", function () {
+          toPngBlob(it.file).then(function (png) {
+            return navigator.clipboard.write([new ClipboardItem({ "image/png": png })]);
+          }).then(function () { setStatus("Image copied. Paste it into your email with Ctrl+V or Cmd+V."); },
+                  function () { setStatus("Could not copy this image. Use Save instead and attach the file.", true); });
+        });
+      }
+      mini("Save", function () {
+        var a = document.createElement("a"); a.href = it.url; a.download = it.file.name || ("zyrax-screenshot-" + (i + 1) + ".png");
+        document.body.appendChild(a); a.click(); document.body.removeChild(a);
+      });
+      mini("Remove", function () { URL.revokeObjectURL(it.url); shots.splice(i, 1); renderThumbs(); });
+      li.appendChild(img); li.appendChild(nm); li.appendChild(tb); thumbs.appendChild(li);
+    });
+  }
+
+  function addFiles(list) {
+    var msgs = [];
+    Array.prototype.forEach.call(list, function (f) {
+      if (!/^image\//.test(f.type)) { msgs.push(f.name + " is not an image."); return; }
+      if (f.size > MAX_BYTES) { msgs.push(f.name + " is larger than 5 MB."); return; }
+      if (shots.length >= MAX_FILES) { msgs.push("Only " + MAX_FILES + " screenshots can be added."); return; }
+      shots.push({ file: f, url: URL.createObjectURL(f) });
+    });
+    renderThumbs();
+    if (msgs.length) setStatus(msgs.join(" "), true); else setStatus("");
+  }
+  fileInput.addEventListener("change", function () { addFiles(fileInput.files); fileInput.value = ""; });
+  var drop = document.getElementById("drop");
+  ["dragenter", "dragover"].forEach(function (ev) { drop.addEventListener(ev, function (e) { e.preventDefault(); drop.classList.add("over"); }); });
+  ["dragleave", "drop"].forEach(function (ev) { drop.addEventListener(ev, function (e) { e.preventDefault(); drop.classList.remove("over"); }); });
+  drop.addEventListener("drop", function (e) { if (e.dataTransfer && e.dataTransfer.files) addFiles(e.dataTransfer.files); });
+  window.zxShots = function () { return shots.length; };
+
+  function val(id) { return (document.getElementById(id).value || "").trim(); }
+  function kind() { var r = form.querySelector("input[name=kind]:checked"); return r ? r.value : "Feedback"; }
+
+  function updateLabel() {
+    var k = kind(), lbl = document.getElementById("msgLbl"), hint = document.getElementById("msgHint");
+    if (k === "Problem report") {
+      lbl.textContent = "What happened, and what did you expect?";
+      hint.textContent = "For a problem, list the steps you took, for example: \"Chose High sugar, clicked Analyze, the gene table stayed empty.\"";
+    } else if (k === "Feedback") {
+      lbl.textContent = "What would you like to tell us?";
+      hint.textContent = "What worked well, what was confusing, what would you add?";
+    } else {
+      lbl.textContent = "What would you like to ask?";
+      hint.textContent = "Write your question as clearly as you can.";
+    }
+  }
+  form.querySelectorAll("input[name=kind]").forEach(function (r) { r.addEventListener("change", updateLabel); });
+
+  function build() {
+    var lines = [];
+    lines.push("Type: " + kind());
+    lines.push("Part of ZyraX: " + document.getElementById("part").value);
+    lines.push("");
+    lines.push(val("msg"));
+    lines.push("");
+    if (shots.length) lines.push("Screenshots: " + shots.length + " (attached to this email)");
+    if (val("name")) lines.push("Name: " + val("name"));
+    if (val("mail")) lines.push("Reply to: " + val("mail"));
+    if (document.getElementById("tech").checked) {
+      lines.push("");
+      lines.push("Technical details");
+      lines.push("Browser: " + navigator.userAgent);
+      lines.push("Screen width: " + window.innerWidth + " px");
+      lines.push("Sent from page: " + location.origin + "/feedback");
+    }
+    return {
+      subject: "[ZyraX] " + kind() + ": " + document.getElementById("part").value,
+      body: lines.join("\n")
+    };
+  }
+  window.zxBuildFeedback = build;
+
+  function check() {
+    if (!val("msg")) {
+      statusEl.className = "status err";
+      statusEl.textContent = "Please write your message first.";
+      msg.focus();
+      return false;
+    }
+    var m = val("mail");
+    if (m && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(m)) {
+      statusEl.className = "status err";
+      statusEl.textContent = "That email address does not look right. Fix it or leave it empty.";
+      document.getElementById("mail").focus();
+      return false;
+    }
+    return true;
+  }
+
+  function openMail(b) {
+    window.location.href = "mailto:" + TO + "?subject=" + encodeURIComponent(b.subject) + "&body=" + encodeURIComponent(b.body);
+  }
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    if (!check()) return;
+    var b = build();
+    var files = shots.map(function (x) { return x.file; });
+    if (files.length && navigator.canShare && navigator.share && navigator.canShare({ files: files })) {
+      setStatus("Choose your email app in the share menu. Send the message to " + TO + ".");
+      navigator.share({ title: b.subject, text: "To: " + TO + "\n\n" + b.body, files: files }).catch(function (err) {
+        if (err && err.name === "AbortError") { setStatus("Sharing was cancelled. Nothing was sent."); return; }
+        setStatus("Opening your email app. Attach your screenshots to it.");
+        openMail(b);
+      });
+      return;
+    }
+    if (files.length) setStatus("Opening your email app. Attach your screenshots to the email: use Copy image and paste, or Save and attach the file.");
+    else setStatus("Opening your email app. If nothing opens, use \"Copy message text\" instead.");
+    openMail(b);
+  });
+
+  document.getElementById("copyBtn").addEventListener("click", function () {
+    if (!check()) return;
+    var b = build();
+    var text = "To: " + TO + "\nSubject: " + b.subject + "\n\n" + b.body;
+    function ok() { statusEl.className = "status"; statusEl.textContent = "Copied. Paste it into an email to " + TO + "."; }
+    function fail() { statusEl.className = "status err"; statusEl.textContent = "Could not copy. Select the message text and copy it by hand."; }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(ok, fail);
+    } else {
+      try {
+        var ta = document.createElement("textarea");
+        ta.value = text; document.body.appendChild(ta); ta.select();
+        document.execCommand("copy"); document.body.removeChild(ta); ok();
+      } catch (err) { fail(); }
+    }
+  });
+})();
+</script>
+</body>
+</html>

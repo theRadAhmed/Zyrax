@@ -1,0 +1,5194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>ZyraX | Bioinformatics Intelligence</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family:
+                -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
+                sans-serif;
+
+            background: #fbfaf7;
+
+            color: #0b2239;
+            min-height: 100vh;
+        }
+
+
+        /* =====================================================
+           HEADER
+        ===================================================== */
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+
+            backdrop-filter: blur(18px);
+
+            background:
+                rgba(255,255,255,0.92);
+
+            border-bottom:
+                1px solid rgba(11,34,57,0.15);
+        }
+
+
+        .nav {
+            max-width: 1250px;
+            margin: auto;
+
+            padding:
+                18px 24px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+
+        .brand-logo {
+            width: 42px;
+            height: 42px;
+
+            border-radius: 12px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #0f8b8d,
+                    #0b6f72
+                );
+
+            color: white;
+
+            font-size: 22px;
+            font-weight: 900;
+
+            box-shadow:
+                0 0 25px rgba(15,139,141,0.35);
+        }
+
+
+        .brand-text h1 {
+            font-size: 19px;
+            letter-spacing: 2px;
+        }
+
+
+        .brand-text p {
+            font-size: 10px;
+            color: #5b6b78;
+            letter-spacing: 1.5px;
+        }
+
+
+        .status-badge {
+            padding:
+                7px 12px;
+
+            border:
+                1px solid rgba(34, 197, 94, 0.3);
+
+            background:
+                rgba(34, 197, 94, 0.08);
+
+            color: #15803d;
+
+            border-radius: 999px;
+
+            font-size: 11px;
+            letter-spacing: 0.8px;
+        }
+
+
+        /* =====================================================
+           MAIN
+        ===================================================== */
+
+        main {
+            max-width: 1250px;
+            margin: auto;
+
+            padding:
+                60px 24px 100px;
+        }
+
+
+        .hero {
+            text-align: center;
+
+            max-width: 850px;
+            margin:
+                0 auto 55px;
+        }
+
+
+        .hero-tag {
+            display: inline-block;
+
+            padding:
+                7px 14px;
+
+            border:
+                1px solid rgba(15,139,141,0.25);
+
+            background:
+                rgba(15,139,141,0.07);
+
+            color: #0f8b8d;
+
+            border-radius: 999px;
+
+            font-size: 11px;
+            letter-spacing: 1.5px;
+
+            margin-bottom: 20px;
+        }
+
+
+        .hero h2 {
+            font-size:
+                clamp(38px, 6vw, 72px);
+
+            line-height: 1.02;
+
+            letter-spacing: -3px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #0b2239, #0f8b8d, #0b6f72
+                );
+
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+
+        .hero h3 {
+            margin-top: 20px;
+
+            color: #5b6b78;
+
+            font-size: 20px;
+            font-weight: 500;
+        }
+
+
+        .hero p {
+            margin-top: 18px;
+
+            color: #5b6b78;
+
+            line-height: 1.8;
+
+            font-size: 14px;
+        }
+
+
+        /* =====================================================
+           CARD
+        ===================================================== */
+
+        .glass-card {
+            background:
+                #ffffff;
+
+            border:
+                1px solid rgba(11,34,57,0.13);
+
+            border-radius: 24px;
+
+            padding: 30px;
+
+            box-shadow:
+                0 25px 80px rgba(0, 0, 0, 0.25);
+
+            backdrop-filter: blur(18px);
+        }
+
+
+        .section-title {
+            font-size: 22px;
+            margin-bottom: 7px;
+        }
+
+
+        .section-subtitle {
+            color: #5b6b78;
+            font-size: 13px;
+            margin-bottom: 28px;
+        }
+
+
+        /* =====================================================
+           INPUT GRID
+        ===================================================== */
+
+        .input-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 18px;
+        }
+
+
+        .field {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+
+        .field label {
+            font-size: 12px;
+
+            color: #2b4658;
+
+            font-weight: 600;
+        }
+
+
+        .field small {
+            color: #5b6b78;
+            font-size: 10px;
+        }
+
+
+        .field input {
+            width: 100%;
+
+            padding:
+                14px 15px;
+
+            border-radius: 12px;
+
+            border:
+                1px solid rgba(11,34,57,0.15);
+
+            background:
+                #ffffff;
+
+            color: white;
+
+            outline: none;
+
+            transition:
+                0.2s ease;
+        }
+
+
+        .field input:focus {
+            border-color:
+                rgba(15,139,141,0.65);
+
+            box-shadow:
+                0 0 0 3px
+                rgba(15,139,141,0.08);
+        }
+
+
+        .field input.error {
+            border-color:
+                #ef4444;
+        }
+
+
+        .error-text {
+            color: #dc2626;
+            font-size: 11px;
+        }
+
+
+        /* =====================================================
+           BUTTONS
+        ===================================================== */
+
+        .actions {
+            display: flex;
+
+            gap: 12px;
+
+            margin-top: 25px;
+        }
+
+
+        button {
+            border: none;
+
+            cursor: pointer;
+
+            border-radius: 12px;
+
+            padding:
+                13px 20px;
+
+            font-weight: 700;
+
+            transition:
+                transform 0.2s ease,
+                box-shadow 0.2s ease;
+        }
+
+
+        .analyze-btn {
+            flex: 1;
+
+            color: white;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #0f8b8d,
+                    #0b6f72
+                );
+
+            box-shadow:
+                0 12px 35px
+                rgba(7,103,95,0.25);
+        }
+
+
+        .analyze-btn:hover {
+            transform:
+                translateY(-2px);
+
+            box-shadow:
+                0 16px 40px
+                rgba(7,103,95,0.35);
+        }
+
+
+        .clear-btn {
+            color: #2b4658;
+
+            background:
+                rgba(11,34,57,0.08);
+
+            border:
+                1px solid rgba(11,34,57,0.15);
+        }
+
+
+        /* =====================================================
+           LOADING SCREEN
+        ===================================================== */
+
+        #loadingOverlay {
+            position: fixed;
+
+            inset: 0;
+
+            z-index: 1000;
+
+            display: none;
+
+            align-items: center;
+            justify-content: center;
+
+            background:
+                rgba(247,250,249,0.96);
+
+            backdrop-filter: blur(12px);
+        }
+
+
+        .loader-box {
+            width:
+                min(440px, 90%);
+
+            text-align: center;
+        }
+
+
+        .loader-logo {
+            width: 80px;
+            height: 80px;
+
+            margin:
+                0 auto 25px;
+
+            border-radius: 24px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 38px;
+            font-weight: 900;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #0f8b8d,
+                    #0b6f72
+                );
+
+            box-shadow:
+                0 0 60px
+                rgba(15,139,141,0.35);
+
+            animation:
+                pulse 1.5s infinite;
+        }
+
+
+        @keyframes pulse {
+
+            0%, 100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.08);
+            }
+        }
+
+
+        .loader-title {
+            font-size: 18px;
+            letter-spacing: 3px;
+            font-weight: 800;
+        }
+
+
+        #loadingMessage {
+            margin-top: 10px;
+
+            color: #5b6b78;
+
+            font-size: 12px;
+        }
+
+
+        .progress-track {
+            height: 5px;
+
+            margin-top: 25px;
+
+            border-radius: 99px;
+
+            background:
+                rgba(11,34,57,0.1);
+
+            overflow: hidden;
+        }
+
+
+        #progressBar {
+            height: 100%;
+
+            width: 0%;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #0f8b8d,
+                    #0b6f72
+                );
+
+            transition:
+                width 0.25s ease;
+        }
+
+
+        /* =====================================================
+           RESULTS
+        ===================================================== */
+
+        #results {
+            display: none;
+
+            margin-top: 50px;
+        }
+
+
+        .results-header {
+            margin-bottom: 25px;
+        }
+
+
+        .results-header h2 {
+            font-size: 30px;
+        }
+
+
+        .results-header p {
+            color: #5b6b78;
+
+            margin-top: 8px;
+
+            font-size: 13px;
+        }
+
+
+        /* =====================================================
+           SUMMARY
+        ===================================================== */
+
+        .summary-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 14px;
+
+            margin-bottom: 25px;
+        }
+
+
+        .summary-card {
+            padding: 20px;
+
+            border-radius: 18px;
+
+            background:
+                #ffffff;
+
+            border:
+                1px solid rgba(11,34,57,0.12);
+        }
+
+
+        .summary-number {
+            font-size: 30px;
+            font-weight: 800;
+
+            color: #0f8b8d;
+        }
+
+
+        .summary-label {
+            margin-top: 5px;
+
+            color: #5b6b78;
+
+            font-size: 11px;
+
+            text-transform: uppercase;
+
+            letter-spacing: 1px;
+        }
+
+
+        /* =====================================================
+           PIPELINE
+        ===================================================== */
+
+        .pipeline {
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            gap: 10px;
+
+            flex-wrap: wrap;
+
+            margin:
+                30px 0;
+        }
+
+
+        .pipeline-step {
+            padding:
+                10px 13px;
+
+            border-radius: 10px;
+
+            background:
+                rgba(15,139,141,0.06);
+
+            border:
+                1px solid
+                rgba(15,139,141,0.12);
+
+            color: #5b6b78;
+
+            font-size: 10px;
+
+            text-transform: uppercase;
+
+            letter-spacing: 0.6px;
+        }
+
+
+        .pipeline-arrow {
+            color: #334155;
+        }
+
+
+        /* =====================================================
+           PARAMETER RESULTS
+        ===================================================== */
+
+        .parameter-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 14px;
+        }
+
+
+        .parameter-card {
+            padding: 18px;
+
+            border-radius: 16px;
+
+            background:
+                rgba(255,255,255,0.85);
+
+            border:
+                1px solid rgba(11,34,57,0.10);
+        }
+
+
+        .parameter-name {
+            font-size: 12px;
+
+            color: #5b6b78;
+        }
+
+
+        .parameter-value {
+            margin-top: 7px;
+
+            font-size: 22px;
+
+            font-weight: 800;
+
+            color: white;
+        }
+
+
+        .parameter-reference {
+            margin-top: 8px;
+
+            color: #5b6b78;
+
+            font-size: 9px;
+
+            line-height: 1.5;
+        }
+
+
+        .status {
+            display: inline-block;
+
+            margin-top: 12px;
+
+            padding:
+                5px 8px;
+
+            border-radius: 7px;
+
+            font-size: 9px;
+
+            font-weight: 700;
+        }
+
+
+        .status.normal {
+            background:
+                rgba(34, 197, 94, 0.08);
+
+            color: #15803d;
+        }
+
+
+        .status.abnormal {
+            background:
+                rgba(239, 68, 68, 0.08);
+
+            color: #dc2626;
+        }
+
+
+        /* =====================================================
+           DISEASE CARDS
+        ===================================================== */
+
+        .disease-card {
+            margin-top: 22px;
+
+            padding: 26px;
+
+            border-radius: 22px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(247,250,249,0.95),
+                    rgba(247,250,249,0.92)
+                );
+
+            border:
+                1px solid
+                rgba(15,139,141,0.12);
+
+            animation:
+                resultAppear 0.5s ease both;
+        }
+
+
+        @keyframes resultAppear {
+
+            from {
+                opacity: 0;
+                transform:
+                    translateY(18px);
+            }
+
+            to {
+                opacity: 1;
+                transform:
+                    translateY(0);
+            }
+        }
+
+
+        .disease-top {
+            display: flex;
+
+            justify-content: space-between;
+
+            gap: 20px;
+
+            align-items: flex-start;
+        }
+
+
+        .disease-name {
+            font-size: 24px;
+
+            font-weight: 800;
+
+            color: white;
+        }
+
+
+        .category {
+            margin-top: 5px;
+
+            color: #5b6b78;
+
+            font-size: 11px;
+
+            text-transform: uppercase;
+
+            letter-spacing: 1px;
+        }
+
+
+        .score {
+            text-align: right;
+
+            min-width: 150px;
+        }
+
+
+        .score-number {
+            font-size: 28px;
+
+            font-weight: 900;
+
+            color: #0f8b8d;
+        }
+
+
+        .score-label {
+            margin-top: 3px;
+
+            color: #5b6b78;
+
+            font-size: 8px;
+
+            letter-spacing: 1px;
+        }
+
+
+        .score-explanation {
+            margin-top: 8px;
+
+            color: #5b6b78;
+
+            font-size: 9px;
+
+            line-height: 1.5;
+        }
+
+
+        /* =====================================================
+           WHY FLAGGED
+        ===================================================== */
+
+        .why-box {
+            margin-top: 22px;
+
+            padding: 20px;
+
+            border-radius: 15px;
+
+            background:
+                rgba(15,139,141,0.035);
+
+            border:
+                1px solid
+                rgba(15,139,141,0.10);
+        }
+
+
+        .why-title {
+            color: #0f8b8d;
+
+            font-size: 12px;
+
+            font-weight: 800;
+
+            text-transform: uppercase;
+
+            letter-spacing: 1px;
+
+            margin-bottom: 15px;
+        }
+
+
+        .contribution-row {
+            display: grid;
+
+            grid-template-columns:
+                1.5fr 1fr auto;
+
+            gap: 15px;
+
+            align-items: center;
+
+            padding:
+                10px 0;
+
+            border-bottom:
+                1px solid
+                rgba(11,34,57,0.07);
+        }
+
+
+        .contribution-row:last-child {
+            border-bottom: none;
+        }
+
+
+        .contribution-name {
+            color: #2b4658;
+
+            font-size: 12px;
+        }
+
+
+        .contribution-value {
+            color: #5b6b78;
+
+            font-size: 11px;
+        }
+
+
+        .contribution-points {
+            color: #15803d;
+
+            font-size: 12px;
+
+            font-weight: 800;
+        }
+
+
+        .score-total {
+            margin-top: 15px;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            color: #5b6b78;
+
+            font-size: 11px;
+        }
+
+
+        .score-total strong {
+            color: white;
+        }
+
+
+        /* =====================================================
+           INFO GRID
+        ===================================================== */
+
+        .info-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 14px;
+
+            margin-top: 18px;
+        }
+
+
+        .info-box {
+            padding: 19px;
+
+            border-radius: 15px;
+
+            background:
+                rgba(228,244,239,0.6);
+
+            border:
+                1px solid
+                rgba(11,34,57,0.09);
+        }
+
+
+        .info-box.full-box {
+            grid-column:
+                1 / -1;
+        }
+
+
+        .info-box h4 {
+            color: #2b4658;
+
+            font-size: 12px;
+
+            margin-bottom: 13px;
+        }
+
+
+        .info-box p {
+            color: #5b6b78;
+
+            font-size: 12px;
+
+            line-height: 1.7;
+        }
+
+
+        .info-box ul {
+            padding-left: 17px;
+        }
+
+
+        .info-box li {
+            color: #5b6b78;
+
+            font-size: 11px;
+
+            line-height: 1.7;
+
+            margin-bottom: 5px;
+        }
+
+
+        .warning-box {
+            border-color:
+                rgba(245, 158, 11, 0.13);
+        }
+
+
+        .warning-box h4 {
+            color: #b45309;
+        }
+
+
+        /* =====================================================
+           CHIPS
+        ===================================================== */
+
+        .chips {
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 7px;
+        }
+
+
+        .chip {
+            display: inline-flex;
+
+            padding:
+                6px 9px;
+
+            border-radius: 8px;
+
+            background:
+                rgba(15,139,141,0.07);
+
+            border:
+                1px solid
+                rgba(15,139,141,0.12);
+
+            color: #0f8b8d;
+
+            font-size: 10px;
+
+            font-weight: 700;
+        }
+
+
+        /* =====================================================
+           RESEARCH
+        ===================================================== */
+
+        .research-section {
+            margin-top: 35px;
+        }
+
+
+        /* ---------- Disease-Gene-Target network ---------- */
+
+        .graph-tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 14px 0;
+        }
+
+        .graph-tab {
+            background: rgba(255,255,255,0.85);
+            color: #2b4658;
+            border: 1px solid rgba(11,34,57,0.2);
+            border-radius: 999px;
+            padding: 6px 14px;
+            font-size: 12px;
+            cursor: pointer;
+        }
+
+        .graph-tab:hover { border-color: #0f8b8d; }
+
+        .graph-tab.active {
+            background: #0b6f72;
+            color: #ffffff;
+            border-color: #0f8b8d;
+        }
+
+        .graph-summary {
+            color: #5b6b78;
+            font-size: 12px;
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+
+        .graph-wrap {
+            display: grid;
+            grid-template-columns: minmax(0, 2fr) minmax(220px, 1fr);
+            gap: 16px;
+            align-items: start;
+        }
+
+        @media (max-width: 820px) {
+            .graph-wrap { grid-template-columns: 1fr; }
+        }
+
+        #graphSvg {
+            width: 100%;
+            height: auto;
+            background: rgba(255,255,255,0.85);
+            border: 1px solid rgba(11,34,57,0.12);
+            border-radius: 16px;
+        }
+
+        .gnode { cursor: pointer; outline: none; }
+
+        .gnode:hover circle,
+        .gnode:focus circle { filter: brightness(1.3); }
+
+        .graph-panel {
+            padding: 18px;
+            border-radius: 14px;
+            background: rgba(255,255,255,0.85);
+            border: 1px solid rgba(11,34,57,0.10);
+            color: #2b4658;
+            font-size: 12px;
+            line-height: 1.7;
+        }
+
+        .graph-panel h4 {
+            color: #ffffff;
+            font-size: 15px;
+            margin-bottom: 4px;
+        }
+
+        .graph-panel .gp-tag {
+            display: inline-block;
+            margin-bottom: 10px;
+            font-size: 10px;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: #0f8b8d;
+        }
+
+        .graph-panel .gp-row { margin-top: 6px; }
+        .graph-panel .gp-label { color: #5b6b78; }
+
+        .graph-panel a {
+            color: #0f8b8d;
+            text-decoration: none;
+        }
+
+        .graph-panel a:hover { text-decoration: underline; }
+
+        .graph-legend {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin-top: 12px;
+            font-size: 11px;
+            color: #5b6b78;
+        }
+
+        .legend-dot {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            margin-right: 6px;
+            vertical-align: middle;
+        }
+
+        .research-card {
+            margin-top: 12px;
+
+            padding: 18px;
+
+            border-radius: 14px;
+
+            background:
+                rgba(255,255,255,0.85);
+
+            border:
+                1px solid
+                rgba(11,34,57,0.10);
+        }
+
+
+        .research-card h4 {
+            color: white;
+
+            font-size: 13px;
+        }
+
+
+        .research-card p {
+            margin-top: 8px;
+
+            color: #5b6b78;
+
+            font-size: 11px;
+
+            line-height: 1.6;
+        }
+
+
+        .research-id {
+            margin-top: 10px;
+
+            color: #0f8b8d;
+
+            font-size: 9px;
+        }
+
+
+        /* =====================================================
+           NOTICE
+        ===================================================== */
+
+        .prototype-notice {
+            margin-top: 30px;
+
+            padding: 18px 20px;
+
+            border-radius: 14px;
+
+            background:
+                rgba(245, 158, 11, 0.045);
+
+            border:
+                1px solid
+                rgba(245, 158, 11, 0.12);
+
+            color: #5b6b78;
+
+            font-size: 11px;
+
+            line-height: 1.7;
+        }
+
+
+        .prototype-notice strong {
+            color: #b45309;
+        }
+
+
+        .empty-results {
+            padding: 30px;
+
+            border-radius: 16px;
+
+            background:
+                rgba(255,255,255,0.85);
+
+            color: #5b6b78;
+
+            text-align: center;
+        }
+
+
+        /* =====================================================
+           RESPONSIVE
+        ===================================================== */
+
+        @media (max-width: 900px) {
+
+            .summary-grid {
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+            .parameter-grid {
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+        }
+
+
+        @media (max-width: 700px) {
+
+            main {
+                padding:
+                    40px 15px 70px;
+            }
+
+
+            .input-grid,
+            .info-grid {
+                grid-template-columns:
+                    1fr;
+            }
+
+
+            .summary-grid,
+            .parameter-grid {
+                grid-template-columns:
+                    1fr 1fr;
+            }
+
+
+            .disease-top {
+                flex-direction:
+                    column;
+            }
+
+
+            .score {
+                text-align:
+                    left;
+            }
+
+
+            .actions {
+                flex-direction:
+                    column;
+            }
+
+
+            .pipeline-arrow {
+                display:
+                    none;
+            }
+
+        }
+
+
+        @media (max-width: 450px) {
+
+            .summary-grid,
+            .parameter-grid {
+                grid-template-columns:
+                    1fr;
+            }
+
+        }
+
+    
+        /* ZX-EASY-INPUT: quick fill, unit toggles, live hints */
+        .quick-fill { margin: -10px 0 22px; }
+        .quick-fill .qf-title {
+            font-size: 11px; color: #5b6b78; letter-spacing: .08em;
+            text-transform: uppercase; margin-bottom: 8px;
+        }
+        .quick-fill .qf-row { display: flex; flex-wrap: wrap; gap: 8px; }
+        button.qf-btn {
+            padding: 7px 12px; font-size: 12px; font-weight: 600;
+            color: #2b4658; background: rgba(11,34,57,.08);
+            border: 1px solid rgba(11,34,57,.18); border-radius: 999px;
+        }
+        button.qf-btn:hover { border-color: rgba(15,139,141,.6); color: #fff; transform: none; }
+        .field .label-row { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+        .unit-toggle { display: inline-flex; border: 1px solid rgba(11,34,57,.2); border-radius: 8px; overflow: hidden; }
+        button.unit-opt {
+            padding: 3px 9px; font-size: 11px; font-weight: 600; border-radius: 0;
+            color: #5b6b78; background: transparent;
+        }
+        button.unit-opt:hover { transform: none; color: #fff; }
+        button.unit-opt.active { background: rgba(15,139,141,.18); color: #0f8b8d; }
+        .field .live-hint { font-size: 11px; min-height: 15px; color: #5b6b78; }
+        .field .live-hint.ok { color: #34d399; }
+        .field .live-hint.warn { color: #b45309; }
+        .field .live-hint.bad { color: #dc2626; }
+        .form-status { display: flex; justify-content: space-between; align-items: center;
+            gap: 12px; margin-top: 22px; font-size: 12px; color: #5b6b78; flex-wrap: wrap; }
+        .form-status .form-message { color: #b45309; font-weight: 600; }
+        .form-status .count-pill { padding: 4px 10px; border-radius: 999px;
+            background: rgba(11,34,57,.08); border: 1px solid rgba(11,34,57,.15); }
+
+    
+        /* ZX-EXPORT: export bar + print layout */
+        .export-bar { margin: 0 0 22px; }
+        .export-bar .ex-title { font-size: 15px; font-weight: 700; margin-bottom: 4px; }
+        .export-bar .ex-sub { font-size: 12px; color: #5b6b78; margin-bottom: 14px; line-height: 1.6; }
+        .export-bar .ex-fields { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 12px; margin-bottom: 14px; }
+        .export-bar .ex-fields input, .export-bar .ex-fields select {
+            width: 100%; padding: 11px 12px; border-radius: 10px; color: white; outline: none;
+            border: 1px solid rgba(11,34,57,.15); background: #ffffff; font-size: 13px;
+        }
+        .export-bar .ex-fields label { display: block; font-size: 11px; color: #5b6b78; margin-bottom: 6px; }
+        .export-bar .ex-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+        button.ex-btn { padding: 11px 16px; font-size: 13px; color: white;
+            background: linear-gradient(135deg,#0f8b8d,#0b6f72); }
+        button.ex-btn.secondary { color: #2b4658; background: rgba(11,34,57,.08);
+            border: 1px solid rgba(11,34,57,.2); }
+        .export-bar .ex-note { font-size: 11px; color: #5b6b78; margin-top: 10px; }
+        @media (max-width: 700px) { .export-bar .ex-fields { grid-template-columns: 1fr; } }
+
+        #zxPrint { display: none; }
+        @media print {
+            @page { size: A4; margin: 16mm; }
+            body > *:not(#zxPrint) { display: none !important; }
+            body::before, body::after { display: none !important; }
+            html, body { background: #fff !important; color: #000 !important; }
+            #zxPrint { display: block !important; font-family: Arial, Helvetica, sans-serif;
+                color: #111; font-size: 11.5px; line-height: 1.5; }
+            #zxPrint h1 { font-size: 20px; margin: 0 0 2px; color: #0b6f72; }
+            #zxPrint h2 { page-break-after: avoid; break-after: avoid; font-size: 14px; margin: 18px 0 6px; padding-bottom: 3px; border-bottom: 1.5px solid #0b6f72; color: #0b6f72; }
+            #zxPrint .sub { color: #555; margin-bottom: 8px; }
+            #zxPrint .warn { border: 1.5px solid #b45309; background: #fff7ed; padding: 8px 10px; margin: 10px 0; border-radius: 4px; }
+            #zxPrint table { width: 100%; border-collapse: collapse; margin: 4px 0 8px; }
+            #zxPrint th, #zxPrint td { border: 1px solid #999; padding: 4px 6px; text-align: left; vertical-align: top; }
+            #zxPrint th { background: #e8eefc; }
+            #zxPrint tr { page-break-inside: avoid; }
+            #zxPrint .flag { font-weight: 700; color: #b45309; }
+            #zxPrint .ok { color: #166534; }
+            #zxPrint .small { font-size: 10px; color: #444; }
+            #zxPrint ul { margin: 4px 0 8px 18px; padding: 0; }
+            #zxPrint .assoc { margin-bottom: 10px; page-break-inside: avoid; }
+            #zxPrint .foot { margin-top: 16px; border-top: 1px solid #999; padding-top: 6px; font-size: 10px; color: #444; }
+        }
+
+    
+        /* ZX-THEME: match the homepage palette (ink / teal / mint on paper) */
+        :root { --zx-ink: #0b2239; --zx-muted: #5b6b78; --zx-teal: #0f8b8d; --zx-teal-dark: #0b6f72;
+                --zx-mint: #e8f4f4; --zx-paper: #fbfaf7; --zx-line: #e5e2da; --zx-navy: #0b2239; }
+        body { color: var(--zx-ink); background: var(--zx-paper); }
+        h1, h2, h3, .section-title, .disease-name, .parameter-name { color: var(--zx-ink); }
+        .glass-card, .parameter-card, .disease-card, .research-card, .summary-card {
+            background: #ffffff; border: 1px solid var(--zx-line);
+            box-shadow: 0 10px 30px rgba(11,34,57,0.06); backdrop-filter: none; }
+        .field input, .field select, .export-bar .ex-fields input, .export-bar .ex-fields select {
+            background: #ffffff !important; color: var(--zx-ink) !important; border: 1px solid #d9d6cd !important; }
+        .field input::placeholder, .export-bar .ex-fields input::placeholder { color: #9aa9ad; }
+        .field input:focus { border-color: var(--zx-teal) !important; box-shadow: 0 0 0 3px rgba(15,139,141,0.15) !important; }
+        .analyze-btn, button.ex-btn { background: var(--zx-teal) !important; color: #ffffff !important;
+            box-shadow: 0 8px 22px rgba(15,139,141,0.25) !important; }
+        .analyze-btn:hover, button.ex-btn:hover { background: var(--zx-teal-dark) !important; }
+        .clear-btn, button.ex-btn.secondary, button.qf-btn, button.unit-opt {
+            color: var(--zx-ink) !important; background: #ffffff !important; border: 1px solid #d9d6cd !important; }
+        button.qf-btn:hover { border-color: var(--zx-teal) !important; color: var(--zx-teal-dark) !important; }
+        button.unit-opt.active { background: var(--zx-mint) !important; color: var(--zx-teal-dark) !important; }
+        .unit-toggle { border-color: #d9d6cd !important; }
+        .field label { color: var(--zx-ink) !important; }
+        .field small, .section-subtitle, .export-bar .ex-sub, .export-bar .ex-note { color: var(--zx-muted) !important; }
+        .field .live-hint.ok { color: #15803d !important; }
+        .field .live-hint.warn { color: #b45309 !important; }
+        .field .live-hint.bad, .error-text { color: #dc2626 !important; }
+        .form-status .form-message { color: #b45309 !important; }
+        .form-status .count-pill { background: var(--zx-mint) !important; color: var(--zx-teal-dark) !important; border-color: #cfe5de !important; }
+        .quick-fill .qf-title { color: var(--zx-muted) !important; }
+        .parameter-value, .score-total strong, .graph-panel h4, .research-card h4, .disease-name { color: var(--zx-ink) !important; }
+        #loadingOverlay { background: rgba(247,250,249,0.96) !important; color: var(--zx-ink); }
+
+    
+        /* ZX-EPIC: lab-sheet design */
+        :root { --zx-line: #e5e2da; --zx-ok: #bfe3e3; --zx-edge: #f4e1ae; --zx-out: #f2c7a6; --zx-amber: #b45309; }
+        body { font-feature-settings: "tnum" 1, "cv11" 1; -webkit-font-smoothing: antialiased; }
+        main { max-width: 1120px !important; margin: 0 auto; padding: 28px 24px 80px !important; }
+
+        /* header */
+        header { background: #ffffff !important; border-bottom: 1px solid var(--zx-line) !important; backdrop-filter: none !important; }
+        header .nav { max-width: 1120px; margin: 0 auto; padding: 14px 24px !important; display: flex; align-items: center; justify-content: space-between; }
+        .brand-logo { width: 38px !important; height: 38px !important; border-radius: 10px !important; background: var(--zx-navy) !important; box-shadow: none !important; font-size: 18px !important; }
+        .brand-text h1 { font-size: 18px !important; letter-spacing: -0.02em !important; color: var(--zx-ink) !important; text-transform: none !important; }
+        .brand-text p { font-size: 12px !important; letter-spacing: 0 !important; text-transform: none !important; color: var(--zx-muted) !important; }
+        .zx-links { display: flex; align-items: center; gap: 22px; }
+        .zx-links a { color: var(--zx-muted); font-size: 14px; text-decoration: none; font-weight: 500; }
+        .zx-links a:hover { color: var(--zx-teal); }
+        .brand-logo { flex: none; }
+        @media (max-width: 520px) { .nav { gap: 14px; } .brand-text p { display: none; } .zx-links { gap: 12px; } .zx-links a { font-size: 13px; } }
+        .status-badge { font-size: 12px !important; letter-spacing: 0 !important; text-transform: none !important;
+            padding: 6px 12px !important; border-radius: 999px !important; background: var(--zx-mint) !important;
+            color: var(--zx-teal-dark) !important; border: 0 !important; }
+
+        /* hero */
+        .zx-hero { display: grid; grid-template-columns: 1.25fr 0.75fr; gap: 36px; align-items: center;
+            padding: 46px 48px; border-radius: 22px; margin: 0 0 28px; color: #e6eef2;
+            background: radial-gradient(900px 340px at 105% -20%, rgba(15,139,141,0.55), rgba(15,139,141,0) 60%), var(--zx-navy); }
+        .zx-hero h2 { font-size: clamp(30px, 4.2vw, 46px); line-height: 1.06; letter-spacing: -0.035em; font-weight: 750;
+            color: #ffffff !important; margin: 0 0 16px; max-width: 14em; background: none !important; -webkit-text-fill-color: #ffffff !important; }
+        .zx-hero p { font-size: 17px; line-height: 1.55; color: #b9cfca; max-width: 34em; margin: 0 0 24px; }
+        .zx-steps { list-style: none; display: flex; flex-wrap: wrap; gap: 10px 22px; margin: 0 0 22px; padding: 0; }
+        .zx-steps li { display: flex; align-items: center; gap: 10px; font-size: 14px; color: #dbe9e5; }
+        .zx-steps li span { width: 22px; height: 22px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center;
+            font-size: 12px; font-weight: 700; background: rgba(255,255,255,0.12); color: #ffffff; }
+        .zx-fine { font-size: 13px; color: #8fb0a9; }
+        .zx-hero-card { background: #ffffff; color: var(--zx-ink); border-radius: 16px; padding: 22px 22px 18px;
+            box-shadow: 0 24px 60px rgba(0,0,0,0.28); }
+        .zx-sample-title { font-size: 13px; font-weight: 700; color: var(--zx-muted); margin-bottom: 14px; }
+        .zx-sample-note { font-size: 12.5px; color: var(--zx-muted); margin-top: 14px; line-height: 1.5; }
+        .zx-row-sample { grid-template-columns: 1fr auto !important; gap: 10px 16px !important; padding: 0 !important; border: 0 !important; }
+        .zx-row-sample .zx-gauge { grid-column: 1 / -1; order: 3; }
+        .zx-row-sample .zx-chip { order: 2; justify-self: start; }
+
+        /* form card */
+        .glass-card { border-radius: 16px !important; box-shadow: none !important; border: 1px solid var(--zx-line) !important; padding: 28px !important; }
+        .section-title { font-size: 21px !important; font-weight: 720 !important; letter-spacing: -0.02em !important; text-transform: none !important; color: var(--zx-ink) !important; }
+        .section-subtitle { font-size: 14px !important; color: var(--zx-muted) !important; margin-bottom: 22px !important; }
+        .input-grid { grid-template-columns: repeat(4, 1fr) !important; gap: 16px 18px !important; }
+        .field { gap: 6px !important; }
+        .field label { font-size: 13px !important; font-weight: 650 !important; }
+        .field input { padding: 12px 13px !important; border-radius: 10px !important; font-size: 15px !important; font-variant-numeric: tabular-nums; }
+        .field small { font-size: 11.5px !important; line-height: 1.35; }
+        .field .live-hint { min-height: 16px; font-size: 12px !important; font-weight: 600; }
+        .field .label-row { min-height: 40px; align-items: flex-end; }
+        .field .label-row label { line-height: 1.25; }
+        button.unit-opt { font-size: 11px !important; padding: 4px 7px !important; }
+        .actions { margin-top: 18px !important; }
+        .analyze-btn { border-radius: 10px !important; padding: 14px 22px !important; font-size: 15px !important; }
+        .clear-btn { border-radius: 10px !important; }
+        button.qf-btn { font-weight: 550 !important; }
+        @media (max-width: 1000px) { .input-grid { grid-template-columns: repeat(2, 1fr) !important; } .zx-hero { grid-template-columns: 1fr; padding: 32px 26px; } }
+        @media (max-width: 520px) { .field .label-row { min-height: 28px; } .input-grid { grid-template-columns: 1fr !important; } main { padding: 18px 14px 60px !important; } }
+
+        /* results header + summary strip */
+        .results-header { margin: 0 0 16px !important; text-align: left !important; }
+        .results-header h2 { font-size: 28px !important; letter-spacing: -0.03em !important; color: var(--zx-ink) !important; background: none !important; -webkit-text-fill-color: var(--zx-ink) !important; }
+        .results-header p { color: var(--zx-muted) !important; font-size: 15px !important; }
+        .summary-grid { display: grid !important; grid-template-columns: repeat(4, 1fr) !important; gap: 0 !important; background: #ffffff;
+            border: 1px solid var(--zx-line); border-radius: 16px; overflow: hidden; margin-bottom: 22px; }
+        .summary-card { background: transparent !important; border: 0 !important; border-right: 1px solid var(--zx-line) !important; border-radius: 0 !important;
+            box-shadow: none !important; padding: 20px 24px !important; }
+        .summary-card:last-child { border-right: 0 !important; }
+        .summary-number { font-size: 38px !important; font-weight: 750 !important; letter-spacing: -0.04em !important; color: var(--zx-ink) !important; line-height: 1.05; }
+        .summary-card.alert .summary-number { color: var(--zx-amber) !important; }
+        .summary-label { font-size: 13.5px !important; letter-spacing: 0 !important; text-transform: none !important; color: var(--zx-muted) !important; margin-top: 4px; }
+        @media (max-width: 700px) { .summary-grid { grid-template-columns: repeat(2, 1fr) !important; } .summary-card:nth-child(2) { border-right: 0 !important; } .summary-card:nth-child(-n+2) { border-bottom: 1px solid var(--zx-line) !important; } }
+
+        /* lab sheet */
+        .labsheet { display: block !important; border-top: 1px solid var(--zx-line); }
+        .zx-row { display: grid; grid-template-columns: minmax(140px, 1fr) minmax(120px, max-content) minmax(170px, 1.6fr) max-content; gap: 18px; align-items: center;
+            padding: 16px 4px; border-bottom: 1px solid var(--zx-line); }
+        .zx-pname { font-weight: 650; font-size: 15px; color: var(--zx-ink); }
+        .zx-pname small { display: block; font-weight: 400; font-size: 12px; color: var(--zx-muted); margin-top: 2px; }
+        .zx-pval { font-size: 24px; font-weight: 720; letter-spacing: -0.03em; font-variant-numeric: tabular-nums; color: var(--zx-ink); }
+        .zx-pval small { font-size: 12px; font-weight: 500; color: var(--zx-muted); margin-left: 5px; letter-spacing: 0; }
+        .zx-gauge { position: relative; height: 10px; border-radius: 6px; background: #ece9e1; margin: 6px 0 20px; }
+        .zx-gauge .seg { position: absolute; top: 0; bottom: 0; }
+        .zx-gauge .seg:first-child { border-radius: 6px 0 0 6px; }
+        .zx-gauge .seg:last-of-type { border-radius: 0 6px 6px 0; }
+        .seg.ok { background: var(--zx-ok); } .seg.edge { background: var(--zx-edge); } .seg.out { background: var(--zx-out); }
+        .zx-gauge .mk { position: absolute; top: -5px; width: 4px; height: 20px; margin-left: -2px; border-radius: 3px; background: var(--zx-ink);
+            box-shadow: 0 0 0 2px #fff; transition: left 0.7s cubic-bezier(.2,.8,.2,1); }
+        .zx-gauge .mk.edge, .zx-gauge .mk.out { background: var(--zx-amber); }
+        .zx-gauge .tick { position: absolute; top: 15px; transform: translateX(-50%); font-size: 11px; color: var(--zx-muted); white-space: nowrap; font-variant-numeric: tabular-nums; }
+        .zx-chip { justify-self: end; font-size: 12.5px; font-weight: 650; padding: 5px 11px; border-radius: 999px; white-space: nowrap; }
+        .zx-chip.ok { background: #e0f2f2; color: #0b6b6d; }
+        .zx-chip.edge { background: #fbf0d2; color: #8a5a00; }
+        .zx-chip.out { background: #fbe3d2; color: #9a3d0a; }
+        @media (max-width: 760px) { .zx-row { grid-template-columns: 1fr auto; gap: 10px 14px; } .zx-gauge { grid-column: 1 / -1; order: 4; } .zx-chip { order: 2; } .zx-pval { order: 3; grid-column: 1 / -1; } }
+
+        /* disease cards */
+        .disease-card { background: #ffffff !important; border: 1px solid var(--zx-line) !important; border-radius: 16px !important; box-shadow: none !important; padding: 26px !important; animation: none !important; }
+        .disease-name { font-size: 22px !important; letter-spacing: -0.025em !important; }
+        .category { text-transform: none !important; letter-spacing: 0 !important; font-size: 13px !important; color: var(--zx-muted) !important; }
+        .score { text-align: right; max-width: 300px; }
+        .zx-ring { --p: 0; width: 76px; height: 76px; border-radius: 50%; margin-left: auto; display: flex; align-items: center; justify-content: center;
+            background: conic-gradient(var(--zx-teal) calc(var(--p) * 1%), #e3ece9 0); position: relative; }
+        .zx-ring::before { content: ""; position: absolute; inset: 7px; background: #fff; border-radius: 50%; }
+        .zx-ring span { position: relative; font-size: 21px; font-weight: 750; letter-spacing: -0.03em; color: var(--zx-ink); }
+        .score .score-label { text-transform: none !important; letter-spacing: 0 !important; font-size: 12.5px !important; font-weight: 650; color: var(--zx-ink) !important; margin-top: 6px; }
+        .score-number { display: none !important; }
+        .score-explanation { font-size: 11.5px !important; color: var(--zx-muted) !important; line-height: 1.45; }
+        .why-box, .info-box { background: #f7f6f1 !important; border: 1px solid var(--zx-line) !important; border-radius: 12px !important; }
+        .why-title { text-transform: none !important; letter-spacing: 0 !important; font-size: 13px !important; font-weight: 700 !important; color: var(--zx-teal-dark) !important; }
+        .info-box h4 { font-size: 13.5px !important; }
+        .info-box.warning-box { background: #fff8ec !important; border-color: #f1dcb1 !important; }
+        .chip, .chips span { border-radius: 999px !important; }
+        details.zx-more { grid-column: 1 / -1; border: 1px solid var(--zx-line); border-radius: 12px; background: #f7f6f1; padding: 0; }
+        details.zx-more > summary { cursor: pointer; list-style: none; padding: 13px 16px; font-size: 13.5px; font-weight: 650; color: var(--zx-ink);
+            display: flex; justify-content: space-between; align-items: center; }
+        details.zx-more > summary::-webkit-details-marker { display: none; }
+        details.zx-more > summary::after { content: "Show"; font-weight: 600; font-size: 12.5px; color: var(--zx-teal); }
+        details.zx-more[open] > summary::after { content: "Hide"; }
+        details.zx-more > .zx-more-body { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; padding: 0 12px 12px; }
+        details.zx-more .info-box { margin: 0 !important; }
+        @media (max-width: 700px) { details.zx-more > .zx-more-body { grid-template-columns: 1fr; } }
+
+        /* research table */
+        .rtable { border: 1px solid var(--zx-line); border-radius: 16px; background: #fff; overflow: hidden; }
+        .rrow { display: grid; grid-template-columns: 1.1fr 1.6fr 1.4fr; gap: 16px; padding: 13px 20px; border-top: 1px solid var(--zx-line); align-items: center; }
+        .rrow.rhead { border-top: 0; background: #f7f6f1; font-size: 12.5px; font-weight: 650; color: var(--zx-muted); }
+        .rgene { font-weight: 700; font-size: 15px; }
+        .rgene small { display: block; font-weight: 400; font-size: 12px; color: var(--zx-muted); margin-top: 1px; }
+        .rgene a { color: var(--zx-teal); text-decoration: none; } .rgene a:hover { text-decoration: underline; }
+        .rcond { font-size: 14px; color: var(--zx-ink); }
+        .rscore { display: flex; align-items: center; gap: 12px; font-variant-numeric: tabular-nums; font-weight: 650; font-size: 14px; }
+        .rbar { flex: 1; height: 8px; background: #ece9e1; border-radius: 5px; overflow: hidden; }
+        .rbar i { display: block; height: 100%; background: var(--zx-teal); border-radius: 5px; }
+        @media (max-width: 760px) { .rrow { grid-template-columns: 1fr; gap: 6px; } .rrow.rhead { display: none; } }
+
+        /* network + notice */
+        .research-section { margin-top: 36px !important; }
+        .graph-wrap, .graph-panel, #graphSvg { border-radius: 14px; }
+        .glass-card.export-bar { margin-top: 0 !important; }
+        #prototypeNotice { border-radius: 12px !important; }
+
+        @media (prefers-reduced-motion: reduce) { .zx-gauge .mk { transition: none; } }
+
+    
+        /* ZX-PALETTE-2: warm white, navy, teal */
+        :root { --zx-ink:#0b2239; --zx-muted:#5b6b78; --zx-teal:#0f8b8d; --zx-teal-dark:#0b6f72; --zx-mint:#e8f4f4; --zx-paper:#fbfaf7; --zx-line:#e5e2da; --zx-navy:#0b2239; }
+    
+        /* ZX-UPLOAD */
+        .zx-upload { border: 1px dashed #b8c8d2; background: #f7f6f1; border-radius: 14px; padding: 18px 20px; margin: 0 0 24px; }
+        .zx-up-head { display: flex; gap: 18px; align-items: center; justify-content: space-between; flex-wrap: wrap; }
+        .zx-up-title { font-weight: 700; font-size: 15.5px; color: var(--zx-ink, #0b2239); }
+        .zx-up-sub { font-size: 13px; color: var(--zx-muted, #5b6b78); margin-top: 3px; max-width: 56em; line-height: 1.5; }
+        .zx-up-btn { cursor: pointer; background: var(--zx-teal, #0f8b8d); color: #fff; font-weight: 650; font-size: 14px; padding: 11px 18px; border-radius: 10px; white-space: nowrap; }
+        .zx-up-btn:hover { background: var(--zx-teal-dark, #0b6f72); }
+        .zx-up-btn:focus-within, #zxFile:focus + .zx-up-btn { outline: 3px solid rgba(15,139,141,.35); }
+        .zx-up-status { margin-top: 12px; font-size: 13.5px; color: var(--zx-ink, #0b2239); display: flex; align-items: center; gap: 10px; }
+        .zx-up-status.err { color: #b45309; }
+        .zx-spin { width: 14px; height: 14px; border-radius: 50%; border: 2px solid #cfe3e3; border-top-color: var(--zx-teal, #0f8b8d); animation: zxspin .8s linear infinite; }
+        @keyframes zxspin { to { transform: rotate(360deg); } }
+        .zx-up-result { margin-top: 12px; background: #fff; border: 1px solid var(--zx-line, #e5e2da); border-radius: 12px; padding: 14px 16px; }
+        .zx-up-result h4 { margin: 0 0 8px; font-size: 14px; color: var(--zx-ink, #0b2239); }
+        .zx-up-list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 6px 18px; font-size: 13.5px; }
+        .zx-up-list li { display: flex; justify-content: space-between; gap: 10px; border-bottom: 1px solid var(--zx-line, #e5e2da); padding: 4px 0; }
+        .zx-up-list li b { font-variant-numeric: tabular-nums; }
+        .zx-up-miss { font-size: 12.5px; color: var(--zx-muted, #5b6b78); margin-top: 10px; line-height: 1.5; }
+        .zx-up-result details { margin-top: 10px; font-size: 12.5px; color: var(--zx-muted, #5b6b78); }
+        .zx-up-result pre { white-space: pre-wrap; max-height: 180px; overflow: auto; background: #f7f6f1; border-radius: 8px; padding: 10px; font-size: 12px; }
+        .zx-up-note { font-size: 12px; color: var(--zx-muted, #5b6b78); margin-top: 12px; }
+        @media print { .zx-upload { display: none !important; } }
+
+    
+        /* ZX-EXPLAIN */
+        .zx-explain { margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--zx-line, #e5e2da); }
+        .zx-ex-consent { display: flex; gap: 10px; align-items: flex-start; font-size: 13px; color: var(--zx-ink, #0b2239); line-height: 1.45; cursor: pointer; }
+        .zx-ex-consent input { margin-top: 3px; accent-color: var(--zx-teal, #0f8b8d); }
+        .zx-ex-btn { margin-top: 10px; background: var(--zx-navy, #0b2239); color: #fff; border: 0; border-radius: 10px; padding: 11px 18px; font-weight: 650; font-size: 14px; cursor: pointer; }
+        .zx-ex-btn:disabled { opacity: .45; cursor: not-allowed; }
+        .zx-ex-out { margin-top: 12px; background: #fff; border: 1px solid var(--zx-line, #e5e2da); border-radius: 12px; padding: 16px 18px; font-size: 14px; line-height: 1.6; }
+        .zx-ex-out h4 { margin: 14px 0 4px; font-size: 14px; color: var(--zx-teal-dark, #0b6f72); }
+        .zx-ex-out h4:first-child { margin-top: 0; }
+        .zx-ex-out p { margin: 0 0 6px; }
+        .zx-ex-out .zx-ex-warn { margin-top: 12px; padding: 9px 12px; border-radius: 8px; background: #fff8ec; border: 1px solid #f1dcb1; font-size: 12.5px; color: #8a5a00; }
+        .zx-ex-out.err { color: #b45309; }
+
+    
+        /* ZX-GENEBIO */
+        .gb-wrap { margin-top: 36px; }
+        .gb-wrap > h3 { font-size: 24px; letter-spacing: -0.02em; margin: 0 0 4px; color: var(--zx-ink, #0b2239); }
+        .gb-sub { color: var(--zx-muted, #5b6b78); font-size: 14.5px; margin: 0 0 16px; max-width: 60em; line-height: 1.55; }
+        .gb-tabs { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
+        .gb-tab { border: 1px solid #d9d6cd; background: #fff; color: var(--zx-ink, #0b2239); border-radius: 999px; padding: 8px 14px; font-weight: 600; font-size: 13.5px; cursor: pointer; }
+        .gb-tab[aria-selected="true"] { background: var(--zx-teal, #0f8b8d); border-color: var(--zx-teal, #0f8b8d); color: #fff; }
+        .gb-status { font-size: 14px; color: var(--zx-muted, #5b6b78); padding: 18px 4px; }
+        .gb-status.err { color: #b45309; }
+        .gb-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 14px; margin-bottom: 18px; }
+        .gb-card { background: #fff; border: 1px solid var(--zx-line, #e5e2da); border-radius: 14px; padding: 16px 18px; }
+        .gb-card h4 { margin: 0; font-size: 18px; letter-spacing: -0.02em; display: flex; align-items: baseline; justify-content: space-between; gap: 8px; }
+        .gb-card h4 a { font-size: 12px; font-weight: 600; color: var(--zx-teal, #0f8b8d); text-decoration: none; }
+        .gb-prot { font-size: 13px; color: var(--zx-muted, #5b6b78); margin: 2px 0 8px; }
+        .gb-func { font-size: 13.5px; line-height: 1.55; color: var(--zx-ink, #0b2239); margin: 0 0 10px; }
+        .gb-more { background: none; border: 0; color: var(--zx-teal, #0f8b8d); font-weight: 600; cursor: pointer; padding: 0; font-size: 12.5px; }
+        .gb-pl { font-size: 12px; font-weight: 650; color: var(--zx-muted, #5b6b78); margin: 8px 0 5px; }
+        .gb-chips { display: flex; flex-wrap: wrap; gap: 5px; }
+        .gb-chip { font-size: 12px; padding: 3px 9px; border-radius: 999px; background: var(--zx-mint, #e8f4f4); color: var(--zx-teal-dark, #0b6f72); font-variant-numeric: tabular-nums; }
+        .gb-two { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+        @media (max-width: 860px) { .gb-two { grid-template-columns: 1fr; } }
+        .gb-panel { background: #fff; border: 1px solid var(--zx-line, #e5e2da); border-radius: 14px; padding: 16px 18px; }
+        .gb-panel h4 { margin: 0 0 4px; font-size: 16px; }
+        .gb-panel .gb-note { font-size: 12.5px; color: var(--zx-muted, #5b6b78); margin: 0 0 12px; line-height: 1.5; }
+        .gb-pw { padding: 9px 0; border-top: 1px solid var(--zx-line, #e5e2da); font-size: 13.5px; }
+        .gb-pw:first-of-type { border-top: 0; }
+        .gb-pw b { display: block; font-weight: 650; }
+        .gb-pw small { color: var(--zx-muted, #5b6b78); font-size: 12px; }
+        .gb-bar { height: 6px; background: #ece9e1; border-radius: 4px; margin-top: 5px; overflow: hidden; }
+        .gb-bar i { display: block; height: 100%; background: var(--zx-teal, #0f8b8d); }
+        .gb-svg { width: 100%; height: auto; max-height: 320px; }
+        .gb-svg text { font: 600 11px Inter, system-ui, sans-serif; fill: #fff; text-anchor: middle; dominant-baseline: central; }
+        .gb-src { font-size: 12px; color: var(--zx-muted, #5b6b78); margin-top: 12px; }
+        @media print { .gb-wrap { display: none !important; } }
+
+    </style>
+</head>
+
+
+<body>
+
+
+<!-- =========================================================
+     HEADER
+========================================================= -->
+
+<header>
+
+    <div class="nav">
+
+        <div class="brand">
+
+            <div class="brand-logo">
+                Z
+            </div>
+
+            <div class="brand-text">
+
+                <h1>ZyraX</h1>
+
+                <p>
+                    Biomedical analysis prototype
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <nav class="zx-links"><a href="/">Home</a><a href="/feedback">Feedback</a><span class="status-badge">Research prototype</span></nav>
+
+    </div>
+
+</header>
+
+
+<!-- =========================================================
+     LOADING
+========================================================= -->
+
+<div id="loadingOverlay">
+
+    <div class="loader-box">
+
+        <div class="loader-logo">
+            Z
+        </div>
+
+        <div class="loader-title">
+            ZYRAX ANALYZING
+        </div>
+
+        <div id="loadingMessage">
+            Initializing biomarker analysis...
+        </div>
+
+        <div class="progress-track">
+
+            <div id="progressBar"></div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================================
+     MAIN
+========================================================= -->
+
+<main>
+
+
+    <!-- HERO -->
+
+    <section class="zx-hero">
+        <div class="zx-hero-copy">
+            <h2>Check lab values against reference ranges.</h2>
+            <p>See which conditions the pattern matches, then the genes and targets linked to them in the Open Targets research database.</p>
+            <ol class="zx-steps">
+                <li><span>1</span>Enter the values you have</li>
+                <li><span>2</span>Review what falls outside range</li>
+                <li><span>3</span>Explore the research evidence</li>
+            </ol>
+            <div class="zx-fine">Research prototype for learning. It does not diagnose or advise treatment.</div>
+        </div>
+        <div class="zx-hero-card" aria-hidden="true">
+            <div class="zx-sample-title">Sample result</div>
+            <div class="zx-row zx-row-sample">
+                <div class="zx-pname">Fasting glucose<small>Range 70 to 99 mg/dL</small></div>
+                <div class="zx-pval">112<small>mg/dL</small></div>
+                <div class="zx-gauge"><i class="seg out" style="left:0;width:18.75%"></i><i class="seg ok" style="left:18.75%;width:18.125%"></i><i class="seg edge" style="left:36.875%;width:16.25%"></i><i class="seg out" style="left:53.125%;width:46.875%"></i><b class="mk edge" style="left:45%"></b></div>
+                <div class="zx-chip edge">Borderline</div>
+            </div>
+            <div class="zx-sample-note">Each value is placed on its range, the way a lab report shows it.</div>
+        </div>
+    </section>
+
+    <!-- =====================================================
+         INPUT
+    ===================================================== -->
+
+    <section class="glass-card">
+
+        <h2 class="section-title">
+            Laboratory Parameters
+        </h2>
+
+        <p class="section-subtitle">
+            Enter only the laboratory values available to you.
+            All fields are optional, but at least one value is required.
+        </p>
+
+        <div class="quick-fill" id="quickFill">
+            <div class="qf-title">Quick fill an example</div>
+            <div class="qf-row">
+                <button type="button" class="qf-btn" data-preset="normal">All normal</button>
+                <button type="button" class="qf-btn" data-preset="diabetes">High sugar</button>
+                <button type="button" class="qf-btn" data-preset="anemia">Low hemoglobin</button>
+                <button type="button" class="qf-btn" data-preset="thyroid">High TSH</button>
+                <button type="button" class="qf-btn" data-preset="bp">High blood pressure</button>
+                <button type="button" class="qf-btn" data-preset="infection">Fever + high WBC</button>
+                <button type="button" class="qf-btn" data-preset="dengue">Fever + low platelets</button>
+            </div>
+        </div>
+
+
+        <!-- ZX-UPLOAD -->
+        <div class="zx-upload" id="zxUpload">
+            <div class="zx-up-head">
+                <div>
+                    <div class="zx-up-title">Have a lab report? Upload it to fill the form</div>
+                    <div class="zx-up-sub">PDF or photo of a blood test report. ZyraX reads the text on your device and fills the values it recognises. Check them before you analyze.</div>
+                </div>
+                <label class="zx-up-btn" for="zxFile">Choose report</label>
+                <input type="file" id="zxFile" accept=".pdf,application/pdf,image/png,image/jpeg,image/webp" hidden>
+            </div>
+            <div class="zx-up-status" id="zxUpStatus" role="status" aria-live="polite" hidden></div>
+            <div class="zx-up-result" id="zxUpResult" hidden></div>
+            <div class="zx-explain" id="zxExplain" hidden>
+                <label class="zx-ex-consent"><input type="checkbox" id="zxExConsent"> <span>I agree to send this file to Claude (Anthropic's AI) so it can be explained. Don't use it for files you are not comfortable sharing.</span></label>
+                <button type="button" class="zx-ex-btn" id="zxExBtn" disabled>Explain this report with AI</button>
+                <div class="zx-ex-out" id="zxExOut" hidden></div>
+            </div>
+            <div class="zx-up-note">Filling the form happens in your browser and nothing is uploaded. It reads lab values only; ECG and MRI images are not interpreted by ZyraX.</div>
+        </div>
+
+        <div class="input-grid">
+
+
+            <div class="field">
+
+                <label>
+                    Blood Pressure
+                </label>
+
+                <input
+                    id="bloodPressure"
+                    type="text"
+                    placeholder="120/80"
+                >
+
+                <small>
+                    Example: systolic/diastolic
+                </small>
+
+                <div
+                    class="error-text"
+                    id="error-blood_pressure"
+                ></div>
+
+            </div>
+
+
+            <div class="field">
+
+                <label>
+                    Fasting Blood Glucose
+                </label>
+
+                <input
+                    id="fastingGlucose"
+                    type="number"
+                    step="0.1"
+                    placeholder="100"
+                >
+
+                <small>
+                    mg/dL
+                </small>
+
+                <div
+                    class="error-text"
+                    id="error-fasting_glucose"
+                ></div>
+
+            </div>
+
+
+            <div class="field">
+
+                <label>
+                    HbA1c
+                </label>
+
+                <input
+                    id="hba1c"
+                    type="number"
+                    step="0.1"
+                    placeholder="5.7"
+                >
+
+                <small>
+                    %
+                </small>
+
+                <div
+                    class="error-text"
+                    id="error-hba1c"
+                ></div>
+
+            </div>
+
+
+            <div class="field">
+
+                <label>
+                    Hemoglobin
+                </label>
+
+                <input
+                    id="hemoglobin"
+                    type="number"
+                    step="0.1"
+                    placeholder="13.5"
+                >
+
+                <small>
+                    g/dL
+                </small>
+
+                <div
+                    class="error-text"
+                    id="error-hemoglobin"
+                ></div>
+
+            </div>
+
+
+            <div class="field">
+
+                <label>
+                    TSH
+                </label>
+
+                <input
+                    id="tsh"
+                    type="number"
+                    step="0.1"
+                    placeholder="2.5"
+                >
+
+                <small>
+                    mIU/L
+                </small>
+
+                <div
+                    class="error-text"
+                    id="error-tsh"
+                ></div>
+
+            </div>
+
+
+            <div class="field">
+
+                <label>
+                    Temperature
+                </label>
+
+                <input
+                    id="temperature"
+                    type="number"
+                    step="0.1"
+                    placeholder="98.6"
+                >
+
+                <small>
+                    °F
+                </small>
+
+                <div
+                    class="error-text"
+                    id="error-temperature"
+                ></div>
+
+            </div>
+
+
+            <div class="field">
+
+                <label>
+                    Platelet Count
+                </label>
+
+                <input
+                    id="platelets"
+                    type="number"
+                    step="0.1"
+                    placeholder="250"
+                >
+
+                <small>
+                    ×10³/µL
+                </small>
+
+                <div
+                    class="error-text"
+                    id="error-platelets"
+                ></div>
+
+            </div>
+
+
+            <div class="field">
+
+                <label>
+                    WBC Count
+                </label>
+
+                <input
+                    id="wbc"
+                    type="number"
+                    step="0.1"
+                    placeholder="7.5"
+                >
+
+                <small>
+                    ×10³/µL
+                </small>
+
+                <div
+                    class="error-text"
+                    id="error-wbc"
+                ></div>
+
+            </div>
+
+
+        </div>
+
+
+
+        <div class="form-status">
+            <span class="form-message" id="formMessage"></span>
+            <span class="count-pill" id="valueCount">0 of 8 values entered</span>
+        </div>
+
+        <div class="actions">
+
+            <button
+                class="analyze-btn"
+                onclick="analyzeBiomarkers()"
+            >
+                Analyze Biomarkers
+            </button>
+
+            <button
+                class="clear-btn"
+                onclick="clearForm()"
+            >
+                Clear
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         RESULTS
+    ===================================================== -->
+
+    <section id="results">
+
+
+        <div class="results-header">
+
+            <h2>
+                Results
+            </h2>
+
+            <p>
+                Your values, the patterns they match and the evidence behind them.
+            </p>
+
+        </div>
+
+
+
+        <!-- ZX-EXPORT -->
+        <div class="glass-card export-bar" id="exportBar">
+            <div class="ex-title">Take this summary to your doctor</div>
+            <div class="ex-sub">
+                Save your values and flags as a PDF, or copy them as text (for example to send on WhatsApp).
+                The optional details below are only printed on your report. They stay in your browser and are not sent anywhere.
+            </div>
+            <div class="ex-fields">
+                <div><label for="zxName">Name (optional)</label><input id="zxName" type="text" maxlength="60" placeholder="Your name" autocomplete="off"></div>
+                <div><label for="zxAge">Age (optional)</label><input id="zxAge" type="text" inputmode="numeric" maxlength="3" placeholder="Years" autocomplete="off"></div>
+                <div><label for="zxSex">Sex (optional)</label>
+                    <select id="zxSex"><option value="">Not stated</option><option>Female</option><option>Male</option><option>Other</option></select></div>
+            </div>
+            <div class="ex-actions">
+                <button type="button" class="ex-btn" id="zxPdfBtn">Download PDF report</button>
+                <button type="button" class="ex-btn secondary" id="zxCopyBtn">Copy summary text</button>
+            </div>
+            <div class="ex-note">In the print window, choose “Save as PDF” as the destination.
+                This is a summary of prototype flags, not a medical report or diagnosis.</div>
+        </div>
+
+        <!-- SUMMARY -->
+
+        <div
+            class="summary-grid"
+            id="summaryResults"
+        >
+        </div>
+
+
+        <!-- PARAMETERS -->
+
+        <div
+            class="glass-card"
+            style="margin-top:25px;"
+        >
+
+            <div class="section-title">
+                Your values against reference ranges
+            </div>
+
+            <div class="section-subtitle">
+                Simplified ranges for a generic adult. Your doctor will use ranges that fit you.
+            </div>
+
+            <div
+                class="parameter-grid"
+                id="parameterResults"
+            >
+            </div>
+
+        </div>
+
+
+        <!-- DISEASES -->
+
+        <div style="margin-top:40px;">
+
+            <div class="section-title">
+                Patterns the rules matched
+            </div>
+
+            <div class="section-subtitle">
+                How many of a condition’s simple rules your values met. This is not a diagnosis.
+            </div>
+
+            <div id="diseaseResults">
+            </div>
+
+        </div>
+
+
+        <!-- RESEARCH -->
+
+        <div class="research-section">
+
+            <div class="section-title">
+                Genes and targets from Open Targets
+            </div>
+
+            <div class="section-subtitle">
+                Background research evidence. A higher association score means stronger combined evidence, not certainty.
+            </div>
+
+            <div id="researchResults">
+            </div>
+
+        </div>
+
+
+        <!-- NETWORK -->
+        <div class="research-section" id="networkSection" style="display:none;">
+            <div class="section-title">
+                Disease–Gene–Target Network
+            </div>
+            <div class="section-subtitle">
+                Left: curated example genes for the selected condition.
+                Right: top targets retrieved from Open Targets, with line
+                thickness showing the association score. Click a node for
+                details. A link shows an association in the data, not proof
+                of causation or of an available treatment.
+            </div>
+            <div class="graph-tabs" id="graphTabs"></div>
+            <div class="graph-summary" id="graphSummary"></div>
+            <div class="graph-wrap">
+                <svg id="graphSvg" viewBox="0 0 900 520"
+                     role="img"
+                     aria-label="Disease, gene and target network"></svg>
+                <div class="graph-panel" id="graphPanel"></div>
+            </div>
+            <div class="graph-legend">
+                <span><span class="legend-dot" style="background:#0b6f72;border:2px solid #0f8b8d;"></span>Condition</span>
+                <span><span class="legend-dot" style="background:#0f8b8d;"></span>Open Targets target</span>
+                <span><span class="legend-dot" style="background:#0f8b8d;border:2px solid #b45309;"></span>Target also in curated list</span>
+                <span><span class="legend-dot" style="background:#92400e;border:2px solid #b45309;"></span>Curated gene only</span>
+            </div>
+        </div>
+
+        <!-- NOTICE -->
+
+        <div
+            class="prototype-notice"
+            id="prototypeNotice"
+        >
+        </div>
+
+
+    </section>
+
+
+</main>
+
+
+<script>
+
+
+/* ============================================================
+   GLOBAL HELPERS
+============================================================ */
+
+
+function escapeHTML(value) {
+
+    return String(value)
+
+        .replace(/&/g, "&amp;")
+
+        .replace(/</g, "&lt;")
+
+        .replace(/>/g, "&gt;")
+
+        .replace(/"/g, "&quot;")
+
+        .replace(/'/g, "&#039;");
+}
+
+
+
+function getFormData() {
+
+    return {
+
+        blood_pressure:
+            document
+                .getElementById("bloodPressure")
+                .value
+                .trim(),
+
+        fasting_glucose:
+            document
+                .getElementById("fastingGlucose")
+                .value
+                .trim(),
+
+        hba1c:
+            document
+                .getElementById("hba1c")
+                .value
+                .trim(),
+
+        hemoglobin:
+            document
+                .getElementById("hemoglobin")
+                .value
+                .trim(),
+
+        tsh:
+            document
+                .getElementById("tsh")
+                .value
+                .trim(),
+
+        temperature:
+            document
+                .getElementById("temperature")
+                .value
+                .trim(),
+
+        platelets:
+            document
+                .getElementById("platelets")
+                .value
+                .trim(),
+
+        wbc:
+            document
+                .getElementById("wbc")
+                .value
+                .trim()
+
+    };
+}
+
+
+
+function clearErrors() {
+
+    document
+        .querySelectorAll(".error-text")
+        .forEach(element => {
+
+            element.textContent = "";
+
+        });
+
+
+    document
+        .querySelectorAll("input")
+        .forEach(input => {
+
+            input.classList.remove(
+                "error"
+            );
+
+        });
+
+}
+
+
+
+function displayErrors(errors) {
+
+    clearErrors();
+
+
+    Object.entries(errors || {})
+        .forEach(([field, message]) => {
+
+            const errorElement =
+                document.getElementById(
+                    `error-${field}`
+                );
+
+            if (errorElement) {
+
+                errorElement.textContent =
+                    message;
+
+            }
+
+
+            const inputMap = {
+
+                blood_pressure:
+                    "bloodPressure",
+
+                fasting_glucose:
+                    "fastingGlucose",
+
+                hba1c:
+                    "hba1c",
+
+                hemoglobin:
+                    "hemoglobin",
+
+                tsh:
+                    "tsh",
+
+                temperature:
+                    "temperature",
+
+                platelets:
+                    "platelets",
+
+                wbc:
+                    "wbc"
+
+            };
+
+
+            if (inputMap[field]) {
+
+                document
+                    .getElementById(
+                        inputMap[field]
+                    )
+                    .classList.add(
+                        "error"
+                    );
+
+            }
+
+        });
+
+}
+
+
+/* ============================================================
+   LOADING
+============================================================ */
+
+
+const loadingMessages = [
+
+    "Initializing biomarker analysis...",
+
+    "Reading laboratory parameters...",
+
+    "Validating laboratory values...",
+
+    "Detecting abnormal features...",
+
+    "Analyzing biological patterns...",
+
+    "Calculating disease associations...",
+
+    "Mapping associated genes...",
+
+    "Mapping biological targets...",
+
+    "Querying biomedical research...",
+
+    "Preparing ZyraX intelligence...",
+
+    "Analysis complete ✓"
+
+];
+
+
+
+let loadingInterval = null;
+
+
+
+function showLoading() {
+
+    const overlay =
+        document.getElementById(
+            "loadingOverlay"
+        );
+
+    const message =
+        document.getElementById(
+            "loadingMessage"
+        );
+
+    const progress =
+        document.getElementById(
+            "progressBar"
+        );
+
+
+    overlay.style.display = "flex";
+
+
+    let index = 0;
+
+
+    message.textContent =
+        loadingMessages[0];
+
+
+    progress.style.width =
+        "5%";
+
+
+    loadingInterval =
+        setInterval(() => {
+
+            index++;
+
+            if (
+                index >=
+                loadingMessages.length
+            ) {
+
+                clearInterval(
+                    loadingInterval
+                );
+
+                return;
+
+            }
+
+
+            message.textContent =
+                loadingMessages[index];
+
+
+            progress.style.width =
+                `${Math.min(
+                    95,
+                    index * 9
+                )}%`;
+
+        }, 500);
+
+}
+
+
+
+function hideLoading() {
+
+    if (loadingInterval) {
+
+        clearInterval(
+            loadingInterval
+        );
+
+        loadingInterval = null;
+
+    }
+
+
+    document
+        .getElementById(
+            "loadingMessage"
+        )
+        .textContent =
+        "Analysis complete ✓";
+
+
+    document
+        .getElementById(
+            "progressBar"
+        )
+        .style.width =
+        "100%";
+
+
+    setTimeout(() => {
+
+        document
+            .getElementById(
+                "loadingOverlay"
+            )
+            .style.display =
+            "none";
+
+    }, 400);
+
+}
+
+
+/* ============================================================
+   SUMMARY
+============================================================ */
+
+
+function displaySummary(summary) {
+
+    const container =
+        document.getElementById(
+            "summaryResults"
+        );
+
+
+    container.innerHTML = `
+
+        <div class="summary-card">
+
+            <div class="summary-number">
+                ${escapeHTML(
+                    summary.parameters_analyzed
+                )}
+            </div>
+
+            <div class="summary-label">
+                Values checked
+            </div>
+
+        </div>
+
+
+        <div class="summary-card">
+
+            <div class="summary-number">
+                ${escapeHTML(
+                    summary.abnormal_parameters
+                )}
+            </div>
+
+            <div class="summary-label">
+                Outside range
+            </div>
+
+        </div>
+
+
+        <div class="summary-card">
+
+            <div class="summary-number">
+                ${escapeHTML(
+                    summary.disease_associations
+                )}
+            </div>
+
+            <div class="summary-label">
+                Patterns matched
+            </div>
+
+        </div>
+
+
+        <div class="summary-card">
+
+            <div class="summary-number">
+                ${escapeHTML(
+                    summary.research_records
+                )}
+            </div>
+
+            <div class="summary-label">
+                Research records
+            </div>
+
+        </div>
+
+    `;
+
+}
+
+
+/* ============================================================
+   PARAMETER DISPLAY
+============================================================ */
+
+
+function displayParameters(parameters) {
+
+    const container =
+        document.getElementById(
+            "parameterResults"
+        );
+
+
+    container.innerHTML = "";
+
+
+    if (
+        !parameters ||
+        parameters.length === 0
+    ) {
+
+        container.innerHTML = `
+
+            <div class="empty-results">
+
+                No laboratory parameters
+                were extracted.
+
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    parameters.forEach(
+        parameter => {
+
+            const statusClass =
+                parameter.status ===
+                "abnormal"
+                    ? "abnormal"
+                    : "normal";
+
+
+            const statusText =
+                parameter.status ===
+                "abnormal"
+                    ? "⚠ Abnormal prototype flag"
+                    : "✓ Within prototype range";
+
+
+            const card =
+                document.createElement(
+                    "div"
+                );
+
+
+            card.className =
+                "parameter-card";
+
+
+            card.innerHTML = `
+
+                <div class="parameter-name">
+
+                    ${escapeHTML(
+                        parameter.name
+                    )}
+
+                </div>
+
+
+                <div class="parameter-value">
+
+                    ${escapeHTML(
+                        parameter.value
+                    )}
+
+                    <span style="
+                        font-size:11px;
+                        color:#5b6b78;
+                        font-weight:500;
+                    ">
+
+                        ${escapeHTML(
+                            parameter.unit
+                        )}
+
+                    </span>
+
+                </div>
+
+
+                <div class="parameter-reference">
+
+                    ${escapeHTML(
+                        parameter.reference
+                    )}
+
+                </div>
+
+
+                <div class="status ${statusClass}">
+
+                    ${statusText}
+
+                </div>
+
+            `;
+
+
+            container.appendChild(
+                card
+            );
+
+        }
+    );
+
+}
+
+
+/* ============================================================
+   CHIPS
+============================================================ */
+
+
+function createChips(items) {
+
+    if (
+        !items ||
+        items.length === 0
+    ) {
+
+        return `
+            <span style="color:#5b6b78;">
+                No information available
+            </span>
+        `;
+
+    }
+
+
+    return items
+        .map(item => `
+
+            <span class="chip">
+
+                ${escapeHTML(item)}
+
+            </span>
+
+        `)
+        .join("");
+
+}
+
+
+/* ============================================================
+   LISTS
+============================================================ */
+
+
+function createList(items) {
+
+    if (
+        !items ||
+        items.length === 0
+    ) {
+
+        return `
+            <p>
+                No information available.
+            </p>
+        `;
+
+    }
+
+
+    return `
+
+        <ul>
+
+            ${items.map(item => `
+
+                <li>
+                    ${escapeHTML(item)}
+                </li>
+
+            `).join("")}
+
+        </ul>
+
+    `;
+
+}
+
+
+/* ============================================================
+   CONTRIBUTIONS
+============================================================ */
+
+
+function displayContributions(result) {
+
+    if (
+        !result.contributions ||
+        result.contributions.length === 0
+    ) {
+
+        return `
+
+            <p>
+                No triggering features were identified.
+            </p>
+
+        `;
+
+    }
+
+
+    return result.contributions
+        .map(item => {
+
+            let value = item.value;
+
+
+            if (
+                value === null ||
+                value === undefined ||
+                value === ""
+            ) {
+
+                value =
+                    "Submitted value";
+
+            }
+
+
+            return `
+
+                <div class="contribution-row">
+
+                    <div class="contribution-name">
+
+                        ${escapeHTML(
+                            item.parameter
+                        )}
+
+                    </div>
+
+
+                    <div class="contribution-value">
+
+                        ${escapeHTML(
+                            value
+                        )}
+
+                    </div>
+
+
+                    <div class="contribution-points">
+
+                        +${escapeHTML(
+                            item.points
+                        )}
+
+                    </div>
+
+                </div>
+
+            `;
+
+        })
+        .join("");
+
+}
+
+
+/* ============================================================
+   DISEASE DISPLAY
+============================================================ */
+
+
+function displayDiseases(results) {
+
+    const container =
+        document.getElementById(
+            "diseaseResults"
+        );
+
+
+    container.innerHTML = "";
+
+
+    if (
+        !results ||
+        results.length === 0
+    ) {
+
+        container.innerHTML = `
+
+            <div class="empty-results">
+
+                <h3>
+                    No strong prototype association detected
+                </h3>
+
+                <p style="
+                    margin-top:10px;
+                ">
+
+                    The submitted laboratory values did not
+                    trigger any of the current ZyraX
+                    prototype association rules.
+
+                </p>
+
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    results.forEach(
+        (result, index) => {
+
+            const card =
+                document.createElement(
+                    "div"
+                );
+
+
+            card.className =
+                "disease-card";
+
+
+            card.style.animationDelay =
+                `${index * 0.08}s`;
+
+
+            card.innerHTML = `
+
+                <div class="disease-top">
+
+                    <div>
+
+                        <div class="disease-name">
+
+                            ${escapeHTML(
+                                result.disease
+                            )}
+
+                        </div>
+
+
+                        <div class="category">
+
+                            ${escapeHTML(
+                                result.category
+                            )}
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="score">
+
+                        <div class="score-number">
+
+                            ${escapeHTML(
+                                result.match_score
+                            )}
+                            / 100
+
+                        </div>
+
+
+                        <div class="score-label">
+
+                            Rule-match score
+
+                        </div>
+
+
+                        <div class="score-explanation">
+
+                            Rule-match score: the share of this disease's
+                            prototype rules that were matched by the
+                            supplied values. Not a probability or diagnosis.
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="why-box">
+
+                    <div class="why-title">
+
+                        Why these rules matched
+
+                    </div>
+
+
+                    <p style="
+                        color:#5b6b78;
+                        font-size:12px;
+                        line-height:1.7;
+                        margin-bottom:15px;
+                    ">
+
+                        ${escapeHTML(
+                            result.interpretation
+                        )}
+
+                    </p>
+
+
+                    ${displayContributions(
+                        result
+                    )}
+
+
+                    <div class="score-total">
+
+                        <span>
+                            Raw rule score
+                        </span>
+
+                        <strong>
+
+                            ${escapeHTML(
+                                result.raw_score
+                            )}
+                            /
+                            ${escapeHTML(
+                                result.max_score
+                            )}
+
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="info-grid">
+
+
+                    <div class="info-box">
+
+                        <h4>
+                            Associated genes
+                        </h4>
+
+                        <div class="chips">
+
+                            ${createChips(
+                                result.genes
+                            )}
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="info-box">
+
+                        <h4>
+                            Biological targets
+                        </h4>
+
+                        <div class="chips">
+
+                            ${createChips(
+                                result.targets
+                            )}
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="info-box full-box">
+
+                        <h4>
+                            What this means
+                        </h4>
+
+                        <p>
+
+                            ${escapeHTML(
+                                result.interpretation
+                            )}
+
+                        </p>
+
+                    </div>
+
+
+                    <div class="info-box">
+
+                        <h4>
+                            General information, not medical advice
+                        </h4>
+
+                        ${createList(
+                            result.management
+                        )}
+
+                    </div>
+
+
+                    <div class="info-box warning-box">
+
+                        <h4>
+                            Things to avoid
+                        </h4>
+
+                        ${createList(
+                            result.avoid
+                        )}
+
+                    </div>
+
+
+                    <div class="info-box full-box warning-box">
+
+                        <h4>
+                            Warning signs: get medical care if you notice
+                        </h4>
+
+                        ${createList(
+                            result.warning_signs
+                        )}
+
+                    </div>
+
+
+                </div>
+
+            `;
+
+
+            container.appendChild(
+                card
+            );
+
+        }
+    );
+
+}
+
+
+/* ============================================================
+   RESEARCH
+============================================================ */
+
+
+/* ============================================================
+   DISEASE - GENE - TARGET NETWORK
+============================================================ */
+
+const SVG_NS = "http://www.w3.org/2000/svg";
+
+let graphState = { result: null };
+
+
+function svgEl(name, attrs, text) {
+
+    const el = document.createElementNS(SVG_NS, name);
+
+    Object.entries(attrs || {}).forEach(
+        ([key, value]) => el.setAttribute(key, value)
+    );
+
+    if (text !== undefined) {
+        el.textContent = text;
+    }
+
+    return el;
+}
+
+
+function wrapLabel(text, maxChars) {
+
+    const words = String(text).split(/\s+/);
+
+    const lines = [];
+
+    let line = "";
+
+    words.forEach(word => {
+
+        if ((line + " " + word).trim().length > maxChars && line) {
+            lines.push(line);
+            line = word;
+        } else {
+            line = (line + " " + word).trim();
+        }
+    });
+
+    if (line) {
+        lines.push(line);
+    }
+
+    return lines.slice(0, 3);
+}
+
+
+function graphPositions(count) {
+
+    if (count <= 0) { return []; }
+
+    if (count === 1) { return [270]; }
+
+    const top = 100;
+    const bottom = 450;
+    const step = (bottom - top) / (count - 1);
+
+    return Array.from({ length: count }, (_, i) => top + i * step);
+}
+
+
+function panelRow(panel, label, value) {
+
+    const row = document.createElement("div");
+    row.className = "gp-row";
+
+    const name = document.createElement("span");
+    name.className = "gp-label";
+    name.textContent = label + ": ";
+
+    row.appendChild(name);
+    row.appendChild(document.createTextNode(value));
+    panel.appendChild(row);
+}
+
+
+function panelLink(panel, href, text) {
+
+    const row = document.createElement("div");
+    row.className = "gp-row";
+
+    const link = document.createElement("a");
+    link.href = href;
+    link.target = "_blank";
+    link.rel = "noopener noreferrer";
+    link.textContent = text;
+
+    row.appendChild(link);
+    panel.appendChild(row);
+}
+
+
+function panelHeader(panel, title, tag) {
+
+    panel.innerHTML = "";
+
+    const label = document.createElement("div");
+    label.className = "gp-tag";
+    label.textContent = tag;
+
+    const heading = document.createElement("h4");
+    heading.textContent = title;
+
+    panel.appendChild(label);
+    panel.appendChild(heading);
+}
+
+
+function showDiseasePanel(assoc, records) {
+
+    const panel = document.getElementById("graphPanel");
+
+    panelHeader(panel, assoc.disease, "Condition");
+
+    panelRow(panel, "Category", assoc.category || "n/a");
+    panelRow(panel, "Rule-match score", assoc.match_score + " / 100 (not a probability)");
+
+    if ((assoc.triggered_parameters || []).length) {
+        panelRow(panel, "Triggered by", assoc.triggered_parameters.join(", "));
+    }
+
+    if ((assoc.targets || []).length) {
+        panelRow(panel, "Curated target examples", assoc.targets.join(", "));
+    }
+
+    panelRow(panel, "Open Targets records", String(records.length));
+
+    const diseaseId = records.length ? String(records[0].disease_id || "") : "";
+
+    if (/^[A-Za-z]+_\d+$/.test(diseaseId)) {
+
+        panelLink(
+            panel,
+            "https://platform.opentargets.org/disease/" + diseaseId,
+            "View disease in Open Targets"
+        );
+    }
+}
+
+
+function showTargetPanel(record, alsoCurated, diseaseName) {
+
+    const panel = document.getElementById("graphPanel");
+
+    panelHeader(panel, record.name || "Unknown", "Open Targets target");
+
+    panelRow(panel, "Name", record.approved_name || "n/a");
+    panelRow(panel, "Associated condition", diseaseName);
+
+    if (record.score !== null && record.score !== undefined) {
+        panelRow(panel, "Association score", String(record.score) + " (0 to 1)");
+    }
+
+    panelRow(panel, "Ensembl ID", record.id || "n/a");
+
+    panelRow(
+        panel,
+        "Also in curated gene list",
+        alsoCurated ? "Yes" : "No"
+    );
+
+    if (/^ENSG\d+$/.test(String(record.id || ""))) {
+
+        panelLink(
+            panel,
+            "https://platform.opentargets.org/target/" + record.id,
+            "View target in Open Targets"
+        );
+    }
+}
+
+
+function showCuratedPanel(symbol, diseaseName) {
+
+    const panel = document.getElementById("graphPanel");
+
+    panelHeader(panel, symbol, "Curated gene (example)");
+
+    panelRow(panel, "Associated condition", diseaseName);
+
+    panelRow(
+        panel,
+        "Note",
+        "Listed as a curated example for this condition. It was not among the top Open Targets results shown here."
+    );
+}
+
+
+function makeNode(group, cfg) {
+
+    const node = svgEl("g", {
+        "class": "gnode",
+        "tabindex": "0",
+        "role": "button",
+        "aria-label": cfg.aria
+    });
+
+    node.appendChild(svgEl("circle", {
+        cx: cfg.x, cy: cfg.y, r: cfg.r,
+        fill: cfg.fill, stroke: cfg.stroke,
+        "stroke-width": cfg.strokeWidth
+    }));
+
+    cfg.lines.forEach((line, i) => {
+
+        const offset = (i - (cfg.lines.length - 1) / 2) * cfg.lineHeight;
+
+        node.appendChild(svgEl("text", {
+            x: cfg.x, y: cfg.y + offset + 4,
+            "text-anchor": "middle",
+            fill: "#ffffff",
+            "font-size": cfg.fontSize,
+            "font-weight": "600"
+        }, line));
+    });
+
+    if (cfg.caption) {
+
+        node.appendChild(svgEl("text", {
+            x: cfg.x, y: cfg.y + cfg.r + 15,
+            "text-anchor": "middle",
+            fill: "#5b6b78",
+            "font-size": "10"
+        }, cfg.caption));
+    }
+
+    node.addEventListener("click", cfg.onSelect);
+
+    node.addEventListener("keydown", event => {
+        if (event.key === "Enter" || event.key === " ") {
+            event.preventDefault();
+            cfg.onSelect();
+        }
+    });
+
+    group.appendChild(node);
+}
+
+
+function drawGraph(diseaseName) {
+
+    const result = graphState.result;
+
+    const assoc = (result.associations || []).find(
+        item => item.disease === diseaseName
+    );
+
+    if (!assoc) { return; }
+
+    document.querySelectorAll(".graph-tab").forEach(button => {
+        button.classList.toggle("active", button.textContent === diseaseName);
+    });
+
+    const records = (result.research_records || []).filter(
+        item => item.disease === diseaseName
+    );
+
+    const curated = assoc.genes || [];
+
+    const upper = value => String(value || "").toUpperCase();
+
+    const otSymbols = new Set(records.map(r => upper(r.name)));
+    const curatedSet = new Set(curated.map(upper));
+
+    const curatedOnly = curated.filter(g => !otSymbols.has(upper(g)));
+    const shared = records.filter(r => curatedSet.has(upper(r.name)));
+
+    // ---- summary line ----
+    const summary = document.getElementById("graphSummary");
+
+    if (records.length) {
+
+        summary.textContent =
+            "Open Targets returned " + records.length +
+            " top targets for " + diseaseName + "; " + shared.length +
+            (shared.length === 1 ? " also appears" : " also appear") +
+            " in the curated gene list" +
+            (shared.length ? " (" + shared.map(r => r.name).join(", ") + ")." : ".");
+
+    } else {
+
+        summary.textContent =
+            "No Open Targets records were returned for " + diseaseName +
+            " (the service may be unreachable). Curated example genes are still shown.";
+    }
+
+    // ---- canvas ----
+    const svg = document.getElementById("graphSvg");
+
+    while (svg.firstChild) { svg.removeChild(svg.firstChild); }
+
+    const cx = 450, cy = 270, leftX = 120, rightX = 780;
+
+    const edges = svgEl("g", {});
+    const nodes = svgEl("g", {});
+
+    svg.appendChild(edges);
+    svg.appendChild(nodes);
+
+    // column headings
+    [
+        [leftX, "Curated genes", "(not in top Open Targets)"],
+        [rightX, "Open Targets targets", "(thicker line = higher score)"]
+    ].forEach(([x, title, sub]) => {
+
+        svg.appendChild(svgEl("text", {
+            x: x, y: 34, "text-anchor": "middle",
+            fill: "#0b2239", "font-size": "13", "font-weight": "600"
+        }, title));
+
+        svg.appendChild(svgEl("text", {
+            x: x, y: 52, "text-anchor": "middle",
+            fill: "#5b6b78", "font-size": "10"
+        }, sub));
+    });
+
+    // left column
+    const leftYs = graphPositions(curatedOnly.length);
+
+    curatedOnly.forEach((gene, i) => {
+
+        edges.appendChild(svgEl("line", {
+            x1: cx, y1: cy, x2: leftX, y2: leftYs[i],
+            stroke: "#b45309", "stroke-width": "1.5",
+            "stroke-dasharray": "5 5", opacity: "0.6"
+        }));
+
+        makeNode(nodes, {
+            x: leftX, y: leftYs[i], r: 32,
+            fill: "#92400e", stroke: "#b45309", strokeWidth: 2,
+            lines: [String(gene)], lineHeight: 12, fontSize: "11",
+            aria: "Curated gene " + gene,
+            onSelect: () => showCuratedPanel(gene, diseaseName)
+        });
+    });
+
+    if (!curatedOnly.length) {
+
+        svg.appendChild(svgEl("text", {
+            x: leftX, y: cy, "text-anchor": "middle",
+            fill: "#5b6b78", "font-size": "11"
+        }, "All curated genes"));
+
+        svg.appendChild(svgEl("text", {
+            x: leftX, y: cy + 16, "text-anchor": "middle",
+            fill: "#5b6b78", "font-size": "11"
+        }, "are in the Open Targets list"));
+    }
+
+    // right column
+    const rightYs = graphPositions(records.length);
+
+    records.forEach((record, i) => {
+
+        const score = Number(record.score);
+        const safeScore = isFinite(score) ? Math.max(0, Math.min(1, score)) : 0.2;
+        const alsoCurated = curatedSet.has(upper(record.name));
+
+        edges.appendChild(svgEl("line", {
+            x1: cx, y1: cy, x2: rightX, y2: rightYs[i],
+            stroke: "#0f8b8d",
+            "stroke-width": String(1.2 + 5 * safeScore),
+            opacity: "0.55"
+        }));
+
+        makeNode(nodes, {
+            x: rightX, y: rightYs[i], r: 32,
+            fill: "#0f8b8d",
+            stroke: alsoCurated ? "#b45309" : "#0b6f72",
+            strokeWidth: alsoCurated ? 4 : 2,
+            lines: [String(record.name || "?")], lineHeight: 12, fontSize: "11",
+            caption: isFinite(score) ? score.toFixed(3) : "",
+            aria: "Open Targets target " + record.name,
+            onSelect: () => showTargetPanel(record, alsoCurated, diseaseName)
+        });
+    });
+
+    if (!records.length) {
+
+        svg.appendChild(svgEl("text", {
+            x: rightX, y: cy, "text-anchor": "middle",
+            fill: "#5b6b78", "font-size": "11"
+        }, "No Open Targets"));
+
+        svg.appendChild(svgEl("text", {
+            x: rightX, y: cy + 16, "text-anchor": "middle",
+            fill: "#5b6b78", "font-size": "11"
+        }, "records returned"));
+    }
+
+    // centre: the condition
+    const centreLines = wrapLabel(diseaseName, 12);
+
+    makeNode(nodes, {
+        x: cx, y: cy, r: 66,
+        fill: "#0b6f72", stroke: "#0f8b8d", strokeWidth: 3,
+        lines: centreLines.concat(["score " + assoc.match_score]),
+        lineHeight: 15, fontSize: "13",
+        aria: "Condition " + diseaseName,
+        onSelect: () => showDiseasePanel(assoc, records)
+    });
+
+    showDiseasePanel(assoc, records);
+}
+
+
+function renderGraph(result) {
+
+    const section = document.getElementById("networkSection");
+
+    const associations = (result && result.associations) || [];
+
+    if (!associations.length) {
+        section.style.display = "none";
+        return;
+    }
+
+    section.style.display = "block";
+
+    graphState.result = result;
+
+    const tabs = document.getElementById("graphTabs");
+
+    tabs.innerHTML = "";
+
+    associations.forEach(assoc => {
+
+        const button = document.createElement("button");
+
+        button.type = "button";
+        button.className = "graph-tab";
+        button.textContent = assoc.disease;
+
+        button.addEventListener(
+            "click",
+            () => drawGraph(assoc.disease)
+        );
+
+        tabs.appendChild(button);
+    });
+
+    drawGraph(associations[0].disease);
+}
+
+
+function displayResearch(research) {
+
+    const container =
+        document.getElementById(
+            "researchResults"
+        );
+
+
+    container.innerHTML = "";
+
+
+    if (
+        !research ||
+        research.length === 0
+    ) {
+
+        container.innerHTML = `
+
+            <div class="research-card">
+
+                <h4>
+                    Open Targets
+                </h4>
+
+                <p>
+
+                    No external research records were returned
+                    for this analysis.
+
+                </p>
+
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    research.forEach(
+        item => {
+
+            const card =
+                document.createElement(
+                    "div"
+                );
+
+
+            card.className =
+                "research-card";
+
+
+            card.innerHTML = `
+
+                <h4>
+
+                    ${escapeHTML(
+                        item.name ||
+                        "Biomedical Research Record"
+                    )}
+
+                </h4>
+
+
+                <p>
+
+                    ${escapeHTML(
+                        item.description ||
+                        "Biomedical research information retrieved from Open Targets."
+                    )}
+
+                </p>
+
+
+                ${
+                    item.related_disease
+                    ? `
+
+                        <div class="research-id">
+
+                            Related association:
+                            ${escapeHTML(
+                                item.related_disease
+                            )}
+
+                        </div>
+
+                    `
+                    : ""
+                }
+
+
+                ${
+                    item.entity
+                    ? `
+
+                        <div class="research-id">
+
+                            Entity:
+                            ${escapeHTML(
+                                item.entity
+                            )}
+
+                        </div>
+
+                    `
+                    : ""
+                }
+
+
+                ${
+                    item.id
+                    ? `
+
+                        <div class="research-id">
+
+                            Open Targets ID:
+                            ${escapeHTML(
+                                item.id
+                            )}
+
+                        </div>
+
+                    `
+                    : ""
+                }
+
+            `;
+
+
+            container.appendChild(
+                card
+            );
+
+        }
+    );
+
+}
+
+
+/* ============================================================
+   MAIN ANALYSIS
+============================================================ */
+
+
+async function analyzeBiomarkers() {
+
+    clearErrors();
+
+
+    const data =
+        getFormData();
+
+
+    const hasInput =
+        Object.values(data)
+            .some(
+                value =>
+                    value !== ""
+            );
+
+
+    data.temperature_unit = (window.__zxUnits && window.__zxUnits.temperature === "C") ? "C" : "F";
+
+
+    if (!hasInput) {
+
+        const fm = document.getElementById("formMessage");
+        if (fm) { fm.textContent = "Please enter at least one laboratory value."; }
+        else { alert("Please enter at least one laboratory value."); }
+
+        return;
+
+    }
+
+
+    showLoading();
+
+
+    try {
+
+        const response =
+            await fetch(
+                "/api/analyze",
+                {
+
+                    method: "POST",
+
+                    headers: {
+
+                        "Content-Type":
+                            "application/json"
+
+                    },
+
+                    body:
+                        JSON.stringify(data)
+
+                }
+            );
+
+
+        const result =
+            await response.json();
+
+
+        if (!response.ok) {
+
+            hideLoading();
+
+
+            if (
+                result.validation_errors
+            ) {
+
+                displayErrors(
+                    result.validation_errors
+                );
+
+            } else {
+
+                alert(
+                    result.error ||
+                    "Analysis failed."
+                );
+
+            }
+
+            return;
+
+        }
+
+
+        displaySummary(
+            result.summary
+        );
+
+
+        displayParameters(
+            result.parameters
+        );
+
+
+        displayDiseases(
+            result.results
+        );
+
+
+        displayResearch(
+            result.research_results
+        );
+
+
+        renderGraph(result);
+
+
+        document
+            .getElementById(
+                "prototypeNotice"
+            )
+            .innerHTML = `
+
+                <strong>
+                    ZYRAX RESEARCH PROTOTYPE:
+                </strong>
+
+                ${escapeHTML(
+                    result.prototype_notice ||
+                    "ZyraX provides experimental computational associations for academic research and educational purposes."
+                )}
+
+            `;
+
+
+        const resultsSection =
+            document.getElementById(
+                "results"
+            );
+
+
+        resultsSection.style.display =
+            "block";
+
+
+        hideLoading();
+
+
+        setTimeout(() => {
+
+            resultsSection.scrollIntoView({
+
+                behavior:
+                    "smooth",
+
+                block:
+                    "start"
+
+            });
+
+        }, 450);
+
+
+    } catch (error) {
+
+        hideLoading();
+
+        console.error(
+            error
+        );
+
+
+        alert(
+            "Unable to connect to the ZyraX backend. Make sure Flask is running on port 5000."
+        );
+
+    }
+
+}
+
+
+/* ============================================================
+   CLEAR
+============================================================ */
+
+
+function clearForm() {
+
+    const fields = [
+
+        "bloodPressure",
+
+        "fastingGlucose",
+
+        "hba1c",
+
+        "hemoglobin",
+
+        "tsh",
+
+        "temperature",
+
+        "platelets",
+
+        "wbc"
+
+    ];
+
+
+    fields.forEach(
+        field => {
+
+            document
+                .getElementById(
+                    field
+                )
+                .value = "";
+
+        }
+    );
+
+
+    clearErrors();
+
+
+    document
+        .getElementById(
+            "results"
+        )
+        .style.display =
+        "none";
+
+
+    document
+        .getElementById(
+            "parameterResults"
+        )
+        .innerHTML = "";
+
+
+    document
+        .getElementById(
+            "diseaseResults"
+        )
+        .innerHTML = "";
+
+
+    document
+        .getElementById(
+            "researchResults"
+        )
+        .innerHTML = "";
+
+
+    document
+        .getElementById(
+            "summaryResults"
+        )
+        .innerHTML = "";
+
+
+    window.scrollTo({
+
+        top: 0,
+
+        behavior:
+            "smooth"
+
+    });
+
+}
+
+
+/* ============================================================
+   ENTER KEY
+============================================================ */
+
+
+document
+    .querySelectorAll("input")
+    .forEach(input => {
+
+        input.addEventListener(
+            "keydown",
+            event => {
+
+                if (
+                    event.key === "Enter"
+                ) {
+
+                    analyzeBiomarkers();
+
+                }
+
+            }
+        );
+
+    });
+
+
+/* ============================================================
+   INITIAL STATE
+============================================================ */
+
+
+document.addEventListener(
+    "DOMContentLoaded",
+    () => {
+
+        document
+            .getElementById(
+                "results"
+            )
+            .style.display =
+            "none";
+
+    }
+);
+
+
+/* ============================================================
+   ZX-EASY-INPUT: easier parameter entry
+   (quick hints only; the server rules decide the real result)
+============================================================ */
+(function () {
+
+    const unitState = { fastingGlucose: "mg/dL", hemoglobin: "g/dL", temperature: "F" };
+    window.__zxUnits = unitState;
+
+    const META = {
+        bloodPressure:  { range: "normal 90/60 to 130/80", units: null },
+        fastingGlucose: { range: "normal 70–99 mg/dL", units: ["mg/dL", "mmol/L"] },
+        hba1c:          { range: "normal below 5.7 %", units: null },
+        hemoglobin:     { range: "normal 12–17 g/dL", units: ["g/dL", "g/L"] },
+        tsh:            { range: "normal 0.4–4.5", units: null },
+        temperature:    { range: "fever from 100.4 °F", units: ["°F", "°C"] },
+        platelets:      { range: "normal 150–450", units: null },
+        wbc:            { range: "normal 4–11", units: null }
+    };
+    const IDS = Object.keys(META);
+
+    // convert what the user typed to the base unit used by the rules
+    function toBase(id, v) {
+        if (id === "fastingGlucose" && unitState.fastingGlucose === "mmol/L") return v * 18.016;
+        if (id === "hemoglobin" && unitState.hemoglobin === "g/L") return v / 10;
+        if (id === "temperature" && unitState.temperature === "C") return v * 9 / 5 + 32;
+        return v;
+    }
+
+    function parseBP(text) {
+        const m = String(text).trim().match(/^(\d{2,3})\s*[\/\-\s.]\s*(\d{2,3})$/);
+        return m ? { sys: +m[1], dia: +m[2] } : null;
+    }
+
+    function classify(id, raw) {
+        const t = String(raw).trim();
+        if (t === "") return null;
+
+        if (id === "bloodPressure") {
+            const bp = parseBP(t);
+            if (!bp) return { cls: "bad", text: "Enter as systolic/diastolic, e.g. 120/80" };
+            if (bp.sys > 130 || bp.dia > 80) return { cls: "warn", text: "Above prototype range" };
+            if (bp.sys < 90 || bp.dia < 60) return { cls: "warn", text: "Below prototype range" };
+            return { cls: "ok", text: "Within prototype range" };
+        }
+
+        const n = Number(t);
+        if (!isFinite(n) || n < 0) return { cls: "bad", text: "Enter a positive number" };
+        const v = toBase(id, n);
+
+        const band = (lo, hi) => v < lo ? "Below prototype range" : v > hi ? "Above prototype range" : null;
+        let msg = null, soft = null;
+
+        if (id === "fastingGlucose") {
+            if (v < 70) msg = "Below prototype range";
+            else if (v >= 126) msg = "High (≥ 126 mg/dL)";
+            else if (v >= 100) soft = "Borderline (100–125 mg/dL)";
+        } else if (id === "hba1c") {
+            if (v >= 6.5) msg = "High (≥ 6.5 %)";
+            else if (v >= 5.7) soft = "Borderline (5.7–6.4 %)";
+        } else if (id === "hemoglobin") msg = band(12, 17);
+        else if (id === "tsh") msg = band(0.4, 4.5);
+        else if (id === "platelets") msg = band(150, 450);
+        else if (id === "wbc") msg = band(4, 11);
+        else if (id === "temperature") { if (v >= 100.4) msg = "Fever (≥ 100.4 °F)"; }
+
+        if (msg) return { cls: "warn", text: msg };
+        if (soft) return { cls: "warn", text: soft };
+        return { cls: "ok", text: "Within prototype range" };
+    }
+
+    function refreshOne(id) {
+        const input = document.getElementById(id);
+        const hint = document.getElementById("hint-" + id);
+        if (!input || !hint) return;
+        const r = classify(id, input.value);
+        hint.className = "live-hint" + (r ? " " + r.cls : "");
+        hint.textContent = r ? r.text : "";
+    }
+
+    function refreshCount() {
+        const n = IDS.filter(id => document.getElementById(id).value.trim() !== "").length;
+        const pill = document.getElementById("valueCount");
+        if (pill) pill.textContent = n + " of 8 values entered";
+        const msg = document.getElementById("formMessage");
+        if (msg && n > 0) msg.textContent = "";
+    }
+
+    function refreshAll() { IDS.forEach(refreshOne); refreshCount(); }
+    window.__zxRefreshAll = refreshAll;
+
+    function updateUnitLabels(id) {
+        const meta = META[id];
+        const input = document.getElementById(id);
+        const small = input.parentElement.querySelector("small");
+        if (!meta.units) return;
+        let unitText, range;
+        if (id === "fastingGlucose") {
+            const mm = unitState.fastingGlucose === "mmol/L";
+            unitText = unitState.fastingGlucose;
+            range = mm ? "normal 3.9–5.5 mmol/L" : "normal 70–99 mg/dL";
+            input.placeholder = mm ? "e.g. 5.2" : "e.g. 95";
+        } else if (id === "hemoglobin") {
+            const gl = unitState.hemoglobin === "g/L";
+            unitText = unitState.hemoglobin;
+            range = gl ? "normal 120–170 g/L" : "normal 12–17 g/dL";
+            input.placeholder = gl ? "e.g. 135" : "e.g. 13.5";
+        } else {
+            const c = unitState.temperature === "C";
+            unitText = c ? "°C" : "°F";
+            range = c ? "fever from 38 °C" : "fever from 100.4 °F";
+            input.placeholder = c ? "e.g. 37" : "e.g. 98.6";
+        }
+        small.textContent = unitText + " · " + range;
+    }
+
+    function setUnit(id, value) {
+        unitState[id] = value;
+        const row = document.querySelector('[data-unit-for="' + id + '"]');
+        if (row) row.querySelectorAll(".unit-opt").forEach(b => {
+            b.classList.toggle("active", b.dataset.value === value);
+        });
+        updateUnitLabels(id);
+        refreshOne(id);
+    }
+
+    function enhance() {
+        IDS.forEach(id => {
+            const input = document.getElementById(id);
+            if (!input) return;
+            const field = input.closest(".field");
+            const label = field.querySelector("label");
+            const small = field.querySelector("small");
+            const meta = META[id];
+
+            input.setAttribute("autocomplete", "off");
+            if (id === "bloodPressure") input.setAttribute("inputmode", "numeric");
+            else { input.setAttribute("inputmode", "decimal"); input.setAttribute("min", "0"); }
+
+            // label row, with unit toggle where useful
+            const row = document.createElement("div");
+            row.className = "label-row";
+            label.parentNode.insertBefore(row, label);
+            row.appendChild(label);
+
+            if (meta.units) {
+                const tog = document.createElement("div");
+                tog.className = "unit-toggle";
+                tog.setAttribute("data-unit-for", id);
+                const vals = id === "temperature" ? ["F", "C"] : meta.units;
+                vals.forEach((v, i) => {
+                    const b = document.createElement("button");
+                    b.type = "button";
+                    b.className = "unit-opt" + (i === 0 ? " active" : "");
+                    b.dataset.value = v;
+                    b.textContent = id === "temperature" ? "°" + v : v;
+                    b.addEventListener("click", () => setUnit(id, v));
+                    tog.appendChild(b);
+                });
+                row.appendChild(tog);
+            }
+
+            small.textContent = (meta.units ? "" : "") + small.textContent.trim() + " · " + meta.range;
+
+            const hint = document.createElement("div");
+            hint.className = "live-hint";
+            hint.id = "hint-" + id;
+            const err = field.querySelector(".error-text");
+            field.insertBefore(hint, err);
+
+            input.addEventListener("input", () => { refreshOne(id); refreshCount(); });
+            input.addEventListener("blur", () => {
+                if (id === "bloodPressure") {
+                    const bp = parseBP(input.value);
+                    if (bp) input.value = bp.sys + "/" + bp.dia;
+                    refreshOne(id);
+                }
+            });
+            updateUnitLabels(id);
+        });
+
+        const PRESETS = {
+            normal:    { bloodPressure: "118/76", fastingGlucose: "90", hba1c: "5.2", hemoglobin: "14", tsh: "2.1", temperature: "98.4", platelets: "250", wbc: "7" },
+            diabetes:  { bloodPressure: "126/82", fastingGlucose: "168", hba1c: "7.6", hemoglobin: "14", tsh: "2.4", temperature: "98.4", platelets: "260", wbc: "7.5" },
+            anemia:    { bloodPressure: "112/72", fastingGlucose: "88", hba1c: "5.1", hemoglobin: "9.5", tsh: "2.2", temperature: "98.4", platelets: "300", wbc: "7" },
+            thyroid:   { bloodPressure: "118/76", fastingGlucose: "92", hba1c: "5.3", hemoglobin: "13.5", tsh: "8.5", temperature: "98.2", platelets: "240", wbc: "6.5" },
+            bp:        { bloodPressure: "156/98", fastingGlucose: "94", hba1c: "5.4", hemoglobin: "14.5", tsh: "2.0", temperature: "98.4", platelets: "250", wbc: "7" },
+            infection: { bloodPressure: "116/74", fastingGlucose: "96", hba1c: "5.3", hemoglobin: "13.8", tsh: "2.1", temperature: "102.4", platelets: "260", wbc: "15.2" },
+            dengue:    { bloodPressure: "108/68", fastingGlucose: "92", hba1c: "5.2", hemoglobin: "14", tsh: "2.0", temperature: "103", platelets: "80", wbc: "3.6" }
+        };
+        document.querySelectorAll("#quickFill .qf-btn").forEach(btn => {
+            btn.addEventListener("click", () => {
+                const p = PRESETS[btn.dataset.preset];
+                if (!p) return;
+                setUnit("fastingGlucose", "mg/dL");
+                setUnit("hemoglobin", "g/dL");
+                setUnit("temperature", "F");
+                IDS.forEach(id => { document.getElementById(id).value = p[id]; });
+                if (typeof clearErrors === "function") clearErrors();
+                refreshAll();
+            });
+        });
+
+        refreshAll();
+    }
+
+    document.addEventListener("DOMContentLoaded", enhance);
+
+    // wrap clearForm so hints and counter reset too
+    const originalClear = window.clearForm;
+    window.clearForm = function () {
+        if (originalClear) originalClear.apply(this, arguments);
+        refreshAll();
+        const msg = document.getElementById("formMessage");
+        if (msg) msg.textContent = "";
+    };
+
+    // values sent to the server: convert alternative units to mg/dL and g/dL
+    const originalGet = window.getFormData;
+    window.getFormData = function () {
+        const d = originalGet.apply(this, arguments);
+        const bp = parseBP(d.blood_pressure);
+        if (bp) d.blood_pressure = bp.sys + "/" + bp.dia;
+        const conv = (key, id, f) => {
+            if (d[key] !== "" && isFinite(Number(d[key]))) {
+                d[key] = String(Math.round(f(Number(d[key])) * 10) / 10);
+            }
+        };
+        if (unitState.fastingGlucose === "mmol/L") conv("fasting_glucose", "fastingGlucose", v => v * 18.016);
+        if (unitState.hemoglobin === "g/L") conv("hemoglobin", "hemoglobin", v => v / 10);
+        return d;
+    };
+})();
+
+
+/* ============================================================
+   ZX-EXPORT: printable summary + copyable text
+============================================================ */
+(function () {
+
+    // remember the latest analysis result
+    const originalRenderGraph = window.renderGraph;
+    window.renderGraph = function (result) {
+        window.__zxLast = result;
+        return originalRenderGraph ? originalRenderGraph.apply(this, arguments) : undefined;
+    };
+
+    const DISCLAIMER = "This summary was produced by ZyraX, an academic research prototype. It is not a medical report or a diagnosis. " +
+        "Flags compare each value with simplified reference ranges, and rule-match scores show how many simple rules matched; they are not probabilities. " +
+        "Your doctor will interpret your results with your age, sex, symptoms, history and medicines.";
+
+    function who() {
+        const v = id => (document.getElementById(id) ? document.getElementById(id).value.trim() : "");
+        return { name: v("zxName"), age: v("zxAge"), sex: v("zxSex") };
+    }
+
+    function stamp() {
+        const d = new Date();
+        const p = n => String(n).padStart(2, "0");
+        return d.getFullYear() + "-" + p(d.getMonth() + 1) + "-" + p(d.getDate()) + " " + p(d.getHours()) + ":" + p(d.getMinutes());
+    }
+
+    function fmtValue(p) {
+        return String(p.value) + (p.unit ? " " + p.unit : "");
+    }
+
+    function assocParts(a) {
+        const trig = (a.contributions || a.triggered_parameters || []).map(c => {
+            if (typeof c === "string") return c;
+            return (c.parameter || c.field || "") + (c.value !== undefined ? " " + c.value : "") + (c.unit ? " " + c.unit : "");
+        }).filter(Boolean);
+        return { trig };
+    }
+
+    function el(tag, text, cls) {
+        const e = document.createElement(tag);
+        if (text !== undefined && text !== null) e.textContent = text;
+        if (cls) e.className = cls;
+        return e;
+    }
+
+    function table(headers, rows) {
+        const t = el("table");
+        const thead = el("thead"); const hr = el("tr");
+        headers.forEach(h => hr.appendChild(el("th", h)));
+        thead.appendChild(hr); t.appendChild(thead);
+        const tb = el("tbody");
+        rows.forEach(r => {
+            const tr = el("tr");
+            r.forEach(c => {
+                const td = el("td");
+                if (c && typeof c === "object") { td.textContent = c.text; if (c.cls) td.className = c.cls; }
+                else td.textContent = c;
+                tr.appendChild(td);
+            });
+            tb.appendChild(tr);
+        });
+        t.appendChild(tb);
+        return t;
+    }
+
+    function buildPrintReport(result, w) {
+        const root = el("div"); root.id = "zxPrint";
+        root.appendChild(el("h1", "ZyraX Laboratory Analysis Summary"));
+        root.appendChild(el("div", "Generated " + stamp() + " · Academic research prototype", "sub"));
+
+        const who1 = [];
+        if (w.name) who1.push("Name: " + w.name);
+        if (w.age) who1.push("Age: " + w.age);
+        if (w.sex) who1.push("Sex: " + w.sex);
+        if (who1.length) root.appendChild(el("div", who1.join("   ·   "), "sub"));
+
+        root.appendChild(el("div", DISCLAIMER, "warn"));
+
+        const params = result.parameters || [];
+        root.appendChild(el("h2", "1. Values entered and prototype flags"));
+        root.appendChild(table(
+            ["Parameter", "Your value", "Prototype reference", "Flag"],
+            params.map(p => [
+                p.name || p.parameter || "",
+                fmtValue(p),
+                p.reference || "",
+                p.status === "abnormal" ? { text: "Outside range", cls: "flag" } : { text: "Within range", cls: "ok" },
+            ])
+        ));
+
+        const assoc = result.results || result.associations || [];
+        root.appendChild(el("h2", "2. Patterns the rules matched"));
+        if (!assoc.length) {
+            root.appendChild(el("p", "No prototype rule was matched by the submitted values."));
+        } else {
+            root.appendChild(el("p", "These are possible patterns to discuss, not diagnoses. The score shows how many of a condition’s simple rules matched."));
+            assoc.forEach(a => {
+                const box = el("div", null, "assoc");
+                const title = el("div", null);
+                const b = el("strong", a.disease + " – rule-match score " + a.match_score + " / 100");
+                title.appendChild(b);
+                box.appendChild(title);
+                const parts = assocParts(a);
+                if (parts.trig.length) box.appendChild(el("div", "Matched by: " + parts.trig.join(", "), "small"));
+                if (a.interpretation) box.appendChild(el("div", a.interpretation));
+                if (a.warning_signs && a.warning_signs.length) {
+                    box.appendChild(el("div", "Seek medical care promptly if you notice:", "small"));
+                    const ul = el("ul");
+                    a.warning_signs.forEach(x => ul.appendChild(el("li", x)));
+                    box.appendChild(ul);
+                }
+                root.appendChild(box);
+            });
+        }
+
+        const flagged = params.filter(p => p.status === "abnormal").map(p => p.name || p.parameter);
+        root.appendChild(el("h2", "3. Suggested questions for your doctor"));
+        const q = el("ul");
+        if (flagged.length) {
+            q.appendChild(el("li", "My " + flagged.join(", ") + " value(s) were outside the simple ranges used here. Do they need repeating or other tests?"));
+            q.appendChild(el("li", "Given my age, sex, symptoms and medicines, what do these results mean for me?"));
+        } else {
+            q.appendChild(el("li", "My entered values were within the simple ranges. Is there anything else I should check?"));
+        }
+        q.appendChild(el("li", "How often should I repeat these tests?"));
+        root.appendChild(q);
+
+        const research = (result.research_results || []).slice(0, 10);
+        if (research.length) {
+            root.appendChild(el("h2", "4. Research information (not for clinical use)"));
+            root.appendChild(el("p", "Genes and targets that the Open Targets research database links to the matched conditions, with its association score. This is background research evidence only.", "small"));
+            root.appendChild(table(
+                ["Gene / target", "Detail", "Related condition"],
+                research.map(r => [r.name || "", r.description || "", r.related_disease || ""])
+            ));
+        }
+
+        root.appendChild(el("div", "Source: ZyraX v2.1 · Rule-match scores are not probabilities · Research data: Open Targets Platform (platform.opentargets.org). " + DISCLAIMER, "foot"));
+        return root;
+    }
+
+    function buildText(result, w) {
+        const L = [];
+        L.push("ZyraX laboratory summary (" + stamp() + ")");
+        const who1 = [];
+        if (w.name) who1.push(w.name);
+        if (w.age) who1.push("age " + w.age);
+        if (w.sex) who1.push(w.sex);
+        if (who1.length) L.push(who1.join(", "));
+        L.push("");
+        L.push("VALUES");
+        (result.parameters || []).forEach(p => {
+            L.push("- " + (p.name || p.parameter) + ": " + fmtValue(p) + (p.status === "abnormal" ? "  [outside range]" : "  [within range]"));
+        });
+        const assoc = result.results || result.associations || [];
+        L.push("");
+        L.push("PATTERNS MATCHED (not diagnoses)");
+        if (!assoc.length) L.push("- none");
+        assoc.forEach(a => L.push("- " + a.disease + ": rule-match score " + a.match_score + "/100"));
+        L.push("");
+        L.push("Produced by an academic research prototype. Not a medical report or diagnosis. Please discuss with a doctor.");
+        return L.join("\n");
+    }
+
+    window.zxBuildPrintReport = buildPrintReport;
+    window.zxBuildText = buildText;
+
+    function printReport() {
+        const result = window.__zxLast;
+        if (!result) return;
+        const old = document.getElementById("zxPrint");
+        if (old) old.remove();
+        const node = buildPrintReport(result, who());
+        document.body.appendChild(node);
+        const prevTitle = document.title;
+        document.title = "ZyraX-Report-" + stamp().slice(0, 10);
+        const restore = () => {
+            document.title = prevTitle;
+            const n = document.getElementById("zxPrint");
+            if (n) n.remove();
+            window.removeEventListener("afterprint", restore);
+        };
+        window.addEventListener("afterprint", restore);
+        window.print();
+    }
+
+    function copyText() {
+        const result = window.__zxLast;
+        if (!result) return;
+        const text = buildText(result, who());
+        const btn = document.getElementById("zxCopyBtn");
+        const done = ok => {
+            if (!btn) return;
+            const o = btn.textContent;
+            btn.textContent = ok ? "Copied ✓" : "Could not copy";
+            setTimeout(() => { btn.textContent = "Copy summary text"; }, 1800);
+        };
+        const fallback = () => {
+            const ta = document.createElement("textarea");
+            ta.value = text; ta.style.position = "fixed"; ta.style.opacity = "0";
+            document.body.appendChild(ta); ta.select();
+            let ok = false;
+            try { ok = document.execCommand("copy"); } catch (e) { ok = false; }
+            ta.remove(); done(ok);
+        };
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(text).then(() => done(true), fallback);
+        } else { fallback(); }
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+        const pdf = document.getElementById("zxPdfBtn");
+        const cp = document.getElementById("zxCopyBtn");
+        if (pdf) pdf.addEventListener("click", printReport);
+        if (cp) cp.addEventListener("click", copyText);
+        const bar = document.getElementById("exportBar");
+        if (bar) bar.addEventListener("keydown", e => e.stopPropagation(), true);
+    });
+})();
+
+
+/* ============================================================
+   ZX-EPIC: lab-sheet rendering of the results
+============================================================ */
+(function () {
+
+    const GAUGES = [
+        { key: "blood pressure", min: 70, max: 180, segs: [[70, 90, "out"], [90, 131, "ok"], [131, 180, "out"]], ticks: [90, 130], pick: v => parseFloat(String(v).split("/")[0]), note: "systolic" },
+        { key: "glucose", min: 40, max: 200, segs: [[40, 70, "out"], [70, 100, "ok"], [100, 126, "edge"], [126, 200, "out"]], ticks: [70, 100, 126] },
+        { key: "hba1c", min: 4, max: 10, segs: [[4, 5.7, "ok"], [5.7, 6.5, "edge"], [6.5, 10, "out"]], ticks: [5.7, 6.5] },
+        { key: "hemoglobin", min: 6, max: 20, segs: [[6, 12, "out"], [12, 17, "ok"], [17, 20, "out"]], ticks: [12, 17] },
+        { key: "tsh", min: 0, max: 10, segs: [[0, 0.4, "out"], [0.4, 4.5, "ok"], [4.5, 10, "out"]], ticks: [0.4, 4.5] },
+        { key: "temperature", min: 95, max: 106, segs: [[95, 100.4, "ok"], [100.4, 106, "out"]], ticks: [100.4], fahrenheit: true },
+        { key: "platelet", min: 0, max: 600, segs: [[0, 150, "out"], [150, 450, "ok"], [450, 600, "out"]], ticks: [150, 450] },
+        { key: "wbc", min: 0, max: 20, segs: [[0, 4, "out"], [4, 11, "ok"], [11, 20, "out"]], ticks: [4, 11] }
+    ];
+
+    function el(tag, cls, text) {
+        const e = document.createElement(tag);
+        if (cls) e.className = cls;
+        if (text !== undefined && text !== null) e.textContent = text;
+        return e;
+    }
+
+    function gaugeFor(name) {
+        const n = String(name || "").toLowerCase();
+        return GAUGES.find(g => n.indexOf(g.key) !== -1) || null;
+    }
+
+    function kindAt(g, v) {
+        for (const [a, b, k] of g.segs) { if (v >= a && v < b) return k; }
+        return v < g.min ? g.segs[0][2] : g.segs[g.segs.length - 1][2];
+    }
+
+    function buildRow(p) {
+        const g = gaugeFor(p.name || p.parameter);
+        const row = el("div", "zx-row");
+
+        const name = el("div", "zx-pname", p.name || p.parameter || "");
+        if (p.reference) name.appendChild(el("small", null, String(p.reference).replace(/^Prototype( range| rule)?:\s*/i, "Range: ")));
+        row.appendChild(name);
+
+        const val = el("div", "zx-pval", String(p.value));
+        if (p.unit) val.appendChild(el("small", null, p.unit));
+        row.appendChild(val);
+
+        let kind = p.status === "abnormal" ? "out" : "ok";
+        const gauge = el("div", "zx-gauge");
+        let marker = null, pos = 0;
+        if (g) {
+            let v = g.pick ? g.pick(p.value) : Number(p.value);
+            if (g.fahrenheit && /c/i.test(String(p.unit || "")) && !/f/i.test(String(p.unit || ""))) v = v * 9 / 5 + 32;
+            const span = g.max - g.min;
+            g.segs.forEach(([a, b, k]) => {
+                const s1 = el("i", "seg " + k);
+                s1.style.left = ((a - g.min) / span * 100) + "%";
+                s1.style.width = ((b - a) / span * 100) + "%";
+                gauge.appendChild(s1);
+            });
+            g.ticks.forEach(t => {
+                const tk = el("span", "tick", String(t));
+                tk.style.left = ((t - g.min) / span * 100) + "%";
+                gauge.appendChild(tk);
+            });
+            if (isFinite(v)) {
+                pos = Math.max(1, Math.min(99, (v - g.min) / span * 100));
+                const k2 = kindAt(g, v);
+                if (p.status === "abnormal") kind = (k2 === "edge") ? "edge" : "out";
+                marker = el("b", "mk " + (p.status === "abnormal" ? kind : "ok"));
+                marker.style.left = "0%";
+                gauge.appendChild(marker);
+            }
+        }
+        row.appendChild(gauge);
+
+        const chip = el("div", "zx-chip " + (p.status === "abnormal" ? kind : "ok"),
+            p.status === "abnormal" ? (kind === "edge" ? "Borderline" : "Outside range") : "In range");
+        row.appendChild(chip);
+
+        if (marker) requestAnimationFrame(() => requestAnimationFrame(() => { marker.style.left = pos + "%"; }));
+        return row;
+    }
+
+    function polishParameters(result) {
+        const box = document.getElementById("parameterResults");
+        if (!box) return;
+        const params = result.parameters || [];
+        box.className = "labsheet";
+        box.innerHTML = "";
+        params.forEach(p => box.appendChild(buildRow(p)));
+    }
+
+    function polishSummary() {
+        const cards = document.querySelectorAll("#summaryResults .summary-card");
+        if (cards[1]) {
+            const n = Number((cards[1].querySelector(".summary-number") || {}).textContent);
+            cards[1].classList.toggle("alert", n > 0);
+        }
+    }
+
+    function polishDiseases() {
+        document.querySelectorAll("#diseaseResults .disease-card").forEach(card => {
+            if (card.dataset.zx) return;
+            card.dataset.zx = "1";
+            const num = card.querySelector(".score-number");
+            if (num) {
+                const m = String(num.textContent).match(/[0-9.]+/);
+                const val = m ? Math.min(100, Math.max(0, parseFloat(m[0]))) : 0;
+                const ring = el("div", "zx-ring");
+                ring.style.setProperty("--p", val);
+                ring.appendChild(el("span", null, String(Math.round(val))));
+                num.parentNode.insertBefore(ring, num);
+            }
+            const more = [];
+            card.querySelectorAll(".info-box").forEach(b => {
+                const h = (b.querySelector("h4") || {}).textContent || "";
+                if (/General information|Things to avoid/i.test(h)) more.push(b);
+            });
+            if (more.length) {
+                const d = el("details", "zx-more");
+                d.appendChild(el("summary", null, "General information and things to avoid (not medical advice)"));
+                const body = el("div", "zx-more-body");
+                more[0].parentNode.insertBefore(d, more[0]);
+                more.forEach(b => body.appendChild(b));
+                d.appendChild(body);
+            }
+        });
+    }
+
+    function polishResearch(result) {
+        const box = document.getElementById("researchResults");
+        if (!box) return;
+        const items = result.research_results || [];
+        if (!items.length) return;
+        box.innerHTML = "";
+        const table = el("div", "rtable");
+        const head = el("div", "rrow rhead");
+        ["Gene or target", "Related condition", "Association score"].forEach(h => head.appendChild(el("div", null, h)));
+        table.appendChild(head);
+        items.forEach(it => {
+            const row = el("div", "rrow");
+            const desc = String(it.description || "");
+            const parts = desc.split("|").map(x => x.trim());
+            const sm = desc.match(/association score\s+([0-9.]+)/i);
+            const score = sm ? parseFloat(sm[1]) : null;
+            const idm = desc.match(/\b(ENSG[0-9]{11})\b/);
+
+            const gene = el("div", "rgene");
+            if (idm) {
+                const a = el("a", null, it.name || "");
+                a.href = "https://platform.opentargets.org/target/" + idm[1];
+                a.target = "_blank"; a.rel = "noopener noreferrer";
+                gene.appendChild(a);
+            } else gene.appendChild(document.createTextNode(it.name || ""));
+            if (parts[0]) gene.appendChild(el("small", null, parts[0]));
+            row.appendChild(gene);
+
+            row.appendChild(el("div", "rcond", it.related_disease || ""));
+
+            const sc = el("div", "rscore");
+            if (score !== null) {
+                const bar = el("div", "rbar"); const fill = el("i");
+                fill.style.width = Math.max(2, Math.min(100, score * 100)) + "%";
+                bar.appendChild(fill); sc.appendChild(bar);
+                sc.appendChild(el("span", null, score.toFixed(3)));
+            } else sc.appendChild(el("span", null, "n/a"));
+            row.appendChild(sc);
+            table.appendChild(row);
+        });
+        box.appendChild(table);
+    }
+
+    const prev = window.renderGraph;
+    window.renderGraph = function (result) {
+        const out = prev ? prev.apply(this, arguments) : undefined;
+        try {
+            polishSummary();
+            polishParameters(result);
+            polishDiseases();
+            polishResearch(result);
+        } catch (e) { console.error("ZyraX polish failed", e); }
+        return out;
+    };
+})();
+
+
+/* ============================================================
+   ZX-UPLOAD: read a lab report in the browser and fill the form
+============================================================ */
+(function () {
+    const FIELDS = [
+        { id: "bloodPressure", label: "Blood pressure", unit: "mmHg" },
+        { id: "fastingGlucose", label: "Fasting glucose", unit: "mg/dL" },
+        { id: "hba1c", label: "HbA1c", unit: "%" },
+        { id: "hemoglobin", label: "Hemoglobin", unit: "g/dL" },
+        { id: "tsh", label: "TSH", unit: "mIU/L" },
+        { id: "temperature", label: "Temperature", unit: "°F" },
+        { id: "platelets", label: "Platelets", unit: "×10³/µL" },
+        { id: "wbc", label: "WBC", unit: "×10³/µL" }
+    ];
+    const RANGE = { fastingGlucose: [20, 800], hba1c: [3, 20], hemoglobin: [3, 25], tsh: [0, 150], temperature: [90, 110], platelets: [5, 2000], wbc: [0.5, 100] };
+
+    const NAMES = {
+        hba1c: /\b(?:hb\s*a1c|hba1c|a1c|glyc(?:o)?sylated\s*h(?:a)?emoglobin|glycated\s*h(?:a)?emoglobin)\b/ig,
+        fastingGlucose: /\b(?:fasting\s*(?:blood\s*|plasma\s*)?(?:glucose|sugar)|glucose\s*[-,(]?\s*(?:fasting|f)\b|f\.?b\.?s\b|f\.?b\.?g\b|blood\s*(?:glucose|sugar)|glucose)\b/ig,
+        hemoglobin: /\b(?:h(?:a)?emoglobin|hgb|hb)\b/ig,
+        tsh: /\b(?:tsh|thyroid\s*stimulating\s*hormone|thyrotropin)\b/ig,
+        temperature: /\b(?:body\s*)?temp(?:erature)?\b/ig,
+        platelets: /\b(?:platelets?(?:\s*count)?|plt)\b/ig,
+        wbc: /\b(?:wbc|total\s*(?:leu[ck]ocyte|w\.?b\.?c\.?)(?:\s*count)?|leu[ck]ocyte\s*count|tlc)\b/ig
+    };
+    const NUM = /([<>]?)\s*(\d{1,3}(?:,\d{3})+|\d+)(?:[.,](\d+))?/;
+
+    function toNum(m) {
+        let whole = m[2].replace(/,/g, "");
+        return parseFloat(whole + (m[3] ? "." + m[3] : ""));
+    }
+
+    function normalise(text) {
+        return String(text || "").replace(/ /g, " ").replace(/[ \t]+/g, " ");
+    }
+
+    /* Find the first number after a test name on the same line (or the next 90 chars). */
+    function valueAfter(text, endIdx) {
+        const win = text.slice(endIdx, endIdx + 90);
+        const lineEnd = win.indexOf("\n");
+        const seg = lineEnd === -1 ? win : win.slice(0, lineEnd);
+        const m = NUM.exec(seg);
+        if (!m) return null;
+        // skip numbers that are part of method names such as "(IFCC)" - none - or ranges handled by taking the first number
+        return { value: toNum(m), tail: seg.slice(m.index + m[0].length, m.index + m[0].length + 22) };
+    }
+
+    function inRange(id, v) {
+        const r = RANGE[id];
+        return !r || (v >= r[0] && v <= r[1]);
+    }
+
+    function parseReport(raw) {
+        const text = normalise(raw);
+        const out = {};
+
+        // blood pressure
+        let m = /(?:blood\s*pressure|\bbp\b)[^0-9]{0,25}(\d{2,3})\s*\/\s*(\d{2,3})/i.exec(text) ||
+                /\b(\d{2,3})\s*\/\s*(\d{2,3})\s*mm\s*hg\b/i.exec(text);
+        if (m) {
+            const a = +m[1], b = +m[2];
+            if (a >= 60 && a <= 260 && b >= 30 && b <= 160 && a > b) out.bloodPressure = a + "/" + b;
+        }
+
+        Object.keys(NAMES).forEach(id => {
+            const re = new RegExp(NAMES[id].source, "ig");
+            let mm;
+            while ((mm = re.exec(text))) {
+                const before = text.slice(Math.max(0, mm.index - 20), mm.index).toLowerCase();
+                if (id === "fastingGlucose" && /(average|mean|post|random|pp\b|urine|estimated|e\.?a\.?g)/.test(before + text.slice(mm.index, mm.index + 4))) continue;
+                if (id === "hemoglobin" && /(glyc|a1c|mean|corpuscular|mchc|mch)/.test(before)) continue;
+                if (id === "hemoglobin" && /^\s*(?:a1c|\(?mch)/i.test(text.slice(re.lastIndex, re.lastIndex + 8))) continue;
+                if (id === "hemoglobin" && /^\s*(?:concentration|a1c)/i.test(text.slice(re.lastIndex, re.lastIndex + 20))) continue;
+                const hit = valueAfter(text, re.lastIndex);
+                if (!hit) continue;
+                let v = hit.value, tail = hit.tail.toLowerCase();
+
+                if (id === "fastingGlucose" && (/mmol/.test(tail) || (v < 20 && !/mg/.test(tail)))) v = v * 18.016;
+                if (id === "hemoglobin" && (/g\s*\/\s*l\b/.test(tail) || v > 30)) v = v / 10;
+                if (id === "temperature") {
+                    if (/c\b|°\s*c|celsius/.test(tail) || v < 45) v = v * 9 / 5 + 32;
+                }
+                if (id === "platelets") {
+                    if (/lakh|lac/.test(tail) || (v < 20 && !/10|x/.test(tail))) v = v * 100;
+                    else if (v > 2000) v = v / 1000;
+                }
+                if (id === "wbc" && v > 500) v = v / 1000;
+
+                if (!inRange(id, v)) continue;
+                const rounded = id === "hba1c" || id === "tsh" || id === "wbc" || id === "hemoglobin" || id === "temperature" ? Math.round(v * 10) / 10 : Math.round(v);
+                out[id] = String(rounded);
+                break;
+            }
+        });
+        return out;
+    }
+    window.zxParseReport = parseReport;
+
+    /* ---------- fill the form ---------- */
+    const DEFAULT_UNIT = { fastingGlucose: "mg/dL", hemoglobin: "g/dL", temperature: "F" };
+
+    function fillForm(found) {
+        Object.keys(DEFAULT_UNIT).forEach(id => {
+            if (found[id] === undefined) return;
+            const b = document.querySelector('[data-unit-for="' + id + '"] .unit-opt[data-value="' + DEFAULT_UNIT[id] + '"]');
+            if (b && !b.classList.contains("active")) b.click();
+        });
+        Object.keys(found).forEach(id => {
+            const input = document.getElementById(id);
+            if (!input) return;
+            input.value = found[id];
+            input.dispatchEvent(new Event("input", { bubbles: true }));
+        });
+        if (window.__zxRefreshAll) window.__zxRefreshAll();
+    }
+
+    /* ---------- libraries, loaded only when a file is chosen ---------- */
+    const LIBS = {
+        pdf: "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js",
+        pdfWorker: "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js",
+        ocr: "https://cdnjs.cloudflare.com/ajax/libs/tesseract.js/5.1.0/tesseract.min.js"
+    };
+    function loadScript(src) {
+        return new Promise((resolve, reject) => {
+            const el = document.createElement("script");
+            el.src = src; el.onload = resolve;
+            el.onerror = () => reject(new Error("Could not load " + src.split("/")[5]));
+            document.head.appendChild(el);
+        });
+    }
+
+    async function textFromPdf(file, setMsg) {
+        if (!window.pdfjsLib) await loadScript(LIBS.pdf);
+        window.pdfjsLib.GlobalWorkerOptions.workerSrc = LIBS.pdfWorker;
+        const doc = await window.pdfjsLib.getDocument({ data: await file.arrayBuffer() }).promise;
+        let all = "";
+        for (let p = 1; p <= Math.min(doc.numPages, 12); p++) {
+            setMsg("Reading page " + p + " of " + Math.min(doc.numPages, 12) + "...");
+            const content = await (await doc.getPage(p)).getTextContent();
+            const rows = {};
+            content.items.forEach(it => {
+                const y = Math.round(it.transform[5] / 3);
+                (rows[y] = rows[y] || []).push({ x: it.transform[4], t: it.str });
+            });
+            Object.keys(rows).map(Number).sort((a, b) => b - a).forEach(y => {
+                all += rows[y].sort((a, b) => a.x - b.x).map(i => i.t).join(" ") + "\n";
+            });
+        }
+        return all;
+    }
+
+    async function textFromImage(file, setMsg) {
+        if (!window.Tesseract) await loadScript(LIBS.ocr);
+        setMsg("Reading the photo (first time can take up to a minute)...");
+        const res = await window.Tesseract.recognize(file, "eng", {
+            logger: m => { if (m.status === "recognizing text") setMsg("Reading the photo... " + Math.round(m.progress * 100) + "%"); }
+        });
+        return res.data.text || "";
+    }
+
+    /* ---------- UI ---------- */
+    function el(tag, cls, text) { const e = document.createElement(tag); if (cls) e.className = cls; if (text !== undefined) e.textContent = text; return e; }
+
+    function showStatus(msg, kind) {
+        const box = document.getElementById("zxUpStatus");
+        box.hidden = !msg; box.className = "zx-up-status" + (kind === "err" ? " err" : "");
+        box.textContent = "";
+        if (msg && kind === "busy") box.appendChild(el("span", "zx-spin"));
+        if (msg) box.appendChild(el("span", null, msg));
+    }
+
+    function showResult(found, rawText) {
+        const box = document.getElementById("zxUpResult");
+        box.textContent = ""; box.hidden = false;
+        const keys = FIELDS.filter(f => found[f.id] !== undefined);
+        box.appendChild(el("h4", null, keys.length ? "Filled " + keys.length + " value" + (keys.length > 1 ? "s" : "") + " from your report. Please check them." : "No lab values were recognised."));
+        if (keys.length) {
+            const ul = el("ul", "zx-up-list");
+            keys.forEach(f => {
+                const li = el("li"); li.appendChild(el("span", null, f.label));
+                li.appendChild(el("b", null, found[f.id] + " " + f.unit)); ul.appendChild(li);
+            });
+            box.appendChild(ul);
+        }
+        const missing = FIELDS.filter(f => found[f.id] === undefined).map(f => f.label);
+        if (missing.length) box.appendChild(el("div", "zx-up-miss", (keys.length ? "Not found: " : "Try a clearer file, or enter the values yourself. Looked for: ") + missing.join(", ") + "."));
+        const d = el("details"); d.appendChild(el("summary", null, "Show the text that was read"));
+        d.appendChild(el("pre", null, rawText.slice(0, 4000))); box.appendChild(d);
+    }
+
+    async function handleFile(file) {
+        const result = document.getElementById("zxUpResult");
+        result.hidden = true;
+        if (!file) return;
+        if (file.size > 15 * 1024 * 1024) { showStatus("That file is over 15 MB. Please choose a smaller one.", "err"); return; }
+        try {
+            showStatus("Opening " + file.name + "...", "busy");
+            const isPdf = /pdf/i.test(file.type) || /\.pdf$/i.test(file.name);
+            let text = isPdf ? await textFromPdf(file, m => showStatus(m, "busy")) : await textFromImage(file, m => showStatus(m, "busy"));
+            if (isPdf && text.replace(/\s/g, "").length < 20) {
+                showStatus("This PDF looks like a scan with no text. Upload a photo of the page instead, or enter the values yourself.", "err");
+                return;
+            }
+            const found = parseReport(text);
+            if (Object.keys(found).length) fillForm(found);
+            showStatus("", null);
+            showResult(found, text);
+            const form = document.getElementById("bloodPressure");
+            if (form && Object.keys(found).length) form.scrollIntoView({ behavior: "smooth", block: "center" });
+        } catch (e) {
+            console.error(e);
+            showStatus(/Could not load/.test(e.message) ? "The reader could not be downloaded. Check your internet connection and try again." : "Could not read this file. Try another file, or enter the values yourself.", "err");
+        }
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+        const inp = document.getElementById("zxFile");
+        if (inp) inp.addEventListener("change", () => { window.zxOnFile && window.zxOnFile(inp.files[0]); handleFile(inp.files[0]); inp.value = ""; });
+    });
+    if (document.readyState !== "loading") {
+        const inp = document.getElementById("zxFile");
+        if (inp && !inp.dataset.bound) { inp.dataset.bound = "1"; inp.addEventListener("change", () => { window.zxOnFile && window.zxOnFile(inp.files[0]); handleFile(inp.files[0]); inp.value = ""; }); }
+    }
+})();
+
+
+/* ============================================================
+   ZX-EXPLAIN: optional plain-language explanation via the server
+============================================================ */
+(function () {
+    let file = null;
+    const $ = id => document.getElementById(id);
+    function el(tag, cls, text) { const e = document.createElement(tag); if (cls) e.className = cls; if (text !== undefined) e.textContent = text; return e; }
+
+    window.zxOnFile = function (f) {
+        file = f || null;
+        const box = $("zxExplain");
+        if (!box) return;
+        box.hidden = !(file && window.__zxAI);
+        $("zxExOut").hidden = true;
+        sync();
+    };
+
+    function sync() { $("zxExBtn").disabled = !(file && $("zxExConsent").checked); }
+
+    function render(out, text) {
+        out.textContent = ""; out.className = "zx-ex-out"; out.hidden = false;
+        text.split(/\n+/).forEach(line => {
+            line = line.trim();
+            if (!line) return;
+            if (/^[A-Z][^.!?]{3,60}:$/.test(line)) out.appendChild(el("h4", null, line.replace(/:$/, "")));
+            else out.appendChild(el("p", null, line.replace(/^[-*•]\s*/, "• ")));
+        });
+        out.appendChild(el("div", "zx-ex-warn", "AI-generated explanation for learning. It can be wrong and is not medical advice or a diagnosis. Please discuss your report with a doctor."));
+    }
+
+    async function run() {
+        const out = $("zxExOut"), btn = $("zxExBtn");
+        if (!file) return;
+        btn.disabled = true; btn.textContent = "Explaining...";
+        out.hidden = false; out.className = "zx-ex-out"; out.textContent = "Reading your report. This can take up to a minute.";
+        try {
+            const fd = new FormData(); fd.append("report", file);
+            const r = await fetch("/api/explain", { method: "POST", body: fd });
+            let data = {};
+            try { data = await r.json(); } catch (e) { /* not JSON */ }
+            if (r.ok && data.success) render(out, data.explanation);
+            else { out.className = "zx-ex-out err"; out.textContent = data.message || "Could not get an explanation. Please try again."; }
+        } catch (e) {
+            out.className = "zx-ex-out err"; out.textContent = "Could not reach the ZyraX server.";
+        }
+        btn.textContent = "Explain this report with AI"; sync();
+    }
+
+    fetch("/api/explain/status").then(r => r.json()).then(d => { window.__zxAI = !!d.enabled; if (d.enabled) { const n = document.querySelector(".zx-up-note"); if (n) n.textContent += " The optional AI explanation below sends the file through the ZyraX server to Claude, only if you tick the box."; } }).catch(() => { window.__zxAI = false; });
+
+    document.addEventListener("DOMContentLoaded", () => {
+        const c = $("zxExConsent"), b = $("zxExBtn");
+        if (c) c.addEventListener("change", sync);
+        if (b) b.addEventListener("click", run);
+    });
+})();
+
+
+/* ============================================================
+   ZX-GENEBIO: gene biology panel (UniProt + STRING via the server)
+============================================================ */
+(function () {
+    const cache = {};
+    let last = null;
+
+    function el(tag, cls, text) { const e = document.createElement(tag); if (cls) e.className = cls; if (text !== undefined && text !== null) e.textContent = text; return e; }
+    function svgEl(tag, attrs) { const e = document.createElementNS("http://www.w3.org/2000/svg", tag); Object.keys(attrs || {}).forEach(k => e.setAttribute(k, attrs[k])); return e; }
+
+    function ensureSection() {
+        let s = document.getElementById("geneBio");
+        if (s) return s;
+        s = el("section", "gb-wrap"); s.id = "geneBio";
+        const ref = document.getElementById("networkSection");
+        ref.parentNode.insertBefore(s, ref);
+        return s;
+    }
+
+    function buildShell(assocs) {
+        const s = ensureSection();
+        s.textContent = "";
+        s.appendChild(el("h3", null, "Gene biology"));
+        s.appendChild(el("p", "gb-sub", "What the genes linked to each pattern do, which proteins they work with, and the biological pathways they share. Information comes from the public UniProt and STRING databases and is for learning only."));
+        const tabs = el("div", "gb-tabs"); tabs.setAttribute("role", "tablist");
+        const body = el("div"); body.id = "gbBody";
+        assocs.forEach((a, i) => {
+            const b = el("button", "gb-tab", a.disease);
+            b.type = "button"; b.setAttribute("role", "tab"); b.setAttribute("aria-selected", i === 0 ? "true" : "false");
+            b.addEventListener("click", () => {
+                tabs.querySelectorAll(".gb-tab").forEach(x => x.setAttribute("aria-selected", "false"));
+                b.setAttribute("aria-selected", "true"); load(a);
+            });
+            tabs.appendChild(b);
+        });
+        s.appendChild(tabs); s.appendChild(body);
+        load(assocs[0]);
+    }
+
+    async function load(assoc) {
+        const body = document.getElementById("gbBody");
+        const genes = (assoc.genes || []).filter(Boolean);
+        body.textContent = "";
+        if (!genes.length) { body.appendChild(el("div", "gb-status", "No curated genes are listed for this condition.")); return; }
+        const key = genes.join(",");
+        body.appendChild(el("div", "gb-status", "Loading gene information..."));
+        let data = cache[key];
+        if (!data) {
+            try {
+                const r = await fetch("/api/genes?symbols=" + encodeURIComponent(key));
+                data = await r.json();
+                if (!r.ok || !data.success) throw new Error("bad");
+                cache[key] = data;
+            } catch (e) {
+                body.textContent = "";
+                body.appendChild(el("div", "gb-status err", "Gene information could not be loaded. Check your internet connection and try again."));
+                return;
+            }
+        }
+        if (document.querySelector('.gb-tab[aria-selected="true"]').textContent !== assoc.disease) return;
+        render(body, data, assoc);
+    }
+
+    function geneCard(g) {
+        const c = el("div", "gb-card");
+        const h = el("h4", null, g.symbol);
+        if (g.accession) { const a = el("a", null, "UniProt " + g.accession); a.href = "https://www.uniprot.org/uniprotkb/" + encodeURIComponent(g.accession); a.target = "_blank"; a.rel = "noopener noreferrer"; h.appendChild(a); }
+        c.appendChild(h);
+        c.appendChild(el("div", "gb-prot", (g.protein || "Protein name not available") + (g.length ? " · " + g.length + " amino acids" : "")));
+        if (g.function) {
+            const short = g.function.length > 230 ? g.function.slice(0, 230).replace(/\s+\S*$/, "") + "..." : g.function;
+            const p = el("p", "gb-func", short); c.appendChild(p);
+            if (short !== g.function) {
+                const m = el("button", "gb-more", "Read more"); m.type = "button";
+                let open = false;
+                m.addEventListener("click", () => { open = !open; p.textContent = open ? g.function : short; m.textContent = open ? "Show less" : "Read more"; });
+                c.appendChild(m);
+            }
+        } else c.appendChild(el("p", "gb-func", "No function summary was returned for this gene."));
+        if (g.partners && g.partners.length) {
+            c.appendChild(el("div", "gb-pl", "Works with (STRING score)"));
+            const chips = el("div", "gb-chips");
+            g.partners.forEach(p => chips.appendChild(el("span", "gb-chip", p.name + " " + Number(p.score).toFixed(2))));
+            c.appendChild(chips);
+        }
+        return c;
+    }
+
+    function network(symbols, edges) {
+        const W = 360, H = 300, cx = W / 2, cy = H / 2, R = 108;
+        const svg = svgEl("svg", { viewBox: "0 0 " + W + " " + H, class: "gb-svg", role: "img", "aria-label": "Interaction network between the genes" });
+        const pos = {};
+        symbols.forEach((s, i) => { const t = -Math.PI / 2 + i * 2 * Math.PI / symbols.length; pos[s] = [cx + R * Math.cos(t), cy + R * Math.sin(t)]; });
+        edges.forEach(e => {
+            if (!pos[e.a] || !pos[e.b]) return;
+            svg.appendChild(svgEl("line", { x1: pos[e.a][0], y1: pos[e.a][1], x2: pos[e.b][0], y2: pos[e.b][1], stroke: "#0f8b8d", "stroke-width": 1 + 4 * (e.score || 0), "stroke-opacity": 0.55 }));
+        });
+        symbols.forEach(s => {
+            const linked = edges.some(e => e.a === s || e.b === s);
+            const g = svgEl("g");
+            g.appendChild(svgEl("circle", { cx: pos[s][0], cy: pos[s][1], r: 29, fill: linked ? "#0b2239" : "#8a97a3" }));
+            const t = svgEl("text", { x: pos[s][0], y: pos[s][1], style: "font-size:" + (s.length > 6 ? 9 : s.length > 4 ? 10.5 : 12) + "px" }); t.textContent = s; g.appendChild(t);
+            svg.appendChild(g);
+        });
+        return svg;
+    }
+
+    function render(body, data, assoc) {
+        body.textContent = "";
+        const genes = data.genes || [];
+        const grid = el("div", "gb-grid");
+        genes.forEach(g => grid.appendChild(geneCard(g)));
+        body.appendChild(grid);
+
+        const two = el("div", "gb-two");
+
+        const left = el("div", "gb-panel");
+        left.appendChild(el("h4", null, "How these genes connect"));
+        const edges = data.edges || [];
+        left.appendChild(el("p", "gb-note", edges.length
+            ? "Lines show known or predicted functional links between these genes in STRING. Thicker means stronger evidence. Grey genes have no link to the others at this confidence level."
+            : "STRING reports no links between these genes at medium confidence, or the network could not be loaded."));
+        left.appendChild(network(genes.map(g => g.symbol), edges));
+        two.appendChild(left);
+
+        const right = el("div", "gb-panel");
+        right.appendChild(el("h4", null, "Pathways these genes share"));
+        right.appendChild(el("p", "gb-note", "Biological pathways where these genes appear together more often than expected by chance. A smaller false discovery rate (FDR) means the overlap is less likely to be chance."));
+        const pw = data.pathways || [];
+        if (!pw.length) right.appendChild(el("div", "gb-status", "No shared pathways were returned."));
+        pw.forEach(p => {
+            const row = el("div", "gb-pw");
+            row.appendChild(el("b", null, p.description || p.term));
+            row.appendChild(el("small", null, (p.category || "") + " · " + (p.genes || "?") + " of " + (p.background || "?") + " pathway genes · FDR " + (p.fdr !== undefined && p.fdr !== null ? Number(p.fdr).toExponential(1) : "n/a")));
+            const bar = el("div", "gb-bar"); const fill = el("i");
+            const strength = p.fdr > 0 ? Math.min(100, Math.max(6, -Math.log10(p.fdr) * 12)) : 100;
+            fill.style.width = strength + "%"; bar.appendChild(fill); row.appendChild(bar);
+            right.appendChild(row);
+        });
+        two.appendChild(right);
+        body.appendChild(two);
+
+        if ((data.warnings || []).length) body.appendChild(el("div", "gb-status err", "Some information is missing: " + data.warnings.join(" ")));
+        body.appendChild(el("div", "gb-src", "Sources: " + (data.sources || "UniProt, STRING") + ". Links are statistical or literature-based and do not prove that a gene causes a condition."));
+    }
+
+    const prev = window.renderGraph;
+    window.renderGraph = function (result) {
+        const out = prev ? prev.apply(this, arguments) : undefined;
+        try {
+            const assocs = ((result && (result.associations || result.results)) || []).filter(a => a && a.disease && (a.genes || []).length);
+            last = assocs;
+            if (assocs.length) buildShell(assocs);
+            else { const s = document.getElementById("geneBio"); if (s) s.remove(); }
+        } catch (e) { console.error("Gene biology panel failed", e); }
+        return out;
+    };
+})();
+
+</script>
+
+
+</body>
+
+</html>

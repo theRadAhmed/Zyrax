@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#fbfaf7">
+<meta name="description" content="ZyraX connects biomedical parameter analysis, disease associations and scientific research in one academic bioinformatics platform.">
+<title>ZyraX — Biomedical Research, Connected</title>
+<style>
+:root {
+  --ink:#0b2239;
+  --muted:#5b6b78;
+  --teal:#0f8b8d;
+  --teal-dark:#0b6f72;
+  --mint:#e8f4f4;
+  --paper:#fbfaf7;
+  --white:#fff;
+  --line:#e5e2da;
+  --navy:#0b2239;
+  --radius:20px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:90px}
+body{
+  margin:0;background:var(--paper);color:var(--ink);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  line-height:1.6;-webkit-font-smoothing:antialiased
+}
+a{color:inherit;text-decoration:none}
+button,a{-webkit-tap-highlight-color:transparent}
+button:focus-visible,a:focus-visible,summary:focus-visible{
+  outline:3px solid #59b8a9;outline-offset:4px
+}
+.wrap{width:min(1120px,calc(100% - 40px));margin:auto}
+header{
+  position:sticky;top:0;z-index:10;background:rgba(247,250,249,.94);
+  backdrop-filter:blur(14px);border-bottom:1px solid rgba(223,233,230,.9)
+}
+.nav{height:76px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.brand{display:flex;align-items:center;gap:11px;font-size:21px;font-weight:750;letter-spacing:-.7px}
+.logo{
+  width:39px;height:39px;border-radius:12px;background:var(--navy);
+  display:grid;place-items:center;color:#8fd6d6;font-size:23px
+}
+.navlinks{display:flex;align-items:center;gap:27px;font-size:13px;color:#53676c}
+.navlinks a:hover{color:var(--teal)}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  min-height:47px;padding:0 19px;border:1px solid transparent;border-radius:11px;
+  font-size:14px;font-weight:650;transition:transform .18s,background .18s;
+  cursor:pointer
+}
+.btn:hover{transform:translateY(-2px)}
+.btn-primary{background:var(--teal);color:white}
+.btn-primary:hover{background:var(--teal-dark)}
+.btn-outline{border-color:#dedbd2;background:rgba(255,255,255,.55);color:var(--ink)}
+.hero{padding:76px 0 68px;overflow:hidden}
+.hero-grid{display:grid;grid-template-columns:1.08fr .92fr;gap:60px;align-items:center}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:9px;color:var(--teal);
+  font-size:11px;font-weight:750;letter-spacing:1.5px;text-transform:uppercase
+}
+.dot{width:7px;height:7px;border-radius:50%;background:#31a991}
+h1{font-size:clamp(42px,5.3vw,65px);line-height:1.06;letter-spacing:-3px;margin:21px 0}
+h1 span{color:var(--teal)}
+.lead{font-size:17px;line-height:1.8;color:var(--muted);max-width:530px}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+.note{font-size:12px;color:#7a8995;margin-top:17px}
+.visual{
+  position:relative;min-height:390px;border-radius:26px;overflow:hidden;
+  background:var(--navy);padding:27px;color:#eef7f7;
+  box-shadow:0 24px 65px rgba(11,34,57,.12)
+}
+.visual:before,.visual:after{
+  content:"";position:absolute;border:1px solid rgba(126,224,201,.14);
+  border-radius:50%;width:290px;height:290px;right:-100px;top:-120px
+}
+.visual:after{width:220px;height:220px;right:-65px;top:-85px}
+.visual-label{font-size:10px;letter-spacing:1.7px;color:#9fb9c6;font-weight:700}
+.visual-title{font-size:23px;font-weight:650;line-height:1.35;margin-top:10px;max-width:300px}
+.network{height:170px;display:grid;place-items:center;position:relative}
+.network svg{width:100%;height:170px;overflow:visible}
+.visual-bottom{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}
+.visual-stat{padding:12px 9px;border:1px solid #36515b;border-radius:12px;background:#193742}
+.visual-stat strong{display:block;font-size:13px;color:#a8e0e0}
+.visual-stat span{font-size:10px;color:#b4c5cf}
+.section{padding:76px 0}
+.section-head{max-width:650px;margin-bottom:30px}
+.kicker{font-size:11px;color:var(--teal);font-weight:750;letter-spacing:1.5px;text-transform:uppercase}
+h2{font-size:clamp(29px,3.6vw,41px);letter-spacing:-1.5px;line-height:1.2;margin:11px 0 13px}
+.section-head p,.about-copy p{color:var(--muted);font-size:15px;line-height:1.8;margin:0}
+.features{display:grid;grid-template-columns:repeat(3,1fr);gap:17px}
+.feature{
+  border:1px solid var(--line);border-radius:var(--radius);background:var(--white);
+  padding:24px;transition:transform .2s,border-color .2s,box-shadow .2s
+}
+.feature:hover,.feature[open]{border-color:#9ccfcf;box-shadow:0 12px 30px rgba(25,70,61,.055)}
+.feature summary{list-style:none;cursor:pointer}
+.feature summary::-webkit-details-marker{display:none}
+.feature-top{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.feature-icon{
+  width:45px;height:45px;display:grid;place-items:center;border-radius:13px;
+  background:var(--mint);color:var(--teal);font-size:21px
+}
+.plus{font-size:22px;color:#7f8e9a;transition:transform .2s}
+.feature[open] .plus{transform:rotate(45deg)}
+.feature h3{font-size:18px;margin:21px 0 8px;letter-spacing:-.35px}
+.feature p{font-size:13px;color:var(--muted);line-height:1.75;margin:0}
+.feature-more{border-top:1px solid var(--line);margin-top:17px;padding-top:15px;font-size:13px;color:#526b6d}
+.about{background:#f1f3ee}
+.about-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:70px;align-items:start}
+.about-copy p+p{margin-top:13px}
+.steps{display:grid;gap:0}
+.step{display:grid;grid-template-columns:43px 1fr;gap:15px;padding:17px 0;border-bottom:1px solid #e2dfd6}
+.step:last-child{border:0}
+.step-num{
+  width:37px;height:37px;border-radius:12px;background:white;border:1px solid #e2dfd6;
+  display:grid;place-items:center;color:var(--teal);font-size:12px;font-weight:750
+}
+.step h3{font-size:15px;margin:0 0 4px}
+.step p{font-size:13px;color:var(--muted);margin:0;line-height:1.7}
+.audience{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.audience-card{padding:21px;border:1px solid var(--line);background:white;border-radius:16px}
+.audience-card span{font-size:20px}
+.audience-card h3{font-size:15px;margin:12px 0 6px}
+.audience-card p{font-size:13px;line-height:1.75;color:var(--muted);margin:0}
+.cta{padding:0 0 75px}
+.cta-panel{
+  border-radius:23px;padding:39px 42px;background:var(--navy);color:white;
+  display:flex;align-items:center;justify-content:space-between;gap:28px
+}
+.cta-panel h2{font-size:30px;margin:0 0 8px;letter-spacing:-1px}
+.cta-panel p{margin:0;color:#b8c8d2;font-size:14px}
+.cta-panel .btn{flex-shrink:0;background:#86d3d3;color:#10342f}
+.disclaimer{font-size:12px;line-height:1.7;color:#6d8080}
+footer{border-top:1px solid var(--line);padding:23px 0}
+.footer-inner{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.footer-brand{font-weight:750;font-size:14px}
+.footer-small{font-size:11px;color:#73828e}
+@media(max-width:800px){
+ .hero-grid,.about-grid{grid-template-columns:1fr;gap:35px}
+ .hero{padding-top:54px}
+ .visual{min-height:350px}
+ .features,.audience{grid-template-columns:1fr}
+ .section{padding:57px 0}
+ .about-grid{gap:20px}
+ .cta-panel{padding:29px;align-items:flex-start;flex-direction:column}
+ .navlinks{gap:13px}
+ .navlinks .optional{display:none}
+}
+@media(max-width:480px){
+ .wrap{width:calc(100% - 30px)}
+ .nav{height:66px}
+ .brand{font-size:19px}
+ .logo{width:35px;height:35px}
+ .navlinks{gap:9px;font-size:12px}
+ .navlinks .btn{min-height:39px;padding:0 11px;font-size:12px}
+ h1{letter-spacing:-2px}
+ .visual{padding:22px;min-height:340px}
+ .visual-stat{padding:9px 6px}
+ .visual-stat span{font-size:9px}
+ .cta-panel{padding:25px}
+}
+@media(prefers-reduced-motion:reduce){
+ *,*::before,*::after{scroll-behavior:auto!important;transition:none!important}
+}
+
+        /* ZX-PALETTE-2: warm white, navy, teal */
+        :root { --zx-ink:#0b2239; --zx-muted:#5b6b78; --zx-teal:#0f8b8d; --zx-teal-dark:#0b6f72; --zx-mint:#e8f4f4; --zx-paper:#fbfaf7; --zx-line:#e5e2da; --zx-navy:#0b2239; }
+    </style>
+</head>
+<body>
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="/" aria-label="ZyraX home">
+      <span class="logo" aria-hidden="true">⌘</span><span>ZyraX</span>
+    </a>
+    <nav class="navlinks" aria-label="Main navigation">
+      <a class="optional" href="#about">About</a>
+      <a class="optional" href="#features">Capabilities</a>
+      <a href="#workflow">How it works</a>
+      <a href="/feedback">Feedback</a>
+      <a class="btn btn-primary" href="/analysis">Start Analysis <span aria-hidden="true">↗</span></a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow"><span class="dot"></span> A biomedical research prototype</div>
+      <h1>Connecting biological data to <span>research insights.</span></h1>
+      <p class="lead">ZyraX brings biomedical parameter analysis, disease-related associations and scientific research into one accessible workspace—helping people explore how biological information connects.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="/analysis">Explore the analysis tool <span aria-hidden="true">→</span></a>
+        <a class="btn btn-outline" href="#about">Discover ZyraX</a>
+      </div>
+      <p class="note">Designed for learning and research exploration. Not a clinical diagnostic system.</p>
+    </div>
+    <div class="visual" role="img" aria-label="Illustration of connected biological data and research concepts">
+      <div class="visual-label">THE ZYRAX APPROACH</div>
+      <div class="visual-title">From individual parameters to a broader research picture.</div>
+      <div class="network">
+        <svg viewBox="0 0 400 180" fill="none" aria-hidden="true">
+          <g stroke="#528f8b" stroke-width="1.4" opacity=".75">
+            <path d="M200 90 L112 43 L50 80 M200 90 L282 38 L349 76 M200 90 L115 137 L53 112 M200 90 L285 139 L351 113 M112 43 L282 38 M115 137 L285 139 M50 80 L53 112 M349 76 L351 113"/>
+            <path d="M112 43 L115 137 M282 38 L285 139"/>
+          </g>
+          <g fill="#193f49" stroke="#8fd6d6" stroke-width="2">
+            <circle cx="200" cy="90" r="27" fill="#0f8b8d"/>
+            <circle cx="112" cy="43" r="15"/><circle cx="282" cy="38" r="15"/>
+            <circle cx="115" cy="137" r="15"/><circle cx="285" cy="139" r="15"/>
+            <circle cx="50" cy="80" r="9"/><circle cx="53" cy="112" r="7"/>
+            <circle cx="349" cy="76" r="9"/><circle cx="351" cy="113" r="7"/>
+          </g>
+          <g fill="#dcf6f6" font-size="11" text-anchor="middle" font-weight="600">
+            <text x="200" y="94">DNA</text>
+            <text x="112" y="47">A</text><text x="282" y="42">B</text>
+            <text x="115" y="141">C</text><text x="285" y="143">D</text>
+          </g>
+        </svg>
+      </div>
+      <div class="visual-bottom">
+        <div class="visual-stat"><strong>01 / Input</strong><span>Biological data</span></div>
+        <div class="visual-stat"><strong>02 / Explore</strong><span>Rule-based analysis</span></div>
+        <div class="visual-stat"><strong>03 / Connect</strong><span>Research records</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="about">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">About the project</div>
+      <h2>Making biomedical information easier to explore.</h2>
+      <p>Biological measurements and scientific publications can be difficult to interpret in isolation. ZyraX is an academic prototype designed to bring selected information together and help users take the next step in understanding it.</p>
+    </div>
+    <div class="about-grid">
+      <div class="about-copy">
+        <p><strong>Our goal</strong> is to make a research workflow more approachable: review available parameters, examine rule-based disease associations, and discover external research records that may be relevant to a topic.</p>
+        <p>ZyraX is intended to support learning, exploration and research discussion. Its outputs require scientific interpretation and verification against reliable sources.</p>
+      </div>
+      <div class="steps" id="workflow">
+        <div class="step"><div class="step-num">01</div><div><h3>Enter biomedical parameters</h3><p>Provide the available measurements supported by the analysis form. Not every field needs to be completed.</p></div></div>
+        <div class="step"><div class="step-num">02</div><div><h3>Review parameter analysis</h3><p>The prototype checks supplied values against its configured rules and reports their status.</p></div></div>
+        <div class="step"><div class="step-num">03</div><div><h3>Explore disease associations</h3><p>Review potential associations generated by predefined rules—not a diagnosis or a probability of disease.</p></div></div>
+        <div class="step"><div class="step-num">04</div><div><h3>Discover research records</h3><p>Explore records retrieved through the Open Targets research integration and verify the relevance of each result.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="features" style="background:#fff">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">What you can explore</div>
+      <h2>Three parts. One research workflow.</h2>
+      <p>Select a capability to learn what it does and how it fits into the project.</p>
+    </div>
+    <div class="features">
+      <details class="feature">
+        <summary>
+          <div class="feature-top"><div class="feature-icon" aria-hidden="true">⌁</div><span class="plus" aria-hidden="true">+</span></div>
+          <h3>Parameter analysis</h3>
+          <p>Review supported biomedical measurements and see how the prototype classifies values under its configured rules.</p>
+        </summary>
+        <div class="feature-more">Useful for learning how structured biomedical inputs can be checked systematically. Results depend on the implemented rules and the quality of the supplied data.</div>
+      </details>
+      <details class="feature">
+        <summary>
+          <div class="feature-top"><div class="feature-icon" aria-hidden="true">◎</div><span class="plus" aria-hidden="true">+</span></div>
+          <h3>Disease associations</h3>
+          <p>Explore potential disease-related patterns produced by the project's predefined association rules.</p>
+        </summary>
+        <div class="feature-more">Associations are exploratory rule matches. They do not establish causation, estimate clinical risk, or confirm that a person has a disease.</div>
+      </details>
+      <details class="feature">
+        <summary>
+          <div class="feature-top"><div class="feature-icon" aria-hidden="true">⌕</div><span class="plus" aria-hidden="true">+</span></div>
+          <h3>Research explorer</h3>
+          <p>Access external research records through the Open Targets integration to support further investigation.</p>
+        </summary>
+        <div class="feature-more">External records may vary in type and relevance. Check the source, evidence and context before drawing conclusions.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">Who it is for</div>
+      <h2>Built to make research more approachable.</h2>
+    </div>
+    <div class="audience">
+      <article class="audience-card"><span aria-hidden="true">⌘</span><h3>Students and learners</h3><p>Explore how biomedical data, computational rules and external research resources can work together.</p></article>
+      <article class="audience-card"><span aria-hidden="true">⌬</span><h3>Bioinformatics researchers</h3><p>Use the prototype as a starting point for investigating associations and locating potentially relevant research records.</p></article>
+      <article class="audience-card"><span aria-hidden="true">↗</span><h3>Curious explorers</h3><p>Learn how computational tools can organize biomedical information and support further questions.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="wrap">
+    <div class="cta-panel">
+      <div><h2>Ready to explore ZyraX?</h2><p>Continue to the biomedical analysis workspace.</p></div>
+      <a class="btn" href="/analysis">Start Analysis <span aria-hidden="true">→</span></a>
+    </div>
+    <p class="disclaimer" style="margin-top:18px">Important: ZyraX is an academic research prototype, not a medical device or diagnostic service. It cannot diagnose conditions, recommend treatment, or replace a qualified healthcare professional. Do not use its outputs for medical decisions.</p>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap footer-inner">
+    <div class="footer-brand">ZyraX <span style="font-weight:400;color:#73828e">· Biomedical Research Prototype</span></div>
+    <div class="footer-small">Built for research exploration and learning. <a href="/feedback" style="text-decoration:underline">Feedback and problem report</a> · <a href="mailto:arzaidiwork@gmail.com" style="text-decoration:underline">arzaidiwork@gmail.com</a></div>
+  </div>
+</footer>
+</body>
+</html>
