@@ -11,7 +11,22 @@ import math
 # ============================================================
 
 app = Flask(__name__)
-CORS(app)
+
+# The pages are served by this same app, so browsers do not need
+# cross-origin access. Only a local copy and the public site are allowed.
+CORS(app, origins=[
+    r"http://127\.0\.0\.1:\d+",
+    r"http://localhost:\d+",
+    r"https://[a-z0-9-]+\.onrender\.com",
+])
+
+# Reject oversized request bodies (the largest legitimate upload is 15 MB).
+app.config["MAX_CONTENT_LENGTH"] = 16 * 1024 * 1024
+
+# Behind the hosting service's proxy, use the visitor's real address for
+# rate limiting. Harmless when running locally.
+from werkzeug.middleware.proxy_fix import ProxyFix
+app.wsgi_app = ProxyFix(app.wsgi_app, x_for=1)
 
 
 # ============================================================
@@ -1909,6 +1924,21 @@ def explain_report():
 UNIPROT_URL = "https://rest.uniprot.org/uniprotkb/search"
 STRING_URL = "https://string-db.org/api/json/"
 _GENE_CACHE = {}
+_GENE_CACHE_MAX = 200
+_GENE_HITS = {}
+
+
+def _gene_rate_ok(ip, limit=60, window=3600):
+    """Limit how many uncached gene lookups one visitor can trigger per hour,
+    so the public site cannot be used to flood UniProt or STRING."""
+    now = time.time()
+    hits = [t for t in _GENE_HITS.get(ip, []) if now - t < window]
+    if len(hits) >= limit:
+        _GENE_HITS[ip] = hits
+        return False
+    hits.append(now)
+    _GENE_HITS[ip] = hits
+    return True
 _GENE_RE = re.compile(r"^[A-Za-z0-9][A-Za-z0-9\-]{0,14}$")
 
 
@@ -1975,6 +2005,10 @@ def gene_biology():
 
     if key in _GENE_CACHE:
         return jsonify(_GENE_CACHE[key])
+
+    if not _gene_rate_ok(request.remote_addr or "local"):
+        return jsonify({"success": False,
+                        "message": "Too many gene lookups. Please wait a while and try again."}), 429
 
     ids = "\r".join(symbols)
     common = {"species": 9606, "caller_identity": "zyrax_academic"}
@@ -2043,6 +2077,8 @@ def gene_biology():
     }
 
     if info or partners or pathways:
+        if len(_GENE_CACHE) >= _GENE_CACHE_MAX:
+            _GENE_CACHE.pop(next(iter(_GENE_CACHE)))
         _GENE_CACHE[key] = result
 
     return jsonify(result)
