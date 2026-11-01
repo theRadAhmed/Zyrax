@@ -4513,10 +4513,11 @@ document.addEventListener(
         document.body.appendChild(node);
         const prevTitle = document.title;
         document.title = "ZyraX-Report-" + stamp().slice(0, 10);
+        // The printable copy stays in the page (it is hidden on screen) so that
+        // iPhone Safari, which reports "afterprint" before it has drawn the
+        // pages, does not find an empty document. It is rebuilt on each click.
         const restore = () => {
             document.title = prevTitle;
-            const n = document.getElementById("zxPrint");
-            if (n) n.remove();
             window.removeEventListener("afterprint", restore);
         };
         window.addEventListener("afterprint", restore);
