@@ -2209,6 +2209,10 @@
             </div>
         </div>
 
+        <!-- MODEL CHECK (research output) -->
+
+        <div id="modelCheck" style="display:none;margin:22px 0;padding:22px 24px;background:#fbfaf7;border:1px solid #e5e2da;border-left:5px solid #0f8b8d;border-radius:12px;"></div>
+
         <!-- NOTICE -->
 
         <div
@@ -3896,6 +3900,23 @@ async function analyzeBiomarkers() {
 
 
         renderGraph(result);
+
+
+        (function renderModelCheck(mc) {
+            const box = document.getElementById("modelCheck");
+            if (!box) return;
+            if (!mc) { box.style.display = "none"; box.innerHTML = ""; return; }
+            const pct = (v) => (typeof v === "number" ? Math.round(v * 1000) / 10 + " %" : "n/a");
+            box.innerHTML =
+                '<div style="font-size:13px;font-weight:700;letter-spacing:.04em;color:#0b6f72;">MODEL CHECK · RESEARCH OUTPUT</div>' +
+                '<div style="font-size:26px;font-weight:700;color:#0b2239;margin:6px 0 4px;">' + escapeHTML(String(mc.probability)) + ' %' +
+                ' <span style="font-size:16px;font-weight:500;color:#475569;">model output for diagnosed ' + escapeHTML(mc.name.toLowerCase()) + '</span></div>' +
+                '<div style="font-size:15px;color:#334155;line-height:1.55;">' + escapeHTML(mc.model) + ' trained offline on ' + escapeHTML(mc.trained_on) +
+                '. On held-out test data: AUROC ' + escapeHTML(String(mc.test_auroc)) + ', accuracy ' + pct(mc.test_accuracy) +
+                ', sensitivity ' + pct(mc.test_sensitivity) + ', specificity ' + pct(mc.test_specificity) + '.</div>' +
+                '<div style="font-size:14px;color:#64748b;margin-top:8px;">' + escapeHTML(mc.note) + '</div>';
+            box.style.display = "block";
+        })(result.model_check);
 
 
         document
