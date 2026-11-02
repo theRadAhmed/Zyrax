@@ -1399,6 +1399,56 @@ def health():
 # ANALYSIS API
 # ============================================================
 
+# ============================================================
+# MODEL CHECK (research output)
+# A logistic regression trained offline on NHANES 2013-2018 to
+# predict doctor-diagnosed diabetes from fasting glucose and
+# HbA1c. Only plain numbers are stored (model_diabetes.json), so
+# no machine-learning library is needed at run time.
+# ============================================================
+
+import json as _json
+import os as _os
+
+_MODEL_DIABETES = None
+try:
+    with open(_os.path.join(_os.path.dirname(_os.path.abspath(__file__)), "model_diabetes.json"), encoding="utf-8") as _f:
+        _MODEL_DIABETES = _json.load(_f)
+except Exception as _err:  # the app still works without the model
+    print("[ZyraX] model_diabetes.json not loaded:", _err)
+
+
+def model_check(data):
+    """Return the diabetes model output, or None if it cannot be computed."""
+    m = _MODEL_DIABETES
+    if not m:
+        return None
+    glucose = safe_float(data.get("fastingGlucose"))
+    hba1c = safe_float(data.get("hba1c"))
+    if glucose is None or hba1c is None:
+        return None
+    z = m["intercept"]
+    for value, mean, scale, coef in zip((glucose, hba1c), m["mean"], m["scale"], m["coef"]):
+        z += coef * ((value - mean) / scale)
+    p = 1.0 / (1.0 + math.exp(-z))
+    t = m.get("test_metrics", {})
+    return {
+        "name": "Diabetes",
+        "probability": round(p * 100, 1),
+        "inputs": {"fasting_glucose_mg_dl": glucose, "hba1c_percent": hba1c},
+        "model": "Logistic regression",
+        "trained_on": "NHANES 2013-2018, adults 20+, label: told by a doctor they have diabetes",
+        "test_auroc": t.get("auroc"),
+        "test_accuracy": t.get("accuracy"),
+        "test_sensitivity": t.get("sensitivity"),
+        "test_specificity": t.get("specificity"),
+        "note": (
+            "Research output from a model trained on US survey data. It is not a "
+            "diagnosis and is not a probability for this person."
+        ),
+    }
+
+
 @app.route(
     "/api/analyze",
     methods=["POST"]
@@ -1660,6 +1710,8 @@ def analyze():
             ],
 
             "associations": associations,
+
+            "model_check": model_check(data),
 
             "results": associations,
 
@@ -1942,18 +1994,28 @@ def _gene_rate_ok(ip, limit=60, window=3600):
 _GENE_RE = re.compile(r"^[A-Za-z0-9][A-Za-z0-9\-]{0,14}$")
 
 
-def _public_json(url, params):
-    """GET json from a public database. Returns None on any failure."""
-    try:
-        r = requests.get(
-            url, params=params, timeout=20,
-            headers={"User-Agent": "ZyraX-academic-prototype", "Accept": "application/json"}
-        )
-        if r.status_code != 200:
-            return None
-        return r.json()
-    except (requests.RequestException, ValueError):
-        return None
+def _public_json(url, params, tries=2):
+    """GET json from a public database. Returns None on any failure.
+    Retries once on a timeout or a server-side error and prints the reason
+    so that it shows in the hosting service's log."""
+    last = ""
+    for attempt in range(tries):
+        try:
+            r = requests.get(
+                url, params=params, timeout=25,
+                headers={"User-Agent": "ZyraX-academic-prototype (mailto:arzaidiwork@gmail.com)",
+                         "Accept": "application/json"}
+            )
+            if r.status_code == 200:
+                return r.json()
+            last = "HTTP %s %s" % (r.status_code, (r.text or "")[:120].replace("\n", " "))
+            if r.status_code < 500 and r.status_code != 429:
+                break
+        except (requests.RequestException, ValueError) as e:
+            last = "%s: %s" % (type(e).__name__, str(e)[:160])
+        time.sleep(1.0)
+    print("[ZyraX] lookup failed:", url.split("?")[0], "|", last, flush=True)
+    return None
 
 
 def _uniprot_genes(symbols):
@@ -2076,7 +2138,8 @@ def gene_biology():
         "sources": "UniProt (reviewed human entries) and STRING v12"
     }
 
-    if info or partners or pathways:
+    # Only keep complete answers, so a temporary failure is not remembered.
+    if not warnings and (info or partners or pathways):
         if len(_GENE_CACHE) >= _GENE_CACHE_MAX:
             _GENE_CACHE.pop(next(iter(_GENE_CACHE)))
         _GENE_CACHE[key] = result

@@ -1,0 +1,38 @@
+{
+  "condition": "Diabetes (doctor-diagnosed model)",
+  "features": [
+    "glucose",
+    "hba1c"
+  ],
+  "units": {
+    "glucose": "mg/dL (fasting)",
+    "hba1c": "%"
+  },
+  "mean": [
+    111.73575418994413,
+    5.8361824953445
+  ],
+  "scale": [
+    37.73530775837505,
+    1.168578354579735
+  ],
+  "coef": [
+    0.46048626890820554,
+    2.1863743579575354
+  ],
+  "intercept": -2.20812437968805,
+  "source": "NHANES 2013-2018 (CDC/NCHS)",
+  "test_metrics": {
+    "accuracy": 0.9151,
+    "sensitivity": 0.5421,
+    "specificity": 0.9822,
+    "auroc": 0.9299,
+    "brier": 0.0638,
+    "tn": 1491,
+    "fp": 27,
+    "fn": 125,
+    "tp": 148,
+    "cv_auroc_mean": 0.9317,
+    "cv_auroc_sd": 0.0111
+  }
+}
