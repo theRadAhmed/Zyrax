@@ -1408,26 +1408,70 @@
 
         #zxPrint { display: none; }
         @media print {
-            @page { size: A4; margin: 16mm; }
+            @page {
+                size: A4; margin: 12mm 13mm 17mm;
+                @bottom-left { content: "ZyraX v2.1 · Academic research prototype · Not a diagnosis"; font: 8px Arial, Helvetica, sans-serif; color: #5b6b78; }
+                @bottom-right { content: "Page " counter(page) " of " counter(pages); font: 8px Arial, Helvetica, sans-serif; color: #5b6b78; }
+            }
             body > *:not(#zxPrint) { display: none !important; }
             body::before, body::after { display: none !important; }
-            html, body { background: #fff !important; color: #000 !important; }
-            #zxPrint { display: block !important; font-family: Arial, Helvetica, sans-serif;
-                color: #111; font-size: 11.5px; line-height: 1.5; }
-            #zxPrint h1 { font-size: 20px; margin: 0 0 2px; color: #0b6f72; }
-            #zxPrint h2 { page-break-after: avoid; break-after: avoid; font-size: 14px; margin: 18px 0 6px; padding-bottom: 3px; border-bottom: 1.5px solid #0b6f72; color: #0b6f72; }
-            #zxPrint .sub { color: #555; margin-bottom: 8px; }
-            #zxPrint .warn { border: 1.5px solid #b45309; background: #fff7ed; padding: 8px 10px; margin: 10px 0; border-radius: 4px; }
-            #zxPrint table { width: 100%; border-collapse: collapse; margin: 4px 0 8px; }
-            #zxPrint th, #zxPrint td { border: 1px solid #999; padding: 4px 6px; text-align: left; vertical-align: top; }
-            #zxPrint th { background: #e8eefc; }
-            #zxPrint tr { page-break-inside: avoid; }
-            #zxPrint .flag { font-weight: 700; color: #b45309; }
-            #zxPrint .ok { color: #166534; }
-            #zxPrint .small { font-size: 10px; color: #444; }
-            #zxPrint ul { margin: 4px 0 8px 18px; padding: 0; }
-            #zxPrint .assoc { margin-bottom: 10px; page-break-inside: avoid; }
-            #zxPrint .foot { margin-top: 16px; border-top: 1px solid #999; padding-top: 6px; font-size: 10px; color: #444; }
+            html, body { background: #fff !important; color: #0b2239 !important; }
+            #zxPrint, #zxPrint * { -webkit-print-color-adjust: exact; print-color-adjust: exact; box-sizing: border-box; }
+            #zxPrint { display: block !important; font-family: -apple-system, "Helvetica Neue", Arial, Helvetica, sans-serif;
+                color: #0b2239; font-size: 10.5px; line-height: 1.45; }
+            #zxPrint .zr-head { background: #0b2239; color: #fff; border-radius: 9px; padding: 14px 18px; display: flex; justify-content: space-between; align-items: center; }
+            #zxPrint .zr-brand { display: flex; align-items: center; gap: 12px; }
+            #zxPrint .zr-logo { width: 38px; height: 38px; border-radius: 9px; background: #0f8b8d; color: #fff; font: 700 22px Georgia, "Times New Roman", serif; display: flex; align-items: center; justify-content: center; }
+            #zxPrint .zr-title { font: 700 19px Georgia, "Times New Roman", serif; color: #fff; line-height: 1.15; }
+            #zxPrint .zr-tag { font-size: 9.5px; color: #b9d3d8; margin-top: 2px; }
+            #zxPrint .zr-meta { text-align: right; font-size: 9.5px; color: #b9d3d8; line-height: 1.5; }
+            #zxPrint .zr-pill-proto { display: inline-block; background: #0f8b8d; color: #fff; border-radius: 10px; padding: 1px 9px; font-weight: 700; font-size: 9px; letter-spacing: .04em; margin-bottom: 3px; }
+            #zxPrint .zr-who { display: grid; grid-template-columns: 2fr 1fr 1fr 1.4fr; border: 1px solid #d3e1e1; border-radius: 8px; margin-top: 10px; }
+            #zxPrint .zr-who > div { padding: 7px 11px; border-left: 1px solid #d3e1e1; }
+            #zxPrint .zr-who > div:first-child { border-left: 0; }
+            #zxPrint .zr-lbl { font-size: 8.5px; color: #5b6b78; letter-spacing: .05em; text-transform: uppercase; }
+            #zxPrint .zr-val { font-size: 12px; font-weight: 700; margin-top: 1px; }
+            #zxPrint .zr-val.dim { color: #8a98a3; font-weight: 400; }
+            #zxPrint .zr-tiles { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-top: 10px; }
+            #zxPrint .zr-tile { background: #eaf5f5; border-radius: 8px; padding: 8px 11px; }
+            #zxPrint .zr-tile b { display: block; font: 700 22px Georgia, "Times New Roman", serif; color: #0b6f72; line-height: 1.1; }
+            #zxPrint .zr-tile.warnt b { color: #8a4b07; }
+            #zxPrint .zr-tile span { font-size: 9.5px; color: #3a4f5c; }
+            #zxPrint .zr-note { margin-top: 10px; background: #fff7ed; border: 1px solid #f1c58a; border-left: 4px solid #b45309; border-radius: 6px; padding: 7px 11px; font-size: 9.5px; color: #5a3410; }
+            #zxPrint h2.zr-h { display: flex; align-items: center; gap: 8px; font-size: 13px; margin: 16px 0 7px; padding-bottom: 5px; border-bottom: 1.5px solid #0b2239; color: #0b2239; break-after: avoid; page-break-after: avoid; }
+            #zxPrint .zr-num { width: 19px; height: 19px; border-radius: 50%; background: #0f8b8d; color: #fff; font-size: 10px; display: inline-flex; align-items: center; justify-content: center; flex: none; }
+            #zxPrint .zr-sub { font-size: 9.5px; color: #4a5f6c; margin: -2px 0 7px; }
+            #zxPrint table.zr-t { width: 100%; border-collapse: separate; border-spacing: 0; font-size: 10px; border: 1px solid #d3e1e1; border-radius: 7px; overflow: hidden; }
+            #zxPrint .zr-t th { background: #0b2239; color: #fff; text-align: left; padding: 5px 9px; font-size: 9px; letter-spacing: .04em; font-weight: 700; }
+            #zxPrint .zr-t td { padding: 5px 9px; border-top: 1px solid #e3ecec; vertical-align: middle; }
+            #zxPrint .zr-t tbody tr:nth-child(even) td { background: #f5fafa; }
+            #zxPrint .zr-t tr { break-inside: avoid; page-break-inside: avoid; }
+            #zxPrint .zr-t .nm { font-weight: 700; }
+            #zxPrint .zr-t .rf { color: #4a5f6c; font-size: 9px; }
+            #zxPrint .pill { display: inline-block; border-radius: 10px; padding: 1px 9px; font-size: 9px; font-weight: 700; white-space: nowrap; }
+            #zxPrint .pill.out { background: #fdebd3; color: #8a4b07; border: 1px solid #f1c58a; }
+            #zxPrint .pill.ok { background: #dff3e4; color: #14532d; border: 1px solid #b7e1c2; }
+            #zxPrint .zr-card { display: grid; grid-template-columns: 56px 1fr; gap: 12px; border: 1px solid #d3e1e1; border-radius: 9px; padding: 9px 12px; margin-bottom: 8px; break-inside: avoid; page-break-inside: avoid; }
+            #zxPrint .zr-ring { width: 54px; height: 54px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+            #zxPrint .zr-ring span { width: 40px; height: 40px; border-radius: 50%; background: #fff; display: flex; align-items: center; justify-content: center; font: 700 14px Georgia, "Times New Roman", serif; color: #0b2239; }
+            #zxPrint .zr-card h3 { margin: 0; font-size: 12.5px; }
+            #zxPrint .zr-cat { font-size: 9px; color: #5b6b78; margin-bottom: 4px; }
+            #zxPrint .zr-row { margin-top: 4px; font-size: 9.5px; }
+            #zxPrint .zr-row .zr-lbl { margin-right: 5px; }
+            #zxPrint .chip { display: inline-block; border: 1px solid #b6d3d3; background: #eaf5f5; color: #0b6f72; border-radius: 10px; padding: 0 7px; margin: 1px 3px 1px 0; font-size: 9px; font-weight: 600; }
+            #zxPrint .chip.t { background: #fff; color: #0b2239; }
+            #zxPrint .chip.m { background: #fdebd3; border-color: #f1c58a; color: #8a4b07; }
+            #zxPrint .zr-warn { margin-top: 6px; background: #fff7ed; border: 1px solid #f1c58a; border-radius: 6px; padding: 5px 9px; font-size: 9.5px; color: #5a3410; }
+            #zxPrint .zr-warn ul { margin: 2px 0 0 14px; padding: 0; }
+            #zxPrint .zr-q { margin: 0; padding: 0; list-style: none; counter-reset: q; }
+            #zxPrint .zr-q li { counter-increment: q; display: flex; gap: 9px; margin-bottom: 5px; font-size: 10.5px; }
+            #zxPrint .zr-q li::before { content: counter(q); flex: none; width: 17px; height: 17px; border-radius: 50%; border: 1.5px solid #0f8b8d; color: #0b6f72; font-size: 9px; font-weight: 700; display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+            #zxPrint .zr-notes { height: 76px; border: 1px solid #d3e1e1; border-radius: 8px; margin-top: 6px; background-image: repeating-linear-gradient(to bottom, transparent 0, transparent 17px, #d3e1e1 17px, #d3e1e1 18px); background-position: 0 6px; break-inside: avoid; }
+            #zxPrint .zr-bar { display: inline-block; width: 64px; height: 6px; border-radius: 3px; background: #dde8e8; vertical-align: middle; margin-right: 6px; overflow: hidden; }
+            #zxPrint .zr-bar i { display: block; height: 6px; background: #0f8b8d; }
+            #zxPrint .zr-model { border: 1px dashed #8fb0b0; border-radius: 8px; padding: 8px 12px; font-size: 9.5px; break-inside: avoid; }
+            #zxPrint .zr-model b { font-size: 11px; }
+            #zxPrint .zr-foot { margin-top: 14px; border-top: 1px solid #d3e1e1; padding-top: 7px; font-size: 8.5px; color: #4a5f6c; }
         }
 
     
@@ -4423,79 +4467,190 @@ document.addEventListener(
         return t;
     }
 
+    function node(tag, cls, text) {
+        const e = document.createElement(tag);
+        if (cls) e.className = cls;
+        if (text !== undefined && text !== null) e.textContent = text;
+        return e;
+    }
+
+    function section(root, num, title, sub) {
+        const h = node("h2", "zr-h");
+        h.appendChild(node("span", "zr-num", String(num)));
+        h.appendChild(document.createTextNode(title));
+        root.appendChild(h);
+        if (sub) root.appendChild(node("div", "zr-sub", sub));
+    }
+
+    function chips(parent, label, items, cls) {
+        if (!items || !items.length) return;
+        const row = node("div", "zr-row");
+        row.appendChild(node("span", "zr-lbl", label));
+        items.forEach(x => row.appendChild(node("span", "chip" + (cls ? " " + cls : ""), x)));
+        parent.appendChild(row);
+    }
+
     function buildPrintReport(result, w) {
-        const root = el("div"); root.id = "zxPrint";
-        root.appendChild(el("h1", "ZyraX Laboratory Analysis Summary"));
-        root.appendChild(el("div", "Generated " + stamp() + " · Academic research prototype", "sub"));
-
-        const who1 = [];
-        if (w.name) who1.push("Name: " + w.name);
-        if (w.age) who1.push("Age: " + w.age);
-        if (w.sex) who1.push("Sex: " + w.sex);
-        if (who1.length) root.appendChild(el("div", who1.join("   ·   "), "sub"));
-
-        root.appendChild(el("div", DISCLAIMER, "warn"));
-
+        const root = node("div"); root.id = "zxPrint";
         const params = result.parameters || [];
-        root.appendChild(el("h2", "1. Values entered and prototype flags"));
-        root.appendChild(table(
-            ["Parameter", "Your value", "Prototype reference", "Flag"],
-            params.map(p => [
-                p.name || p.parameter || "",
-                fmtValue(p),
-                p.reference || "",
-                p.status === "abnormal" ? { text: "Outside range", cls: "flag" } : { text: "Within range", cls: "ok" },
-            ])
-        ));
-
         const assoc = result.results || result.associations || [];
-        root.appendChild(el("h2", "2. Patterns the rules matched"));
+        const research = (result.research_results || []).slice(0, 12);
+        const abnormal = params.filter(p => p.status === "abnormal");
+        const nResearch = (result.research_results || []).length;
+
+        // header band
+        const head = node("div", "zr-head");
+        const brand = node("div", "zr-brand");
+        brand.appendChild(node("div", "zr-logo", "Z"));
+        const tt = node("div");
+        tt.appendChild(node("div", "zr-title", "Laboratory Analysis Summary"));
+        tt.appendChild(node("div", "zr-tag", "From lab values to candidate conditions, genes and targets"));
+        brand.appendChild(tt);
+        head.appendChild(brand);
+        const meta = node("div", "zr-meta");
+        meta.appendChild(node("div", "zr-pill-proto", "RESEARCH PROTOTYPE"));
+        meta.appendChild(node("div", null, "Generated " + stamp()));
+        meta.appendChild(node("div", null, "ZyraX v2.1"));
+        head.appendChild(meta);
+        root.appendChild(head);
+
+        // who strip
+        const who1 = node("div", "zr-who");
+        [["Name", w.name], ["Age", w.age], ["Sex", w.sex], ["Report date", stamp().slice(0, 10)]].forEach(([l, v]) => {
+            const c = node("div");
+            c.appendChild(node("div", "zr-lbl", l));
+            c.appendChild(node("div", "zr-val" + (v ? "" : " dim"), v || "Not provided"));
+            who1.appendChild(c);
+        });
+        root.appendChild(who1);
+
+        // summary tiles
+        const tiles = node("div", "zr-tiles");
+        [["Values checked", params.length, ""], ["Outside range", abnormal.length, abnormal.length ? "warnt" : ""],
+         ["Patterns matched", assoc.length, ""], ["Research records", nResearch, ""]].forEach(([l, n, c]) => {
+            const t = node("div", "zr-tile" + (c ? " " + c : ""));
+            t.appendChild(node("b", null, String(n)));
+            t.appendChild(node("span", null, l));
+            tiles.appendChild(t);
+        });
+        root.appendChild(tiles);
+
+        root.appendChild(node("div", "zr-note", DISCLAIMER));
+
+        // 1 values
+        section(root, 1, "Values entered and prototype flags");
+        const t1 = node("table", "zr-t");
+        const th = node("tr");
+        ["PARAMETER", "YOUR VALUE", "PROTOTYPE REFERENCE", "FLAG"].forEach(h => th.appendChild(node("th", null, h)));
+        const th0 = node("thead"); th0.appendChild(th); t1.appendChild(th0);
+        const tb1 = node("tbody");
+        params.forEach(p => {
+            const tr = node("tr");
+            tr.appendChild(node("td", "nm", p.name || p.parameter || ""));
+            tr.appendChild(node("td", "nm", fmtValue(p)));
+            tr.appendChild(node("td", "rf", p.reference || ""));
+            const fl = node("td");
+            fl.appendChild(p.status === "abnormal" ? node("span", "pill out", "Outside range") : node("span", "pill ok", "Within range"));
+            tr.appendChild(fl);
+            tb1.appendChild(tr);
+        });
+        t1.appendChild(tb1);
+        root.appendChild(t1);
+
+        // 2 patterns
+        section(root, 2, "Patterns the rules matched",
+            "Possible patterns to discuss, not diagnoses. The score is the share of a condition’s simple rules that matched; it is not a probability.");
         if (!assoc.length) {
-            root.appendChild(el("p", "No prototype rule was matched by the submitted values."));
+            root.appendChild(node("p", null, "No prototype rule was matched by the submitted values."));
         } else {
-            root.appendChild(el("p", "These are possible patterns to discuss, not diagnoses. The score shows how many of a condition’s simple rules matched."));
             assoc.forEach(a => {
-                const box = el("div", null, "assoc");
-                const title = el("div", null);
-                const b = el("strong", a.disease + " – rule-match score " + a.match_score + " / 100");
-                title.appendChild(b);
-                box.appendChild(title);
+                const card = node("div", "zr-card");
+                const score = Math.max(0, Math.min(100, Number(a.match_score) || 0));
+                const ring = node("div", "zr-ring");
+                ring.style.background = "conic-gradient(#0f8b8d " + (score * 3.6) + "deg, #dde8e8 0)";
+                ring.appendChild(node("span", null, String(a.match_score)));
+                card.appendChild(ring);
+                const body = node("div");
+                body.appendChild(node("h3", null, a.disease));
+                body.appendChild(node("div", "zr-cat", (a.category ? a.category + " · " : "") + "rule-match score " + a.match_score + " / 100"));
                 const parts = assocParts(a);
-                if (parts.trig.length) box.appendChild(el("div", "Matched by: " + parts.trig.join(", "), "small"));
-                if (a.interpretation) box.appendChild(el("div", a.interpretation));
+                chips(body, "MATCHED BY", parts.trig, "m");
+                if (a.interpretation) body.appendChild(node("div", "zr-row", a.interpretation));
+                chips(body, "GENES", a.genes);
+                chips(body, "TARGETS", a.targets, "t");
                 if (a.warning_signs && a.warning_signs.length) {
-                    box.appendChild(el("div", "Seek medical care promptly if you notice:", "small"));
-                    const ul = el("ul");
-                    a.warning_signs.forEach(x => ul.appendChild(el("li", x)));
-                    box.appendChild(ul);
+                    const wb = node("div", "zr-warn");
+                    wb.appendChild(node("b", null, "Seek medical care promptly if you notice:"));
+                    const ul = node("ul");
+                    a.warning_signs.forEach(x => ul.appendChild(node("li", null, x)));
+                    wb.appendChild(ul);
+                    body.appendChild(wb);
                 }
-                root.appendChild(box);
+                card.appendChild(body);
+                root.appendChild(card);
             });
         }
 
-        const flagged = params.filter(p => p.status === "abnormal").map(p => p.name || p.parameter);
-        root.appendChild(el("h2", "3. Suggested questions for your doctor"));
-        const q = el("ul");
+        // 3 questions
+        section(root, 3, "Suggested questions for your doctor");
+        const q = node("ol", "zr-q");
+        const flagged = abnormal.map(p => p.name || p.parameter);
         if (flagged.length) {
-            q.appendChild(el("li", "My " + flagged.join(", ") + " value(s) were outside the simple ranges used here. Do they need repeating or other tests?"));
-            q.appendChild(el("li", "Given my age, sex, symptoms and medicines, what do these results mean for me?"));
+            q.appendChild(node("li", null, "My " + flagged.join(", ") + " value(s) were outside the simple ranges used here. Do they need repeating or other tests?"));
+            q.appendChild(node("li", null, "Given my age, sex, symptoms and medicines, what do these results mean for me?"));
         } else {
-            q.appendChild(el("li", "My entered values were within the simple ranges. Is there anything else I should check?"));
+            q.appendChild(node("li", null, "My entered values were within the simple ranges. Is there anything else I should check?"));
         }
-        q.appendChild(el("li", "How often should I repeat these tests?"));
+        q.appendChild(node("li", null, "How often should I repeat these tests?"));
         root.appendChild(q);
+        root.appendChild(node("div", "zr-lbl", "Notes"));
+        root.appendChild(node("div", "zr-notes"));
 
-        const research = (result.research_results || []).slice(0, 10);
+        // 4 research
         if (research.length) {
-            root.appendChild(el("h2", "4. Research information (not for clinical use)"));
-            root.appendChild(el("p", "Genes and targets that the Open Targets research database links to the matched conditions, with its association score. This is background research evidence only.", "small"));
-            root.appendChild(table(
-                ["Gene / target", "Detail", "Related condition"],
-                research.map(r => [r.name || "", r.description || "", r.related_disease || ""])
-            ));
+            section(root, 4, "Research information (not for clinical use)",
+                "Genes and targets that the Open Targets research database links to the matched conditions, with its association score (0 to 1). Background evidence only.");
+            const t2 = node("table", "zr-t");
+            const h2r = node("tr");
+            ["GENE / TARGET", "DETAIL", "RELATED CONDITION", "ASSOCIATION"].forEach(h => h2r.appendChild(node("th", null, h)));
+            const th2 = node("thead"); th2.appendChild(h2r); t2.appendChild(th2);
+            const tb2 = node("tbody");
+            research.forEach(r => {
+                const tr = node("tr");
+                const desc = String(r.description || "");
+                const m = desc.match(/association score\s*([0-9.]+)/i);
+                const sc = m ? Number(m[1]) : null;
+                const detail = desc.split(" | ")[0];
+                tr.appendChild(node("td", "nm", r.name || ""));
+                tr.appendChild(node("td", "rf", detail));
+                tr.appendChild(node("td", null, r.related_disease || ""));
+                const ca = node("td");
+                if (sc !== null && isFinite(sc)) {
+                    const bar = node("span", "zr-bar"); const fill = node("i"); fill.style.width = Math.max(0, Math.min(100, sc * 100)) + "%";
+                    bar.appendChild(fill); ca.appendChild(bar); ca.appendChild(document.createTextNode(sc.toFixed(3)));
+                }
+                tr.appendChild(ca);
+                tb2.appendChild(tr);
+            });
+            t2.appendChild(tb2);
+            root.appendChild(t2);
         }
 
-        root.appendChild(el("div", "Source: ZyraX v2.1 · Rule-match scores are not probabilities · Research data: Open Targets Platform (platform.opentargets.org). " + DISCLAIMER, "foot"));
+        // 5 model check
+        const mc = result.model_check;
+        if (mc && typeof mc.probability === "number") {
+            section(root, research.length ? 5 : 4, "Research model output (diabetes)");
+            const box = node("div", "zr-model");
+            const pct = v => (typeof v === "number" ? Math.round(v * 1000) / 10 + " %" : "n/a");
+            box.appendChild(node("b", null, mc.probability + " % model output for diagnosed " + String(mc.name || "diabetes").toLowerCase()));
+            box.appendChild(node("div", null, (mc.model || "") + " trained offline on " + (mc.trained_on || "") +
+                ". On held-out test data: AUROC " + mc.test_auroc + ", accuracy " + pct(mc.test_accuracy) +
+                ", sensitivity " + pct(mc.test_sensitivity) + ", specificity " + pct(mc.test_specificity) + "."));
+            if (mc.note) box.appendChild(node("div", null, mc.note));
+            root.appendChild(box);
+        }
+
+        root.appendChild(node("div", "zr-foot", "Source: ZyraX v2.1 · Rule-match scores are not probabilities · Research data: Open Targets Platform (platform.opentargets.org). " + DISCLAIMER));
         return root;
     }
 
